@@ -1,0 +1,49 @@
+.section-img-lrg {
+    position: relative;
+    width: 100%;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    h1 {
+        padding: 0;
+    }
+    .right-text {
+        padding-right: 320px;
+        @include mq('1700') {
+            padding-right: 220px;
+        }
+        @include mq('1500') {
+            padding-right: 120px;
+        }
+        @include mq('tablet-wide') {
+            padding-right: 50px;
+        }
+        @include mq('tablet') {
+            padding: 0 50px;
+        }
+    }
+    .left-text {
+        padding-left: 320px;
+        @include mq('1700') {
+            padding-left: 220px;
+        }
+        @include mq('1500') {
+            padding-left: 120px;
+        }
+        @include mq('tablet-wide') {
+            padding-left: 50px;
+        }
+        @include mq('tablet') {
+            padding: 0 50px;
+        }
+    }
+    .bg-dark {
+        padding: 100px 0;
+        background-image: url(../../img/pattern-dark.jpg);
+        background-attachment: fixed;
+    }
+    .bg-light {
+        padding: 100px 0;
+        background-image: url(../../img/pattern-light.jpg);
+        background-attachment: fixed;
+    }
+}

@@ -1,0 +1,52 @@
+body {
+    font-family: $main-font;
+    color: $dark-grey;
+    h1 {
+        font-size: 80px;
+        font-weight: 500;
+        padding-bottom: 100px;
+        @include mq('desktop') {
+            font-size: 64px;
+        }
+    }
+    h2 {
+        font-size: 60px;
+        font-weight: 700;
+        @include mq('desktop') {
+            font-size: 48px;
+        }
+    }
+    h3 {
+        font-size: 24px;
+        font-weight: 700;
+        @include mq('desktop') {
+            font-size: 19px;
+        }
+    }
+    p {
+        font-size: 24px;
+        @include mq('desktop') {
+            font-size: 19px;
+        }
+    }
+}
+
+
+.primary-text {
+    color: $primary-color;
+}
+
+.secondary-text {
+    color: $secondary-color;
+}
+
+.subtext {
+    color: $primary-color;
+    font-size: 14px;
+    text-align: right;
+    font-weight: 500;
+    @include mq('desktop') {
+        font-size: 13px;
+    }
+}
+

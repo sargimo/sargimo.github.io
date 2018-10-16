@@ -1,0 +1,16 @@
+{
+  "name": "penguin-defenders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Geoff Sargison",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.7.1",
+    "bulma-carousel": "^3.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

@@ -1,0 +1,46 @@
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar {
+    background-color: $white;
+    color: $dark-grey;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 0;
+    .btn-blue {
+        font-size: 16px;
+    }
+    .container {
+        padding: 0;
+    }
+}
+
+.navbar-item {
+    padding: 0 25px;
+    img {
+        min-height: 3em;
+        max-height: 4em;
+    }
+}
+
+// overriding bulma nav styles
+.navbar-link.is-active, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:hover {
+    color: $primary-color;
+}
+
+.navbar-link.is-active, a.navbar-item.is-active, {
+    color: $primary-color;
+}
+
+.navbar-link:hover, .navbar-end a.navbar-item:hover {
+    background-color: $primary-color;
+    color: #fff;
+}
+
+.header-position-fix {
+    padding-top: 100px;
+}
+

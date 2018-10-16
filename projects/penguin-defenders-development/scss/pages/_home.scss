@@ -1,0 +1,162 @@
+.hero-fix {
+    text-align: right;
+    padding-top: 50px;
+    @include mq('tablet') {
+        padding-top: 450px;
+        img {
+            transform: rotate(90deg);
+            // width: auto;
+            // height: 700px;
+        }
+    }
+}
+
+.our-mission {
+    .btn-spacing {
+        text-align: right;
+        a {
+            margin-left: 25px;
+        }
+    }
+    @include mq('desktop') {
+        .btn-spacing {
+            margin-top: 20px;
+        }
+    }
+    // buttons were breaking at 851px due to being too wide for the div
+    @include mq('851') {
+        .btn-blue {
+            padding: 15px 20px;
+        }
+        .btn-trans {
+            padding: 15px 20px;
+        }
+    }
+    @include mq('tablet') {
+        img {
+            padding-bottom: 50px;
+        }
+        .btn-blue {
+            padding: 15px 30px;
+            margin-top: 10px;
+            width: 50%;
+        }
+        .btn-trans {
+            padding: 15px 30px;
+            width: 50%;        
+        }
+        .btn-spacing {
+            margin-top: 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    @include mq('phone') {
+        .btn-blue {
+            padding: 5px 10px;
+        }
+        .btn-trans {
+            padding: 5px 10px;
+        }
+    }
+}
+
+.penguin-plight {
+    h1 {
+        position: absolute;
+        top: 150px;
+        
+    }
+    p {
+        margin-top: 400px;
+        padding: 50px 0;
+    }
+    
+    .btn-spacing {
+        margin-top: 50px;
+        text-align: right;
+    }
+    @include mq('1700') {
+        h1 {
+            top: 50px;
+        }
+    }
+    @include mq('1500') {
+        p {
+        margin-top: 450px;
+        }
+    }
+    @include mq('desktop') {
+        p {
+            margin-top: 300px;
+        }
+    }
+    @include mq('tablet') {
+        h1 {
+        position: relative;
+        text-align: center;
+        padding-bottom: 50px;
+        }
+        p {
+            margin-top: 0px;
+        }
+        .btn-spacing {
+            text-align: center;
+        }
+    }
+}
+
+.events {
+    img {
+        max-width: 80%;
+        margin-top: 15px;
+    }
+    p {
+        font-size: 16px;
+    }
+    h2 {
+        line-height: 1;
+    }
+    .btn-fix-2 {
+        display: none;
+    }
+    .subtext {
+        text-align: right;
+        font-size: 16px;
+        padding-right: 65px;
+    }
+    @include mq('desktop-wide') {
+        .subtext {
+            padding-right: 55px;
+        }
+    }
+    @include mq('desktop') {
+        .subtext {
+            text-align: left;
+            padding: 0;
+        }
+    }    
+    @include mq('851') {
+        h3 {
+            font-size: 16px;
+        }
+
+    }    
+    @include mq('tablet') {
+        text-align: center;
+        h2 {
+            font-size: 28px;
+        }
+        h3 {
+            font-size: 24px;
+        }
+        img, .btn-spacing, .subtext {
+            text-align: center;
+        }
+        .subtext {
+            padding-bottom: 50px;
+        }
+    }
+}

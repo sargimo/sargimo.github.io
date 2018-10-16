@@ -1,0 +1,67 @@
+.circle-overlay {
+    width: 100%;
+    background-image: url(../../img/wwdoing-bg.jpg);
+    background-size: cover;
+    padding: 150px 0;
+    background-attachment: fixed;
+    .circle {
+        padding: 120px 0; 
+        text-align: center;
+        background-color: #fff; 
+        width: 1000px;
+        height: 1000px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        box-shadow: 0px 7px $primary-color;
+        h1 {
+            padding: 50px 0 20px 0;
+            line-height: 1;
+        }
+        p {
+            font-size: 24px;
+            padding: 0 100px;   
+        }
+        img {
+            padding: 30px 0;
+        }
+        .btn-spacing {
+            text-align: center;
+        }
+        @include mq('desktop') {
+            width: 750px;
+            height: 750px;
+            h1 {
+                font-size: 50px;
+                padding: 0;
+            }
+            p {
+                font-size: 19px;
+            }
+            img {
+                max-width: 35%;
+            }
+        }
+        @include mq ('851') {
+            border-radius: 0;
+            box-shadow: 0 0;
+            max-width: 85%;
+            height: auto;
+            padding: 50px 0;
+            border-top: solid 3px $secondary-color;
+            h1 {
+                text-align: center;
+            }
+            p {
+                font-size: 16px;
+                padding: 20px 30px; 
+            }
+            img {
+                max-width: 60%;
+            }
+            .btn-spacing {
+                margin-top: 20px;
+            }
+        }        
+    }
+}

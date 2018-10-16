@@ -1,0 +1,31 @@
+.top-border {
+    border-top: solid 3px $secondary-color;
+}
+
+.container {
+    padding: 25px;
+}
+
+.hflip-img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+@media screen and (max-width: 769px) {
+    .mobile-order {
+      display: flex;
+      flex-flow: column;
+    }
+    .mobile-order .mo-1 {
+      order: 1;
+    }
+    .mobile-order .mo-2 {
+      order: 2;
+    }
+    .mobile-order .mo-3 {
+      order: 3;
+    }
+    .mobile-order .mo-4 {
+      order: 4;
+    }
+  }

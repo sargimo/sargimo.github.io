@@ -1,0 +1,153 @@
+.wwd-penguin-defenders {
+    padding-bottom: 150px;
+    h1 {
+        position: absolute;
+        top: 100px;
+    }
+    p {
+        padding-bottom: 50px;
+    }
+    
+    .btn-spacing {
+        margin-top: 60px;
+        text-align: right;
+    }
+    @include mq('1700') {
+        h1 {
+            top: 50px;
+        }
+    }
+    @include mq('1500') {
+        h1 {
+            position: relative;
+        }
+    }
+    @include mq('tablet-wide') {
+        h1 {
+            padding-bottom: 50px;
+        }
+    }
+    @include mq('tablet') {
+        h1, .btn-spacing {
+            text-align: center;
+        }
+    }
+}
+
+.wwd-progress {
+    h1 {
+        padding-bottom: 100px;
+    }
+    p {
+        padding-top: 230px;
+    }
+    @include mq('tablet') {
+        h1 {
+            text-align: center;
+        }
+        p {
+            padding-top: 50px;
+        }
+    }
+}
+
+.wwd-help {
+    h1 {
+        padding-bottom: 100px;
+    }
+    p {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 20px 80px;
+    }
+    .volunteer-fix { 
+        // controls size of box with less content
+        padding: 68px 0;
+    }
+    .btn-spacing {
+        padding-bottom: 50px;
+    }
+    @include mq('tablet-wide') {
+        p {
+            padding: 20px 30px;
+        }
+    }
+}
+
+.wwd-donations {
+    h1 {
+        padding-bottom: 20px;
+    }
+    p {
+        text-align: right;
+        padding-top: 30px;
+    }
+    .infographic-text {
+        font-weight: 700;
+        padding: 5px;
+        text-align: center;
+    }
+    .btn-spacing {
+        padding-top: 45px;
+    }
+    @include mq('tablet') {
+        h1, .btn-spacing, p {
+            text-align: center;
+        }
+        p {
+            padding-bottom: 30px;
+        }
+        .infographic-text {
+            padding-top: 30px;
+        }
+    }
+
+}
+
+.wwd-education {
+    width: 100%;
+    background-image: url(../../img/education-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
+    background-attachment: fixed;
+    p {
+        padding-bottom: 20px;
+    }
+    .btn-spacing {
+        padding-top: 100px;
+    }
+    @include mq('tablet') {
+        h1 {
+        text-align: center;
+        }
+    }
+
+}
+
+.wwd-research {
+    h1 {
+        padding-bottom: 100px;
+    }
+    h3 {
+        color: $secondary-color;
+        text-align: center;
+        padding: 20px 0;
+    }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        text-decoration: underline;
+        padding:  5px 20px;
+        text-align: center;
+    }
+    .see-more {
+        padding: 15px 40px 25px 0;
+        text-decoration: underline;
+    }
+    @include mq('tablet') {
+        h1 {
+            text-align: center;
+        }
+    }
+}

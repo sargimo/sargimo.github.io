@@ -1,0 +1,19 @@
+//colors 
+$dark-grey: #222;
+$white: #fff;
+$light-grey: #e9e9e9;
+$gold: #ffbe10;
+$blue: #1db2ff;
+$dark-blue: #2a8fb9;
+
+$primary-color: $blue;
+$secondary-color: $gold;
+
+// typography
+$main-font: 'Maven Pro', sans-serif;
+
+// bulma font override
+$body-family: $main-font;
+
+// bulma footer background color override
+$footer-background-color: $dark-grey;

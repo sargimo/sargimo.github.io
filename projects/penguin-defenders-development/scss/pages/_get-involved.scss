@@ -1,0 +1,71 @@
+.gi-volunteering {
+    width: 100%;
+    background-image: url(../../img/volunteer-bg.jpg);
+    background-size: cover;
+    padding: 150px 0;
+    background-attachment: fixed;
+    h1 {
+        padding-bottom: 50px;
+    }
+    p {
+        padding: 10px 10px 20px 10px;
+    }
+    .vol-text {
+        background-color: $white;
+        border-top: 3px solid $secondary-color;
+        padding: 50px;
+    }
+    .btn-spacing {
+        margin-top: 50px;
+    }
+    @include mq('tablet') {
+        h1 {
+            text-align: center;
+            font-size: 50px;
+        }
+    }
+}
+
+.gi-donations {
+    h1 {
+        text-align: right;
+        padding-bottom: 75px;
+    }
+    h2 {
+        padding-bottom: 75px;
+    }
+    h3 {
+        padding: 15px 0 50px 0;
+    }
+    .donations-text {
+        padding-bottom: 20px;
+    }
+    .btn-blue {
+        padding: 11px 75px;
+    }
+    .input {
+        margin-top: 15px;
+    }
+    .submit-fix {
+        margin-top: 50px;
+    }
+    @include mq('tablet') {
+        h1, h2 {
+            text-align: center;
+        }
+        h2 {
+           padding: 20px 0; 
+        }
+        img {
+            padding: 20px 0;
+        }
+        .infographic-text {
+            padding: 5px;
+        }
+        .field {
+            margin: 0 150px 0 176px;
+            max-width: 37%;
+        }
+        
+    }
+}
