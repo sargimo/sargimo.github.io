@@ -1,0 +1,19 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    display: grid;
+    height: 100vh;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 42px;
+    color: #333333;
+}
+
+h1 {
+    font-size: 60px;
+    color: #fff;
+}
