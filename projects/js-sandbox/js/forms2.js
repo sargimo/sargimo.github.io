@@ -8,22 +8,30 @@
  */
 
  let inputEmail = document.querySelector('#inputEmail');
- let inputTel = document.querySelector('#inputTel');
- let inputUrl = document.querySelector('#inputUrl');
  let emailErrMsg = document.querySelector('#email-err-msg');
+ 
+ let inputTel = document.querySelector('#inputTel');
  let telErrMsg = document.querySelector('#tel-err-msg');
+
+ let inputUrl = document.querySelector('#inputUrl');
  let urlErrMsg = document.querySelector('#url-err-msg');
+ 
+ let inputUsername = document.querySelector('#inputUsername');
+ let usernameErrMsg = document.querySelector('#username-err-msg');
+ let usernameDb = ["geofftown", "geoffhouse", "elgeofferton"];
 
  function validate(){
-     let email = validateEmail(inputEmail.value);
-     let url = validateUrl(inputUrl.value);
-     let tel = validateTel(inputTel.value);
+     let email = validateEmail();
+     let url = validateUrl();
+     let tel = validateTel();
+     let username = validateUsername();
 
-    return email && url && tel;
+    return email && url && tel && username;
  } 
 
- function validateUrl(url){
-     var i = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
+ function validateUrl(){
+     let url = inputUrl.value;
+     let i = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
     if (i.test(url) === false) {
         urlErrMsg.style.display = 'grid';
         return false;
@@ -32,8 +40,9 @@
     return true;
  }
 
- function validateEmail(email){
-    var i = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+ function validateEmail(){
+    let email = inputEmail.value;
+    let i = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (i.test(String(email).toLowerCase()) === false){
         emailErrMsg.style.display = 'grid';
         return false;
@@ -42,8 +51,9 @@
     return true;
  }
 
- function validateTel(tel){
-    var i = /^\d+$/;
+ function validateTel(){
+    let tel = inputTel.value;
+    let i = /^\d+$/;
     if (i.test(tel) === false){
         telErrMsg.style.display = 'grid';
         return false;
@@ -52,14 +62,21 @@
     return true;
 }
 
-inputEmail.addEventListener('blur', (evt) => {
-    validateEmail(evt.target.value);
-});
+function validateUsername(){
+    let username = inputUsername.value.toLowerCase();
+    if (usernameDb.indexOf(username, 0) >= 0) {
+        usernameErrMsg.style.display = 'grid';
+        return false;
+    } 
+    usernameErrMsg.style.display = 'none';
+    return true;
+}
 
-inputTel.addEventListener('blur', (evt) => {
-    validateTel(evt.target.value);
-});
+function init(){
+    inputEmail.addEventListener('blur', validateEmail);
+    inputTel.addEventListener('blur', validateTel);
+    inputUrl.addEventListener('blur', validateUrl);
+    inputUsername.addEventListener('blur', validateUsername);
+}
 
-inputUrl.addEventListener('blur', (evt) => {
-    validateUrl(evt.target.value);
-});
+init();

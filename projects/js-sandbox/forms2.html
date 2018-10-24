@@ -26,6 +26,11 @@ application will also check the email address, telephone number and website url 
         <div class="form-wrapper">
             <form id="signup-form" method="post" action="controllers/sign-up.php" onsubmit="return validate()">
                 <h2>Please sign up</h2>
+                <label for="inputUsername" class="sr-only">First name</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <div>
+                    <p id="username-err-msg" class="err-msg fancy">Sorry, username is taken.</p>
+                </div>
                 <label for="inputFirstName" class="sr-only">First name</label>
                 <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required autofocus>
                 <label for="inputLastName" class="sr-only">Last name</label>
