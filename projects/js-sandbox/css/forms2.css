@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+   }
+   .form-wrapper {
+    flex-grow: 1;
+   }
+   .err-msg {
+    color: red;
+    font-size: 12px;
+    display: none;
+   }
+   
+   input {
+    margin-top: 20px;
+   }
