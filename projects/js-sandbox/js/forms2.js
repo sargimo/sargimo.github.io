@@ -76,7 +76,7 @@ function init(){
     inputEmail.addEventListener('blur', validateEmail);
     inputTel.addEventListener('blur', validateTel);
     inputUrl.addEventListener('blur', validateUrl);
-    inputUsername.addEventListener('blur', validateUsername);
+    inputUsername.addEventListener('keyup', validateUsername);
 }
 
 init();
