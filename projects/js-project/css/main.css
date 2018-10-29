@@ -1,36 +1,137 @@
 body{
     background-image: url(../images/farm-background.jpg);
-    background-repeat: no-repeat;
-    min-height: 1200px;
     background-size: 100%;
-}
-
-h1{
+    background-repeat: no-repeat;
+    background-color: #6ba142;
+    background-position: top;
+ }
+ 
+ h1{
     text-align: center;
-    font-size: 150px;
-    padding-top: 30px;
+    font-size: 160px;
+    margin: 0 auto;
+    margin-top: 100px;
     font-family: 'Codystar', cursive;
     letter-spacing: 6px;
     color: orange;
     box-shadow: 2px solid pink;
-}
-
-.container{
+ }
+ 
+ .container{
     position: relative;
-    width: 1200px;
+    width: 1300px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-}
-
-.classmates{
-    margin-top: 200px;
+ }
+ 
+ .classmates{
+    margin-top: 300px;
     display: flex;
     flex-wrap: wrap;
-}
-
-.animals{
+    justify-content: center;
+ }
+ 
+ .animals{
     padding: 50px;
     width: 285px;
     height: 300px;
-}
+ }
+ 
+ 
+ .animalImg{
+    width: 100%;
+    height: 100%;
+ }
+ 
+ 
+ @media only screen and (max-width: 1300px) {
+    h1{
+        font-size: 110px;
+        margin-top: 50px
+    }
+    .container{
+        width: 900px;
+    }
+    .classmates{
+        margin-top: 100px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 900px) {
+    .container{
+        width: 760px;
+    }
+    h1 {
+        font-size: 100px;
+        margin-top: 20px;
+    }
+    .animals{
+        padding: 30px;
+        width: 228px;
+        height: 240px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 760px) {
+    h1 {
+        font-size: 80px;
+    }
+    .container{
+        width: 600px;
+    }
+    .animals{
+        padding: 30px;
+        width: 200px;
+        height: 210px;
+    }
+    .classmates{
+        margin-top: 0px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 60px;
+    }
+    .container{
+        width: 500px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 40px;
+    }
+    .container{
+        width: 400px;
+    }
+    .animals{
+        padding: 30px;
+        width: 171px;
+        height: 180px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 400px) {
+    .container{
+        width: 300px;
+    }
+ }
+ 
+ 
+ @media only screen and (max-width: 300px) {
+    h1 {
+        font-size: 25px;
+    }
+    .container{
+        width: 100px;
+    }
+ 
+ }
+ 
