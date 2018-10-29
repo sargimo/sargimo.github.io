@@ -1,0 +1,36 @@
+body{
+    background-image: url(../images/farm-background.jpg);
+    background-repeat: no-repeat;
+    min-height: 1200px;
+    background-size: 100%;
+}
+
+h1{
+    text-align: center;
+    font-size: 150px;
+    padding-top: 30px;
+    font-family: 'Codystar', cursive;
+    letter-spacing: 6px;
+    color: orange;
+    box-shadow: 2px solid pink;
+}
+
+.container{
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.classmates{
+    margin-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.animals{
+    padding: 50px;
+    width: 285px;
+    height: 300px;
+}
