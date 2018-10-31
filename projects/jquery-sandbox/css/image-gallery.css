@@ -1,0 +1,14 @@
+.thumbnailimg {
+    margin-top: 8px;
+    margin-right: 8px;
+    padding: 5px;
+}
+
+.selected {
+    border: 2px solid lightgreen;
+}
+
+.right {
+    margin-left: 408px;
+}
+
