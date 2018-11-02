@@ -28,7 +28,7 @@ $.each(dogImages, function(i, item){
 thumbnailsEl.html(imgHtml);
 
 thumbnailsEl.on('click','img', function(){
-    let index = $(this).attr("data-id");
+    let index = parseInt($(this).attr("data-id"));
     $('.selected').removeClass('selected');
     $(this).addClass('selected');
     mainImageEl.html('<img "class="mainImg" src="images/' + dogImages[index].url500 + '.jpg">');
