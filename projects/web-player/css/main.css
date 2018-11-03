@@ -1,0 +1,19 @@
+.container {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+
+.videothumbs {
+    display: flex;
+}
+
+.videothumb {
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 200px;
+}
+
+.videothumb img {
+    width: 150px;
+}
