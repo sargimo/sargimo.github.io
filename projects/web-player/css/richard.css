@@ -1,0 +1,28 @@
+body {
+    background: #222;
+    color: #fff;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+.video-list {
+    display: flex;
+    width: 250px;
+}
+
+.video-list h3 {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.video-list img {
+    width: 250px;
+    border-top: 2px solid greenyellow;
+}
+
+.video-item {
+    flex-direction: column;
+    padding: 10px;
+}
