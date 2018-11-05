@@ -18,10 +18,8 @@
 <body>
     <div class="container">
         <h1>Little Timmys' biggest musical bangers</h1>
-        <div id="videoPlayer">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/oHkqamFRTKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <div id="videoPlayer" class="embed-container">
+            <iframe width="840" height="630" src="https://www.youtube.com/embed/oHkqamFRTKI" allowfullscreen></iframe>
         </div>
         <div id="videoTitle">
 
@@ -31,10 +29,10 @@
         </div>
         <input id="videoSearch" type="search">
 
-        <div id="videoThumbs" class="videoThumbs">
+        <ul id="hexGrid">
 
 
-        </div>
+        </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js" async defer></script>
