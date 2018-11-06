@@ -1,0 +1,19 @@
+{
+    "categories": [
+        {
+            "id": 0,
+            "title": "Animal Remix",
+            "slug": "animal-remix"
+        },
+        {
+            "id": 1,
+            "title": "Machinery Remix",
+            "slug": "machinery-remix"
+        },
+        {
+            "id": 2,
+            "title": "Person Remix",
+            "slug": "person-remix"
+        }
+    ]
+}

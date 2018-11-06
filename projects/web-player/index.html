@@ -17,6 +17,13 @@
 
 <body>
     <div class="container">
+        <div class="video-wrapper">
+            <div class="embed-container">
+                <iframe title="Youtube Video Player" id="videoPlayer" width="840" height="630" src="https://www.youtube.com/embed/oHkqamFRTKI"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+            <input type="button" id="backToVideos" value="Return to Video List">
+        </div>
         <div class="wrapper">
             <h1>Little Timmys' biggest musical bangers</h1>
             <div id="videoTitle">
@@ -25,17 +32,14 @@
             <div id="videoDesc">
 
             </div>
-            <input id="videoSearch" type="search">
-
+            <ul class="category-list"></ul>
+            <form>
+                <input id="videoSearch" type="search">
+            </form>
             <ul id="hexGrid">
 
 
             </ul>
-        </div>
-        <div class="video-wrapper">
-            <div class="embed-container">
-                <iframe id="videoPlayer" width="840" height="630" src="https://www.youtube.com/embed/oHkqamFRTKI" allowfullscreen></iframe>
-            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
