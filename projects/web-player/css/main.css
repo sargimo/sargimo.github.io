@@ -1,10 +1,23 @@
 /* https://codepen.io/web-tiki/pen/NzYBYV source for hex styling */
 
- /* .container {
-    width: 1200px;
-    margin: 0 auto;
+ .container {
+   position: relative;
+   transition: 2s ease linear;
+   /* left: 4000px; */
+    /* width: 1200px;
+    margin: 0 auto; */
+}
+
+/* .wrapper {
+  position: relative;
+  left: -400;
 } */
 
+.video-wrapper {
+    position: relative;
+    left: -4000px;
+    overflow: hidden;
+}
 
 /* .videothumbs {
     display: flex;

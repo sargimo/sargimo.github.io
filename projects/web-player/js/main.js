@@ -3,6 +3,7 @@ let videoTitleEl = $('#videoTitle');
 let videoDescEl = $('#videoDesc');
 let videoSearchEl = $('#videoSearch');
 let videoThumbsEl = $('#hexGrid');
+let containerEl = $('.container');
 // let thumbHtml ="";
 
 let videoList = {
@@ -82,10 +83,20 @@ let videoList = {
 
 function init(){
     displayVideos(videoList.videos);
+    videoSearchEl.on('keyup', function(evt){
+        displayVideosByTitle($(this).val());
+    });
+};
+
+function displayVideosByTitle(name){
+    let filteredVideos = videoList.videos.filter(function(video){
+        return video.name.toLowerCase().includes(name.toLowerCase());
+    });
+    displayVideos(filteredVideos);
 }
 
 function getVideoItemHTML(i, video){
-    return `<li data-id="${i} "class="hex">
+    return `<li data-id="${i}"class="hex">
                 <div class="hexIn">
                     <a class="hexLink" href="#"> 
                         <img class="thumbnailimg" src="https://i.ytimg.com/vi/${video.source}/hqdefault.jpg">
@@ -110,9 +121,10 @@ function displayVideos(videos){
 videoThumbsEl.on('click', 'li', function(){
     let index = ($(this).attr("data-id"));
     // videoPlayerEl.attr("src", videoList[index].source);
-    videoPlayerEl.html(videoList[index].source);
-    videoTitleEl.html("<h1>" + videoList[index].name + "</h1>");
-    videoDescEl.html(videoList[index].desc);
+    videoPlayerEl.attr("src", `https://www.youtube.com/embed/${videoList.videos[index].source}`);
+    videoTitleEl.html("<h1>" + videoList.videos[index].name + "</h1>");
+    videoDescEl.html(videoList.videos[index].desc);
+    containerEl.css("left", "4000px");
 });
 
 init();
