@@ -1,11 +1,16 @@
-let videoPlayerEl = $('#videoPlayer');
-let videoTitleEl = $('#videoTitle');
-let videoDescEl = $('#videoDesc');
-let videoSearchEl = $('#videoSearch');
-let videoThumbsEl = $('#hexGrid');
-let categoryListEl = $('.category-list')
-let containerEl = $('.container');
-let backToVideosBtn = $('#backToVideos');
+let videoPlayerEl = $('#videoPlayer'),
+ videoTitleEl = $('#videoTitle'),
+ videoDescEl = $('#videoDesc'),
+ videoSearchEl = $('#videoSearch'),
+ videoThumbsEl = $('#hexGrid'),
+ categoryListEl = $('.category-list'),
+ containerEl = $('.container'),
+ backToVideosBtn = $('#backToVideos'),
+ avLink = $('.advanced-search'),
+ avTitleSearchBox = $('#avTitleSearchBox'),
+ avCategoryDropdown = $('#avCategoryDropdown'),
+ avSubmitBtn = $('#avSubmitBtn');
+ advancedSearchBox = $('.advanced-search-box')
 // let thumbHtml ="";
 
 let videoList, categoryList;
@@ -16,7 +21,9 @@ function init(){
         videoList = videos;
         displayVideos(videoList.videos);
         videoSearchEl.on('keyup', function(evt){
-            displayVideosByTitle($(this).val());
+            let title = $(this).val();
+            let filteredVideos = filterByTitle(videoList.videos, title);
+            displayVideos(filteredVideos);
         });
     });
     //get categories
@@ -24,6 +31,10 @@ function init(){
         categoryList = categories;
         displayCategories(categoryList.categories);
     });
+    avLink.on('click', function(){
+        advancedSearchBox.toggle();
+    });
+    avSubmitBtn.on('click', doAdvancedSearch);
     backToVideosBtn.on('click', swapScreens);
 };
 
@@ -32,11 +43,22 @@ function init(){
  * @param {string} title
  * Takes search input and filters videos by title
  */
-function displayVideosByTitle(name){
-    let filteredVideos = videoList.videos.filter(function(video){
+// function displayVideosByTitle(name){
+//     let filteredVideos = videoList.videos.filter(function(video){
+//         return video.name.toLowerCase().includes(name.toLowerCase());
+//     });
+//     displayVideos(filteredVideos);
+// }
+
+/**
+ * Filter the videos by title.
+ * @param {Array} videos
+ * @param {String} name
+ */
+function filterByTitle(videos, name){
+    return videos.filter(function(video){
         return video.name.toLowerCase().includes(name.toLowerCase());
     });
-    displayVideos(filteredVideos);
 }
 
 
@@ -57,7 +79,8 @@ function getVideoItemHTML(i, video){
 }
 
 /**
- * Display a list of videos.
+ * Display a list of videos
+ * @param {Array} videos
  */
 function displayVideos(videos){
     let htmlString ='';
@@ -95,7 +118,7 @@ function swapScreens(){
  * @param {Object} category 
  */
 function getCategoryItemHTML(category){
-    return `<li class="category-item" data-slug="${category.slug}">
+    return `<li class="category-item" data-categoryid="${category.id}">
                 ${category.title}
             </li>`;
 }
@@ -105,22 +128,57 @@ function getCategoryItemHTML(category){
  * @param {Object} categories 
  */
 function displayCategories(categories){
+    //display catagory list items
     let htmlString ='';
     $.each(categories, function(i, category){
         htmlString = htmlString + getCategoryItemHTML(category);
     });
     categoryListEl.html(htmlString);
+    //add a click listener to each category item
+    let categoryItems = $('.category-item');
+    categoryItems.on('click', function(){
+        let categoryid = $(this).data('categoryid');
+        let filteredVideos = filterByCategory(videoList.videos, categoryid);
+        displayVideos(filteredVideos);
+    });
+
+    //display category dropdown items
+    htmlString ='';
+    $.each(categories, function(i, category){
+        htmlString = htmlString + `<option value="${category.id}">${category.title}</option>`;
+    });
+    avCategoryDropdown.html(htmlString);
 }
 
 
-// videoThumbsEl.html(thumbHtml);
+/**
+ * Filter the videos by category and display.
+ * @param {Number} categoryId
+ */
+// function displayVideosByCategory(categoryId){
+//     let filteredVideos = videoList.videos.filter(function(video){
+//         return video.categoryId === categoryId;
+//     });
+//     displayVideos(filteredVideos);
+// }
 
-// videoThumbsEl.on('click', 'li', function(){
-//     let index = ($(this).attr("data-id"));
-//     videoPlayerEl.attr("src", `https://www.youtube.com/embed/${videoList.videos[index].source}?autoplay=1`);
-//     videoTitleEl.html("<h1>" + videoList.videos[index].name + "</h1>");
-//     videoDescEl.html(videoList.videos[index].desc);
-//     containerEl.css("left", "4000px");
-// });
+/**
+ * Filter the videos by category ID.
+ * @param {Array} videos
+ * @param {number} categoryId
+ */
+function filterByCategory(videos, categoryId){
+    return videos.filter(function(video){
+        return video.categoryId == categoryId;
+    });
+}
+
+function doAdvancedSearch(){
+    let name = avTitleSearchBox.val();
+    let category = avCategoryDropdown.val();
+    let filteredVideos = filterByTitle(videoList.videos, name);
+    filteredVideos = filterByCategory(filteredVideos, category);
+    displayVideos(filteredVideos);
+};
 
 init();

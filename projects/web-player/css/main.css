@@ -2,6 +2,8 @@
 
 body {
   font-family: 'Poor Story', cursive;
+  color: #fff;
+  background-color: #222;
 }
   .container {
     display: flex;
@@ -14,9 +16,14 @@ body {
 
 .wrapper {
   width: 100vw;
+  /* background-image: url(../images/guitar.jpg);
+  background-size: cover; */
+  /* background-position: center;
+  background-repeat: no-repeat; */
 }
 
 .hero-title {
+  background-color: #222;
   text-align: center;
   padding: 50px;
   font-size: 80px;
@@ -25,18 +32,19 @@ body {
 
 .cat-title{
   text-align: center;
-  color: #444;
+  color: rgba(0, 128, 128, 0.8);
   padding-top: 30px;
 }
 
 .category-list {
+  background-color: #222;
   text-align: center; 
   display: flex;
   justify-content: center;
 }
 
 .category-list li {
-  padding: 30px 50px 0 50px;
+  padding: 30px 50px 30px 50px;
   list-style-type: none;
 }
 
@@ -45,6 +53,10 @@ body {
   flex-flow: column wrap;
   align-items: center;
   padding: 40px 40px 80px 40px;
+}
+
+.advanced-search-box {
+  display: none;
 }
 
 .video-search {
@@ -60,6 +72,11 @@ body {
   left: -100vw;
 }
 
+.content-container {
+  width: 80vw;
+  margin: 0 auto
+}
+
 .is-open{
   left: 0 !important;
 }
@@ -72,11 +89,7 @@ body {
     margin: 0;
     padding: 0;
   }
-  body {
-    color: #fff;
-    background: #222;
-  }
-
+  
 /* responsive iframe */
 .embed-container { 
     overflow:hidden;
@@ -211,7 +224,6 @@ body {
       grid-column-start: 2;
     }
   }
-  
   @media (max-width: 1200px) and (min-width:901px) { /* <- 4-3  hexagons per row */
     #hexGrid{
       grid-template-columns: repeat(8,1fr);
@@ -222,7 +234,7 @@ body {
     }
   }
   
-  @media (max-width: 1200) and (min-width:601px) { /* <- 3-2  hexagons per row */
+  @media (max-width: 900px) and (min-width:601px) { /* <- 3-2  hexagons per row */
     #hexGrid{
       grid-template-columns: repeat(6,1fr);
       padding-bottom: 7.4%;

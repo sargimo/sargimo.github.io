@@ -26,24 +26,34 @@
             <input type="button" id="backToVideos" value="Return to Video List">
         </div>
         <div class="wrapper">
-            <h1 class="hero-title">Little Timmys' biggest musical bangers</h1>
-            <div id="videoTitle">
+            <div class="content-container">
+                <h1 class="hero-title">Little Timmys' biggest musical bangers</h1>
+                <div id="videoTitle">
 
+                </div>
+                <div id="videoDesc">
+
+                </div>
+                <div>
+                    <h3 class="cat-title">CATEGORIES</h3>
+                </div>
+                <ul class="category-list"></ul>
+                <form class="search-box" onsubmit="return false">
+                    <input class="video-search" id="videoSearch" type="search" placeholder="Search by title...">
+                </form>
+                <a class="advanced-search" href="#">Advanced Search</a>
+                <div class="advanced-search-box">
+                    <form onsubmit="return false">
+                        <input class="video-search" id="avTitleSearchBox" type="search" placeholder="Enter video title...">
+                        <select id="avCategoryDropdown" class="advanced-search-dropdown"></select>
+                        <input id="avSubmitBtn" type="submit" value="AdvancedSearch">
+                    </form>
+                </div>
+                <ul id="hexGrid">
+
+
+                </ul>
             </div>
-            <div id="videoDesc">
-
-            </div>
-            <div>
-                <h3 class="cat-title">CATEGORIES</h3>
-            </div>
-            <ul class="category-list"></ul>
-            <form class="search-box">
-                <input class="video-search" id="videoSearch" type="search" placeholder="Search by title...">
-            </form>
-            <ul id="hexGrid">
-
-
-            </ul>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
