@@ -1,5 +1,8 @@
 /* https://codepen.io/web-tiki/pen/NzYBYV source for hex styling */
 
+body {
+  font-family: 'Poor Story', cursive;
+}
   .container {
     display: flex;
     width: calc(100vw + 100vw);
@@ -11,6 +14,44 @@
 
 .wrapper {
   width: 100vw;
+}
+
+.hero-title {
+  text-align: center;
+  padding: 50px;
+  font-size: 80px;
+  border-bottom: 3px solid  rgba(0, 128, 128, 0.8);
+}
+
+.cat-title{
+  text-align: center;
+  color: #444;
+  padding-top: 30px;
+}
+
+.category-list {
+  text-align: center; 
+  display: flex;
+  justify-content: center;
+}
+
+.category-list li {
+  padding: 30px 50px 0 50px;
+  list-style-type: none;
+}
+
+.search-box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 40px 40px 80px 40px;
+}
+
+.video-search {
+  padding: 10px;
+  width: 30vw;
+  background-color:  #333;
+  border: none;
 }
 
 .video-wrapper {
