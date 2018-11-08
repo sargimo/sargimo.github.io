@@ -26,33 +26,50 @@
             <input type="button" id="backToVideos" value="Return to Video List">
         </div>
         <div class="wrapper">
-            <div class="content-container">
-                <h1 class="hero-title">Little Timmys' biggest musical bangers</h1>
-                <div id="videoTitle">
-
-                </div>
-                <div id="videoDesc">
-
-                </div>
-                <div>
-                    <h3 class="cat-title">CATEGORIES</h3>
-                </div>
-                <ul class="category-list"></ul>
-                <form class="search-box" onsubmit="return false">
-                    <input class="video-search" id="videoSearch" type="search" placeholder="Search by title...">
-                </form>
-                <a class="advanced-search" href="#">Advanced Search</a>
-                <div class="advanced-search-box">
-                    <form onsubmit="return false">
-                        <input class="video-search" id="avTitleSearchBox" type="search" placeholder="Enter video title...">
-                        <select id="avCategoryDropdown" class="advanced-search-dropdown"></select>
-                        <input id="avSubmitBtn" type="submit" value="AdvancedSearch">
-                    </form>
-                </div>
-                <ul id="hexGrid">
-
-
+            <nav>
+                <ul class="main-nav">
+                    <li>
+                        <a data-screen="home" class="screen-link active" href="#">Home</a>
+                    </li>
+                    <li>
+                        <a data-screen="about" class="screen-link" href="#">About</a>
+                    </li>
                 </ul>
+            </nav>
+            <div class="content-container content">
+                <h1 class="hero-title">Little Timmys' biggest musical bangers</h1>
+                <div id="home" class="screen active">
+                    <div id="videoTitle">
+
+                    </div>
+                    <div id="videoDesc">
+
+                    </div>
+                    <div>
+                        <h3 class="cat-title">CATEGORIES</h3>
+                    </div>
+                    <ul class="category-list"></ul>
+                    <form class="search-box" onsubmit="return false">
+                        <input class="video-search" id="videoSearch" type="search" placeholder="Search by title...">
+                    </form>
+                    <a class="advanced-search" href="#">Advanced Search</a>
+                    <div class="advanced-search-box">
+                        <form onsubmit="return false">
+                            <input class="video-search" id="avTitleSearchBox" type="search" placeholder="Enter video title...">
+                            <select id="avCategoryDropdown" class="advanced-search-dropdown"></select>
+                            <input id="avSubmitBtn" type="submit" value="AdvancedSearch">
+                        </form>
+                    </div>
+                    <ul id="hexGrid">
+
+
+                    </ul>
+                </div>
+                <div id="about" class="screen">
+                    <h1>About the developer</h1>
+                    <h2 id="displayName"></h2>
+                    <p id="bio"></p>
+                </div>
             </div>
         </div>
     </div>

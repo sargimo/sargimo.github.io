@@ -85,6 +85,14 @@ body {
   width: 500px;
 }
 
+  /* screens */
+  .content .screen {
+    display: none;
+  }
+  .screen.active {
+    display: block;
+  }
+
 * {
     margin: 0;
     padding: 0;

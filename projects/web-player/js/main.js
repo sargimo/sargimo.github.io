@@ -10,10 +10,15 @@ let videoPlayerEl = $('#videoPlayer'),
  avTitleSearchBox = $('#avTitleSearchBox'),
  avCategoryDropdown = $('#avCategoryDropdown'),
  avSubmitBtn = $('#avSubmitBtn');
- advancedSearchBox = $('.advanced-search-box')
+ advancedSearchBox = $('.advanced-search-box'),
+ screenLinks = $('.screen-link'),
+ screens = $('.screen')
 // let thumbHtml ="";
 
-let videoList, categoryList;
+let videoList, 
+categoryList, 
+usersData, 
+screenId = 'home';
 
 function init(){
     //get videos
@@ -31,11 +36,24 @@ function init(){
         categoryList = categories;
         displayCategories(categoryList.categories);
     });
+    //advanced search
     avLink.on('click', function(){
         advancedSearchBox.toggle();
     });
     avSubmitBtn.on('click', doAdvancedSearch);
+    //routing
+    screenLinks.on('click', changeScreen);
+    //changes from player back to videos
     backToVideosBtn.on('click', swapScreens);
+
+    //check local storage for currentScreen
+    if (localStorage.getItem('currentScreen')){
+        screenId = localStorage.getItem('currentScreen');
+        let screenLink = $('*[data-screen="'+ screenId + '"]');
+        screenLink.click();
+    } else {
+        localStorage.setItem('currentScreen', screenId);
+    }
 };
 
 
@@ -173,6 +191,9 @@ function filterByCategory(videos, categoryId){
     });
 }
 
+/**
+ * Advanced search with multiple parameters.
+ */
 function doAdvancedSearch(){
     let name = avTitleSearchBox.val();
     let category = avCategoryDropdown.val();
@@ -180,5 +201,43 @@ function doAdvancedSearch(){
     filteredVideos = filterByCategory(filteredVideos, category);
     displayVideos(filteredVideos);
 };
+
+/**
+ * Change the screen.
+ */
+function changeScreen(){
+    if(!screenId){
+        screenId = $(this).data('screen');
+    }
+    screenLinks.removeClass('active');
+    $(this).addClass('active');
+    let screenId = $(this).data('screen');
+
+    if(screenId === 'about' && !usersData){
+        loadAboutScreen();
+    }
+    screens.removeClass('active');
+    $('#' + screenId).addClass('active');
+
+    localStorage.setItem('currentScreen', screenId);
+    //reset the screen id
+    screenId = null;
+}
+
+/**
+ * Lazy load about screen.
+ */
+function loadAboutScreen(){
+    diplayNameEl = $('#displayName'),
+    bioEl = $('#bio');
+    $.getJSON('json/users.json', function(users){
+        usersData = users;
+        let me = usersData.users[0];
+        diplayNameEl.html(me.displayName);
+        bioEl.html(me.bio);
+    });
+}
+
+
 
 init();
