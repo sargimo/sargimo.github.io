@@ -206,9 +206,9 @@ function doAdvancedSearch(){
  * Change the screen.
  */
 function changeScreen(){
-    if(!screenId){
-        screenId = $(this).data('screen');
-    }
+    // if(!screenId){
+    //     screenId = $(this).data('screen');
+    // }
     screenLinks.removeClass('active');
     $(this).addClass('active');
     let screenId = $(this).data('screen');
