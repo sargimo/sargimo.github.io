@@ -1,0 +1,25 @@
+#sweets {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-item{
+    display: block;
+}
+
+.sweet-item {
+    flex-direction: column;
+}
+
+.active-sweet {
+    border: 1px solid green;
+}
+
+
+.container .screen {
+    display: none;
+  }
+
+.screen.active {
+    display: block;
+  }

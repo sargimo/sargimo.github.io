@@ -1,23 +1,25 @@
 {
-    "treats": [
+    "sweets": [
         {
             "id": 0,
-            "name": "Cookies and Cream Icecream cone",
+            "title": "Cookies and Cream Icecream cone",
             "price": 1.5,
             "categoryId": 0,
-            "src": "cookies-and-cream-icecream"
+            "image": "cookies-and-cream-icecream"
         },
         {
             "id": 1,
-            "name": "Vanilla Icecream cone",
+            "title": "Vanilla Icecream cone",
             "price": 1.3,
-            "categoryId": 0
+            "categoryId": 0,
+            "image": "vanilla-icecream"
         },
         {
             "id": 2,
-            "name": "Trumpet Chocolate cone",
+            "title": "Trumpet Chocolate cone",
             "price": 2.4,
-            "categoryId": 0
+            "categoryId": 0,
+            "image": "trumpet-chocolate-cone"
         }
     ]
 }

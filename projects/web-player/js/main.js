@@ -159,7 +159,6 @@ function displayCategories(categories){
         let filteredVideos = filterByCategory(videoList.videos, categoryid);
         displayVideos(filteredVideos);
     });
-
     //display category dropdown items
     htmlString ='';
     $.each(categories, function(i, category){
