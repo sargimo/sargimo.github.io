@@ -17,12 +17,12 @@
 
 <body>
     <div class="container">
+        <h1>Title</h1>
         <div id="wizard" class="screen active">
-            <h1>Title</h1>
             <div id="sweets">
 
             </div>
-            <form onsubmit='return false'>
+            <form class="wizard-form "onsubmit='return false'>
                 <input id="eventName" type="text" placeholder="Event name...">
                 <input id="eventDesc" type="text" placeholder="Event description...">
                 <input id="noOfAttendees" type="text" placeholder="Estimated number of attendees...">
@@ -30,7 +30,19 @@
             </form>
         </div>
         <div id="quote" class="screen">
-            <h1 id="eventTitle">Hi</h1>
+            <p>Confirming your order for...</p>
+            <h1 class="eventTitle"></h1>
+            <p class="event-description"></p>
+            <div class="confirm-sweet-image"></div>
+            <p class="confirm-order-message"></p>
+            <p class="confirm-total-price"></p>
+            <form onsubmit="return false">
+                <input id="cancelOrderBtn" type="submit" value="Back">
+                <input id="confirmOrderBtn" type="submit" value="Confirm">
+            </form>
+        </div>
+        <div id="confirmed" class="screen">
+            <h1>Confirmed!</h1>
         </div>
     </div>
     <!--[if lt IE 7]>

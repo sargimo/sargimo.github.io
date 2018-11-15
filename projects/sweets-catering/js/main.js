@@ -4,9 +4,18 @@ let sweetsEl = $('#sweets'),
     noOfAttendeesEl = $('#noOfAttendees'),
     submitFormBtn = $('#submitForm');
     event = {};
-    screens = $('.screen')
+    screens = $('.screen');
+    wizardScreen = $('#wizard')
     quoteScreen = $('#quote');
-    eventTitleEl = $('#eventTitle')
+    confirmedScreen = $('#confirmed');
+    eventTitleEl = $('.eventTitle');
+    confirmEventDescEl = $('.event-description')
+    confirmSweetImageEl = $('.confirm-sweet-image');
+    confirmOrderMessageEl = $('.confirm-order-message');
+    confirmTotalPriceEl = $('.confirm-total-price')
+    confirmOrderBtn = $('#confirmOrderBtn');
+    cancelOrderBtn = $('#cancelOrderBtn')
+
 
 let sweetsList,
     categoryList
@@ -21,11 +30,19 @@ function init() {
     $.getJSON('json/sweets.json', function (sweets) {
         sweetsList = sweets;
     });
+    //add click listeners for buttons
     submitFormBtn.on('click', function(){
         getQuote();
         loadQuoteScreen();
-        changeScreen();
+        changeScreen(quoteScreen);
     });
+    cancelOrderBtn.on('click', function(){
+        changeScreen(wizardScreen);
+    });
+    confirmOrderBtn.on('click', function(){
+        changeScreen(confirmedScreen);
+    });
+
 }
 
 /**
@@ -116,11 +133,12 @@ function getQuote(){
     let noOfAttendees = (parseInt(noOfAttendeesEl.val()));
     let totalPrice = (noOfAttendees * chosenSweet.price);
     event.title = eventNameEl.val();
-    event.totalPrice = totalPrice;
+    event.totalPrice = totalPrice.toFixed(2);
     event.chosenSweet = chosenSweet.title;
     event.desc = eventDescEl.val();
-    event.chosenSweetPrice = chosenSweet.price;
+    event.chosenSweetPrice = chosenSweet.price.toFixed(2);
     event.attendees = noOfAttendees;
+    event.chosenSweetImage = chosenSweet.image;
 }
 
 /**
@@ -128,15 +146,19 @@ function getQuote(){
  */
 function loadQuoteScreen(){
     eventTitleEl.html(event.title);
+    confirmEventDescEl.html(event.desc);
+    confirmSweetImageEl.html(`<img src="img/${event.chosenSweetImage}.jpg">`);
+    confirmOrderMessageEl.html(`${event.chosenSweet}'s provided for ${event.attendees} attendees at $${event.chosenSweetPrice} each.`)
+    confirmTotalPriceEl.html(`Total: $${event.totalPrice}`);
 }
 
 
 /**
  * Swaps active screen from wizard to completion form
  */
-function changeScreen(){
+function changeScreen(screen){
     screens.removeClass('active');
-    quoteScreen.addClass('active');
+    screen.addClass('active');
 }
 
 init();

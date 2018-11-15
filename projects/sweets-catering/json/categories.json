@@ -2,8 +2,23 @@
     "categories": [
         {
             "id": 0,
-            "title": "Icecream",
-            "image": "cookies-and-cream-icecream"
+            "title": "Ice Cream",
+            "image": "icecream"
+        },
+        {
+            "id": 1,
+            "title": "Lollies",
+            "image": "lollies"
+        },
+        {
+            "id": 2,
+            "title": "Biscuits",
+            "image": "biscuits"
+        },
+        {
+            "id": 3,
+            "title": "Chocolate",
+            "image": "chocolate"
         }
     ]
-}
+ }

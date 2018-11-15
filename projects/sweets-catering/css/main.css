@@ -1,6 +1,19 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    /* width: 80vw; */
+}
+
 #sweets {
     display: flex;
     flex-wrap: wrap;
+}
+
+.wizard-form{
+    display: block;
 }
 
 .category-item{

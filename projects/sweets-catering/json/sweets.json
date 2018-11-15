@@ -2,24 +2,123 @@
     "sweets": [
         {
             "id": 0,
-            "title": "Cookies and Cream Icecream cone",
-            "price": 1.5,
+            "title": "Magnum Blocks",
+            "price": 5.50,
             "categoryId": 0,
-            "image": "cookies-and-cream-icecream"
+            "image": "magnum-blocks"
         },
         {
             "id": 1,
-            "title": "Vanilla Icecream cone",
-            "price": 1.3,
+            "title": "Ben & Jerry's Tubs",
+            "price": 7.50,
             "categoryId": 0,
-            "image": "vanilla-icecream"
+            "image": "ben-and-jerrys"
         },
         {
             "id": 2,
-            "title": "Trumpet Chocolate cone",
-            "price": 2.4,
+            "title": "Kapiti Blocks",
+            "price": 6.50,
             "categoryId": 0,
-            "image": "trumpet-chocolate-cone"
+            "image": "kapiti-blocks"
+        },
+        {
+            "id": 3,
+            "title": "Cornetto Blocks",
+            "price": 5.00,
+            "categoryId": 0,
+            "image": "cornetto-blocks"
+        },
+        {
+            "id": 4,
+            "title": "Haribo Packets",
+            "price": 4.50,
+            "categoryId": 1,
+            "image": "haribo-packets"
+
+        },
+        {
+            "id": 5,
+            "title": "Pineapple Lumps",
+            "price": 4.00,
+            "categoryId": 1,
+            "image": "pineapple-lumps"
+        },
+        {
+            "id": 6,
+            "title": "Jet Planes",
+            "price": 4.50,
+            "categoryId": 1,
+            "image": "jet-planes"
+        },
+        {
+            "id": 7,
+            "title": "Jaffas",
+            "price": 3.50,
+            "categoryId": 1,
+            "image": "jaffas"
+        },
+        {
+            "id": 8,
+            "title": "Milk Choc Digestives",
+            "price": 5.50,
+            "categoryId": 2,
+            "image": "milk-choc-digestives"
+        },
+        {
+            "id": 9,
+            "title": "Tim Tams",
+            "price": 5.00,
+            "categoryId": 2,
+            "image": "tim-tams"
+        },
+        {
+            "id": 10,
+            "title": "Afghans",
+            "price": 4.00,
+            "categoryId": 2,
+            "image": "afghans"
+        },
+        {
+            "id": 11,
+            "title": "Cookie Time Cookies",
+            "price": 2.50,
+            "categoryId": 2,
+            "image": "cookie-time-cookies"
+        },
+        {
+            "id": 12,
+            "title": "Whittaker's Blocks",
+            "price": 5.00,
+            "categoryId": 3,
+            "image": "whittakers-blocks"
+        },
+        {
+            "id": 13,
+            "title": "Cadbury Blocks",
+            "price": 5.00,
+            "categoryId": 3,
+            "image": "cadbury-blocks"
+        },
+        {
+            "id": 14,
+            "title": "Green & Blacks Blocks",
+            "price": 6.50,
+            "categoryId": 3,
+            "image": "green-and-blacks-blocks"
+        },
+        {
+            "id": 15,
+            "title": "Whittaker's Peanut Slabs",
+            "price": 3.50,
+            "categoryId": 3,
+            "image": "whittakers-peanut-slabs"
+        },
+        {
+            "id": 16,
+            "title": "Toblerone Blocks",
+            "price": 7.00,
+            "categoryId": 3,
+            "image": "toblerone-blocks"
         }
     ]
-}
+ }
