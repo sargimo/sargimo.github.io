@@ -52,7 +52,7 @@ function init() {
 function getSweetItemHTML(i, sweet) {
     return `<div data-id="${sweet.id}" class="sweet-item">
                 <img data-categoryid="${sweet.id}" src="img/${sweet.image}.jpg"> 
-                <h3 data-id="${sweet.id}">${sweet.title}</h3>
+                <h3 class="wizard-item-title" data-id="${sweet.id}">${sweet.title}</h3>
             </div>`
 }
 
@@ -119,8 +119,8 @@ function filterByCategory(sweets, categoryId) {
  */
 function getCategoryItemHTML(category) {
     return `<div data-categoryid="${category.id}" class="category-item">
-                <img data-categoryid="${category.id}" src="img/${category.image}.jpg" class="category-item"> 
-                <h3 data-id="${category.id}">${category.title}</h3>
+                <img data-categoryid="${category.id}" src="img/${category.image}.jpg"> 
+                <h3 class="wizard-item-title" data-id="${category.id}">${category.title}</h3>
             </div>`;
 }
 
