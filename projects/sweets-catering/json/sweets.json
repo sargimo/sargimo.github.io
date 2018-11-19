@@ -112,13 +112,6 @@
             "price": 3.50,
             "categoryId": 3,
             "image": "whittakers-peanut-slabs"
-        },
-        {
-            "id": 16,
-            "title": "Toblerone Blocks",
-            "price": 7.00,
-            "categoryId": 3,
-            "image": "toblerone-blocks"
         }
     ]
  }

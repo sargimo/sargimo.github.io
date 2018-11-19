@@ -9,6 +9,8 @@ body {
     padding: 50px;
     border-bottom: 6px solid rgb(212, 147, 169);
     border-top: 6px solid rgb(212, 147, 169);
+    width: 60vw;
+    overflow: hidden;
 }
 
 .main-title {
@@ -17,7 +19,34 @@ body {
     text-align: center;
 }
 
+.belt {
+    width: 200%;
+    display: flex;
+    transition: .5s ease-in-out;
+}
+
+.belt .slide {
+    transform: translateX(-100%);
+}
+
+.page-one, .page-two {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #sweets {
+    transition: transform .5s ease-in-out;
+    transform-origin: center right;  
+}
+
+#sweets .slide {
+    transform: translateX(-100%)
+}
+
+#sweet-items {
+    transition: transform .5s ease-in-out;
     display: flex;
     flex-wrap: wrap;
 }

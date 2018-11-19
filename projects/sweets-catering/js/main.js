@@ -1,4 +1,6 @@
 let sweetsEl = $('#sweets'),
+    sweetItemsEl = $('#sweet-items'),
+    beltEl = $('.belt'),
     eventNameEl = $('#eventName'),
     eventDescEl = $('#eventDesc'),
     noOfAttendeesEl = $('#noOfAttendees'),
@@ -67,10 +69,12 @@ function displaySweets(sweets) {
         htmlString = htmlString + getSweetItemHTML(i, sweet);
     });
     //displays sweets and adds back to categories button
-    sweetsEl.html(htmlString + '<input id="backToCategories" type="button" value="Back to Categories">');
+    sweetItemsEl.html(htmlString + '<input id="backToCategories" type="button" value="Back to Categories">');
     let backToCategories = $("#backToCategories");
     backToCategories.on('click', function(){
-        displayCategories(categoryList.categories);
+        beltEl.toggleClass('slide');
+        sweetsEl.toggleClass('slide');
+        sweetItemsEl.toggleClass('slide');
     });
     //adds click listeners to the sweets to make final sweet selection
     let sweetItems = $(".sweet-item");
@@ -99,6 +103,9 @@ function displayCategories(categories) {
         let categoryid = $(this).data('categoryid');
         let filteredSweets = filterByCategory(sweetsList.sweets, categoryid);
         displaySweets(filteredSweets);
+        beltEl.toggleClass('slide');
+        sweetsEl.toggleClass('slide');
+        sweetItemsEl.toggleClass('slide');
     });
 }
 
