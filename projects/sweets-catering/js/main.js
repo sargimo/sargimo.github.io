@@ -18,9 +18,33 @@ let sweetsEl = $('#sweets'),
     confirmOrderBtn = $('#confirmOrderBtn');
     cancelOrderBtn = $('#cancelOrderBtn')
 
+    // var popup = L.popup();
 
 let sweetsList,
     categoryList
+
+//leaflet maps
+let mymap = L.map('mapid').setView([-43.491053, 172.57902], 13),
+jellyIcon = L.icon({
+    iconUrl: '../img/jellybeanicon.png',
+    shadowUrl: '../img/jellybeanicon-shadow.png',
+    iconSize:     [58, 58], // size of the icon
+    shadowSize:   [60, 60], // size of the shadow
+    iconAnchor:   [38, 38], // point of the icon which will correspond to marker's location
+    shadowAnchor: [38, 38],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+}),
+personicon = L.icon({
+    iconUrl: '../img/personicon.png',
+    shadowUrl: '../img/personicon-shadow.png',
+    iconSize:     [150, 150], // size of the icon
+    shadowSize:   [152, 152], // size of the shadow
+    iconAnchor:   [75, 100], // point of the icon which will correspond to marker's location
+    shadowAnchor: [75, 100],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+})
+
+marker = L.marker([-43.491053, 172.57902], {icon: jellyIcon}).addTo(mymap);
 
 function init() {
     //get categories
@@ -44,8 +68,32 @@ function init() {
     confirmOrderBtn.on('click', function(){
         changeScreen(confirmedScreen);
     });
-
+    //leaflet maps
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjam9ucHUwdjQweHFqM3FsZTM5NzhjajlsIn0.l9URIGr2w1jZ3pUxuVM_tw'
+    }).addTo(mymap);
+    marker.bindPopup("<b>Sweet as Sweets Emporium</b>").openPopup();
+    mymap.locate({setView: true, maxZoom: 16});
+    mymap.on('locationfound', onLocationFound);
+    mymap.on('locationerror', onLocationError);
 }
+
+//leaflet geolocation
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
+
+    L.marker(e.latlng, {icon: personicon}).addTo(mymap)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    L.circle(e.latlng, radius).addTo(mymap);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
+
 
 /**
  * Get the HTML string for one category list item.
