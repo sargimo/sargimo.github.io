@@ -1,0 +1,15 @@
+{
+  "name": "leaflet-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Lovell <richjavalabs@gmail.com> (http://richjava.github.io)",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet-geosearch": "^2.7.0",
+    "leaflet-routing-machine": "^3.2.12"
+  }
+}

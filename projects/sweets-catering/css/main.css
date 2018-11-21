@@ -232,6 +232,11 @@ body {
     font-size: 60px;
 }
 
+.confirm-total-price {
+    font-family: 'Rancho', cursive; 
+    font-size: 28px;
+}
+
 .pinkText{
     color: rgb(212, 147, 169);
     font-weight: bold;

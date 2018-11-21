@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leaflet Routing Machine Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <link href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
+    <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoicmljaGphdmEiLCJhIjoiY2piY251M203MW95OTJ2cDN3MTVvb211aSJ9.sIqvitdWuCY5aPXnufbvvQ'
+        }).addTo(map);
+
+
+        //Leaflet GeoSearch: https://github.com/smeijer/leaflet-geosearch
+
+        //getting from window instead of as an import
+        var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+        var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+
+        var provider = new OpenStreetMapProvider();
+
+        //we need to use ES6 promises here, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+        
+        //the OpenStreetMapProvider returns a Promise so you can get the results using "await" within an async function
+
+        const getResults = async function () {
+            const results = await provider.search({ query: 'Christchurch' });
+            console.log('results: ', results);
+        }
+        getResults();
+
+        //or using a promise chain ("then"):
+
+            provider.search({ query: 'Christchurch' }).then((results) => {
+                console.log('results: ', results);
+            });
+    
+    </script>
+</body>
+
+</html>

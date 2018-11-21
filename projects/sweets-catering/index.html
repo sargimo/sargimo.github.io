@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sweeet's Catering</title>
+    <title>Sweet's Catering</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rancho" rel="stylesheet">
@@ -38,9 +38,10 @@
                 <label for"eventDate" class="event-lab">Date of event</label>
                 <input required id="eventDate" class="text-input" type="date" placeholder="Event date...">
                 <input required id="noOfAttendees" class="text-input" type="text" placeholder="Estimated number of attendees...">
+                <input  autofocus autocomplete="off" id="address" class="form-control text-input" type="text" placeholder="Address of event...">
                 <div id="mapid">
 
-                </div>
+                </div>        
                 <div class="centered">
                     <input id="submitForm" type="submit" value="Submit">
                 </div>
@@ -72,7 +73,9 @@
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
         crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/bootstrap-geocoder.js"></script>
     <script src="js/main.js" async defer></script>
 </body>
 

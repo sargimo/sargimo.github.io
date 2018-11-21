@@ -4,26 +4,30 @@ let sweetsEl = $('#sweets'),
     eventNameEl = $('#eventName'),
     dateEl = $('#eventDate');
     noOfAttendeesEl = $('#noOfAttendees'),
-    submitFormBtn = $('#submitForm');
-    event = {};
-    screens = $('.screen');
-    wizardScreen = $('#wizard')
-    quoteScreen = $('#quote');
-    confirmedScreen = $('#confirmed');
-    eventTitleEl = $('.eventTitle');
-    confirmSweetImageEl = $('.confirm-sweet-image');
-    confirmEventDateEl = $('.confirmEventDate')
-    confirmOrderMessageEl = $('.confirm-order-message');
-    confirmTotalPriceEl = $('.confirm-total-price')
-    confirmOrderBtn = $('#confirmOrderBtn');
+    // addressOfEventEl = $('#addressOfEvent'),
+    submitFormBtn = $('#submitForm'),
+    event = {},
+    screens = $('.screen'),
+    wizardScreen = $('#wizard'),
+    quoteScreen = $('#quote'),
+    confirmedScreen = $('#confirmed'),
+    eventTitleEl = $('.eventTitle'),
+    confirmSweetImageEl = $('.confirm-sweet-image'),
+    confirmEventDateEl = $('.confirmEventDate'),
+    confirmOrderMessageEl = $('.confirm-order-message'),
+    confirmTotalPriceEl = $('.confirm-total-price'),
+    confirmOrderBtn = $('#confirmOrderBtn'),
     cancelOrderBtn = $('#cancelOrderBtn')
 
 
 let sweetsList,
-    categoryList
+    categoryList,
+    eventAddress
 
 //leaflet maps
 let map = L.map('mapid').setView([-43.491053, 172.57902], 13),
+marker = L.marker([51.5, -0.09]).addTo(map);
+
 jellyIcon = L.icon({
     iconUrl: '../img/jellybeanicon.png',
     shadowUrl: '../img/jellybeanicon-shadow.png',
@@ -42,8 +46,20 @@ personicon = L.icon({
     shadowAnchor: [75, 100],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 })
+// let GeoSearchControl = window.GeoSearch.GeoSearchControl,
+// OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider,
 
-marker = L.marker([-43.491053, 172.57902], {icon: jellyIcon}).addTo(map);
+// provider = new OpenStreetMapProvider();
+
+// const getResults = async function () {
+//     const results = await provider.search({ query: addressOfEventEl.val() });
+//     console.log('results: ', results);
+// }
+let search = BootstrapGeocoder.search({
+    inputTag: 'address',
+    placeholder: 'Event address'
+  }).addTo(map);
+
 
 function init() {
     //get categories
@@ -57,9 +73,10 @@ function init() {
     });
     //add click listeners for buttons
     submitFormBtn.on('click', function(){
+        addMapRoute();
         getQuote();
         loadQuoteScreen();
-        changeScreen(quoteScreen);
+        // changeScreen(quoteScreen);
     });
     cancelOrderBtn.on('click', function(){
         changeScreen(wizardScreen);
@@ -74,57 +91,22 @@ function init() {
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjam9ucHUwdjQweHFqM3FsZTM5NzhjajlsIn0.l9URIGr2w1jZ3pUxuVM_tw'
     }).addTo(map);
-    map.on('click', function(e) {
-        let container = L.DomUtil.create('div'),
-            startBtn = createButton('Start from this location', container),
-            destBtn = createButton('Go to this location', container);
-        L.popup()
-            .setContent(container)
-            .setLatLng(e.latlng)
-            .openOn(map);
-    }); 
+    search.on('results', function (e) {
+        eventAddress = (e);
+        // map.invalidateSize();
+      });  
+}
+
+//leaflet routing
+function addMapRoute(){
+    let point1 = L.latLng(`lat:${eventAddress.latlng.lat}, lng:${eventAddress.latlng.lng}`);
+    let point2 = L.latLng(-43.491053, 172.57902);
     L.Routing.control({
         waypoints: [
-            L.latLng(-41.491053, 170.57902),
-            L.latLng(-43.491053, 172.57902)
-        ],
-        routeWhileDragging: true
-    }).addTo(map);
-    L.DomEvent.on(startBtn, 'click', function() {
-        control.spliceWaypoints(0, 1, e.latlng);
-        map1.closePopup();
-    });
-    L.DomEvent.on(destBtn, 'click', function() {
-        control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
-        map1.closePopup();
-    });    
-    // marker.bindPopup("<b>Sweet as Sweets Emporium</b>").openPopup();
-    map.locate({setView: true, maxZoom: 16});
-    map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
-
+        point1,
+        point2
+    ]}).addTo(map);
 }
-
-//leaflet functions
-function onLocationFound(e) {
-    let radius = e.accuracy / 2;
-
-    L.marker(e.latlng, {icon: personicon}).addTo(mymap)
-}
-
-function onLocationError(e) {
-    alert(e.message);
-}
-
-function createButton(label, container) {
-    let btn = L.DomUtil.create('button', '', container);
-    btn.setAttribute('type', 'button');
-    btn.innerHTML = label;
-    return btn;
-}
-
-
-
 
 /**
  * Get the HTML string for one category list item.
@@ -136,7 +118,6 @@ function getSweetItemHTML(i, sweet) {
                 <h3 class="wizard-item-title" data-id="${sweet.id}">${sweet.title}</h3>
             </div>`
 }
-
 
 /**
  * Display a list of sweets
