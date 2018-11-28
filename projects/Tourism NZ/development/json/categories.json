@@ -1,0 +1,24 @@
+{
+    "categories": [
+        {
+            "id": 0,
+            "title": "Compact",
+            "slug": "compact"
+        },
+        {
+            "id": 1,
+            "title": "Sedan",
+            "slug": "Sedan"
+        },
+        {
+            "id": 2,
+            "title": "SUV/4wD",
+            "slug": "SUV-4wD"
+        },
+        {
+            "id": 3,
+            "title": "Luxury",
+            "slug": "luxury"
+        }
+    ]
+}
