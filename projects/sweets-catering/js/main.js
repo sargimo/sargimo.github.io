@@ -99,7 +99,9 @@ function init() {
 
 //leaflet routing
 function addMapRoute(){
-    let point1 = L.latLng(`lat:${eventAddress.latlng.lat}, lng:${eventAddress.latlng.lng}`);
+    let lat = parseFloat(eventAddress.latlng.lat);
+    let lng = parseFloat(eventAddress.latlng.lng);
+    let point1 = L.latLng(lat, lng);
     let point2 = L.latLng(-43.491053, 172.57902);
     L.Routing.control({
         waypoints: [
