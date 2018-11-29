@@ -21,21 +21,24 @@
 
 <body>
     <container>
-        <form>
-            <label for "startLocation">Starting Location</label>
-            <input required id="startLocation" class="text-input">
-            <label for "endLocation">Finishing Location</label>
-            <input required id="endLocation" class="text-input">
-        </form>
+            <form>
+                <label for "startLocation">Starting Location</label>
+                <input required id="startLocation">
+                <label for "endLocation">Finishing Location</label>
+                <input required id="endLocation">
+                <label for "detour">Travel via...</label>
+                <input required id="detourLocation">
+            </form>
         <div id="mapid">
 
         </div>
     </container>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-    crossorigin=""></script>
+        crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap-geocoder.js"></script>
     <script src="js/main.js"></script>
 </body>
 
