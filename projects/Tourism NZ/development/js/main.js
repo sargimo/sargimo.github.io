@@ -19,7 +19,7 @@ let startLocationEl = BootstrapGeocoder.search({
     inputTag: 'detourLocation',
     placeholder: 'Travel via...'
   }).addTo(map);
-  routeControl = L.Routing.control({
+  routingControl = L.Routing.control({
     waypoints: routeWaypoints,
     autoRoute: true
   }).addTo(map);
@@ -52,30 +52,24 @@ function init() {
   });
   detourLocationEl.on('results', function (e) {
     detourLocation = (e);
-    let startPoint = L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng));
-    let detourPoint1 = L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng));
-    let endPoint = L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng));
-    detourLocSearchBox.val(detourLocation.text);
-    routeWaypoints = [];
-    routeWaypoints.push(startPoint, detourPoint1, endPoint)
-    routingControl.setWaypoints(
-      routeWaypoints
-    );
+    routeWaypoints.splice((routeWaypoints.length - 1), 0, detourLocation.latlng);
+    drawRoute();
+    // Potential reset function
+    // let startPoint = L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng));
+    // let detourPoint1 = L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng));
+    // let endPoint = L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng));
+    // detourLocSearchBox.val(detourLocation.text);
+    // routeWaypoints = [];
+    // routeWaypoints.push(startPoint, detourPoint1, endPoint)
+    // drawRoute();
   });
 }
 //Add location button shows input. Input splices routeWaypoints by routeWaypoint.length -1 to add 2nd to last. Add button on Input pushes name to the list, with data-id of routeWaypoints.length (before adding). Clicking X button on list item uses data ID as a way to remove the array at that index, and removes list item. 
 
 function drawRoute(){
-  routingControl =  L.Routing.control({
-    waypoints: 
+  routingControl.setWaypoints(
     routeWaypoints
-  }).addTo(map);
-}
-
-
-
-function clearRoute(){
-  routeControl.getPlan().setWaypoints([]);
+  );
 }
 
 init();
