@@ -20,8 +20,9 @@ let startLocationEl = BootstrapGeocoder.search({
     placeholder: 'Travel via...'
   }).addTo(map);
   routeControl = L.Routing.control({
-    waypoints: routeWaypoints
-  });
+    waypoints: routeWaypoints,
+    autoRoute: true
+  }).addTo(map);
 
 let startLocation,
   endLocation,
@@ -35,38 +36,43 @@ function init() {
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjam9ucHUwdjQweHFqM3FsZTM5NzhjajlsIn0.l9URIGr2w1jZ3pUxuVM_tw',
   }).addTo(map);
-  marker = L.marker([51.5, -0.09]).addTo(map);
   //leaflet geosearch listeners
   startLocationEl.on('results', function (e) {
     startLocation = (e);
     startLocSearchBox.val(startLocation.text)
     routeWaypoints.push(L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng)))
-    mapRoute();
     // map.invalidateSize();
   });
   endLocationEl.on('results', function (e) {
     endLocation = (e);
     endLocSearchBox.val(endLocation.text);
     routeWaypoints.push(L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng)))
-    mapRoute();
+    drawRoute();
     // map.invalidateSize();
   });
   detourLocationEl.on('results', function (e) {
     detourLocation = (e);
+    let startPoint = L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng));
+    let detourPoint1 = L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng));
+    let endPoint = L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng));
     detourLocSearchBox.val(detourLocation.text);
-    routeWaypoints.splice(1, 0, (L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng))))
-    clearRoute();
-    mapRoute();
-    // map.invalidateSize();
+    routeWaypoints = [];
+    routeWaypoints.push(startPoint, detourPoint1, endPoint)
+    routingControl.setWaypoints(
+      routeWaypoints
+    );
   });
 }
+//Add location button shows input. Input splices routeWaypoints by routeWaypoint.length -1 to add 2nd to last. Add button on Input pushes name to the list, with data-id of routeWaypoints.length (before adding). Clicking X button on list item uses data ID as a way to remove the array at that index, and removes list item. 
 
-function mapRoute(){
-  L.Routing.control({
-    waypoints:
+function drawRoute(){
+  routingControl =  L.Routing.control({
+    waypoints: 
     routeWaypoints
-  }).addTo(map); 
+  }).addTo(map);
 }
+
+
 
 function clearRoute(){
   routeControl.getPlan().setWaypoints([]);
