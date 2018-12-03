@@ -2,7 +2,7 @@
     "vehicles": [
         {
             "name": "Toyota Yaris",
-            "seats": "4",
+            "seats": 4,
             "doors": "4",
             "smlBags": "2",
             "lrgBags": "1",
@@ -18,7 +18,7 @@
         },
         {
             "name": "Mazda Demio",
-            "seats": "4",
+            "seats": 4,
             "doors": "4",
             "smlBags": "2",
             "lrgBags": "1",
@@ -33,8 +33,8 @@
             "image": "mazda-demio.png" 
         },
         {
-            "name": "Toyota Carolla Hatch",
-            "seats": "5",
+            "name": "Toyota Corolla Hatch",
+            "seats": 5,
             "doors": "4",
             "smlBags": "1",
             "lrgBags": "2",
@@ -46,11 +46,11 @@
             "description": "The Toyota Corolla Hatch isn’t just sporty, economical and great on the road but it's also New Zealand top selling car and for a good reason.The 5 star ANCAP rated Corolla Hatch  gives you peace of mind wherever your travels take you. Standard safety features such as Vehicle Stability Control (VSC) and Traction Control (TRC) come as standard with many other safety features.",
             "id": 2,
             "categoryId": 0,
-            "image": "toyota-carolla-hatch.png" 
+            "image": "toyota-corolla-hatch.png" 
         },
         {
             "name": "Ford Focus Trend",
-            "seats": "5",
+            "seats": 5,
             "doors": "4",
             "smlBags": "2",
             "lrgBags": "2",
@@ -65,8 +65,8 @@
             "image": "ford-focus.png" 
         },
         {
-            "name": "Toyota Carolla",
-            "seats": "5",
+            "name": "Toyota Corolla",
+            "seats": 5,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "2",
@@ -78,11 +78,11 @@
             "description": "Rent a compact car that's a perennial favorite. When you rent a Toyota Corolla, you're not only getting seating for five and plenty of room for all your gear – you're getting technology, innovation, comfort and safety features that really are among some of the best. In short, you're getting a Toyota – and all the features that make Corollas so great to drive.",
             "id": 4,
             "categoryId": 1,
-            "image": "toyota-carolla.png" 
+            "image": "toyota-corolla.png" 
         },
         {
             "name": "Toyota Camry",
-            "seats": "5",
+            "seats": 5,
             "doors": "4",
             "smlBags": "2",
             "lrgBags": "2",
@@ -98,7 +98,7 @@
         },
         {
             "name": "Holden Commodore",
-            "seats": "5",
+            "seats": 5,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "2",
@@ -114,7 +114,7 @@
         },
         {
             "name": "Toyota Highlander",
-            "seats": "5",
+            "seats": 5,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "4",
@@ -130,7 +130,7 @@
         },
         {
             "name": "Toyota Rav4 2WD",
-            "seats": "5",
+            "seats": 5,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "4",
@@ -146,7 +146,7 @@
         },
         {
             "name": "Hyundai iMax",
-            "seats": "8",
+            "seats": 8,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "4",
@@ -162,7 +162,7 @@
         },
         {
             "name": "Audi RS5 Convertable",
-            "seats": "4",
+            "seats": 4,
             "doors": "4",
             "smlBags": "1",
             "lrgBags": "1",
@@ -178,7 +178,7 @@
         },
         {
             "name": "Maserati Quattroporte Sport GT",
-            "seats": "4",
+            "seats": 4,
             "doors": "4",
             "smlBags": "1",
             "lrgBags": "1",

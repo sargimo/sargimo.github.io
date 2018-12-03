@@ -1,6 +1,7 @@
-body {
-    width: 100vw;
-    height: 100vh;
-    background: url(../../images/background.jpg);
-    background-size: cover;
-}
+html {
+    background: url(../../images/background.jpg) repeat center center fixed;
+    -webkit-background-size: repeat;
+    -moz-background-size: repeat;
+    -o-background-size: repeat;
+    background-size: repeat;
+  }
