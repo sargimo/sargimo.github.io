@@ -21,6 +21,7 @@ let formGroupSizeInput = $('#groupSize'),
   carSelectScreen = $('#carSelectScreen'),
   mapScreen = $('#mapScreen'),
   screens = $('.screen'),
+  currentScreen = "formScreen",
 
   allVehiclesBtn = $('#allVehicles'),
   compactVehiclesBtn = $('#compactVehicles'),
@@ -39,9 +40,9 @@ const fuelPrice = 2.25;
 let map = L.map('mapid').setView([-43.491053, 172.57902], 6)
 //Start/Finish inputs geocoding
 let startLocationEl = BootstrapGeocoder.search({
-  inputTag: 'startLocation',
-  placeholder: 'Starting Location'
-}).addTo(map),
+    inputTag: 'startLocation',
+    placeholder: 'Starting Location'
+  }).addTo(map),
   endLocationEl = BootstrapGeocoder.search({
     inputTag: 'endLocation',
     placeholder: 'Finishing Location'
@@ -62,14 +63,19 @@ function init() {
   });
   //init submit button to collect input data and calculate map routes
   formSubmitBtn.on('click', function () {
+    currentScreen = "carSelectScreen";
     groupSize = formGroupSizeInput.val();
     seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
     drawRoute();
     changeScreen(carSelectScreen);
-    displayVehicles(seatFilteredVehicleList);
   });
   routingControl.on('routesfound', function (e) {
-    calculateTotalDistance();
+    let routes = e.routes;
+    routeTotalDistance = routes[0].summary.totalDistance;
+    if (currentScreen == "carSelectScreen") {
+      updateFuelCost(seatFilteredVehicleList);
+      displayVehicles(seatFilteredVehicleList);
+    }
   });
   //click functions for categories
   allVehiclesBtn.on('click', function () {
@@ -100,20 +106,18 @@ function init() {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjam9ucHUwdjQweHFqM3FsZTM5NzhjajlsIn0.l9URIGr2w1jZ3pUxuVM_tw',
+    accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjanA3c2ppYmExc285M3BwNzM1ZTN3cHRmIn0.kFrH0CWunKl-1DIvPN_vZQ',
   }).addTo(map);
   //leaflet geosearch listeners
   startLocationEl.on('results', function (e) {
     startLocation = (e);
     formStartLocInput.val(startLocation.text)
     routeWaypoints.push(L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng)))
-    // map.invalidateSize();
   });
   endLocationEl.on('results', function (e) {
     endLocation = (e);
     formEndLocInput.val(endLocation.text);
     routeWaypoints.push(L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng)))
-    // map.invalidateSize();
   });
   detourLocationEl.on('results', function (e) {
     detourLocation = (e);
@@ -137,7 +141,7 @@ function init() {
  * Get the HTML string for one vehicle item.
  */
 function getVehicleItemHTML(i, vehicle) {
-  return `<div data-id="${vehicle.id}" class="column is-4 vehicle-item">
+  return `<div data-id="${vehicle.id}" class="column is-4-desktop is-6-tablet vehicle-item">
             <div>
               <h1>${vehicle.name}</h1>
             </div>
@@ -155,9 +159,9 @@ function getVehicleItemHTML(i, vehicle) {
             </div>
             <div class="info-panel">
               <ul>
-                <li><i class="gradient-icon fas fa-user"></i>${vehicle.seats}</li>
-                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags}</li>
-                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelPrice} per day</li>
+                <li><i class="gradient-icon fas fa-user"></i>${vehicle.seats}<div class="info-text">passengers</div></li>
+                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags}<div class="info-text">large bags</div></li>
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">trip fuel cost</div></li>
               </ul>
             </div>
           </div>`
@@ -170,14 +174,15 @@ function getVehicleItemHTML(i, vehicle) {
 function displayVehicles(vehicles) {
   let htmlString = '';
   $.each(vehicles, function (i, vehicle) {
-    let price = getFuelCost(vehicle, routeTotalDistance);
-    vehicle.totalFuelCost = price;
+
     htmlString = htmlString + getVehicleItemHTML(i, vehicle);
   });
   vehicleItemsEl.html(htmlString);
   selectCarBtn = $('.selectCarBtn');
   selectCarBtn.on('click', function () {
     changeScreen(mapScreen);
+    map.invalidateSize();
+    map.setView([-43.491053, 172.57902], 6)
   })
 }
 
@@ -203,10 +208,27 @@ function filterByGroupSize(vehicles, groupsize) {
   });
 }
 
+/**
+ * Calculates the fuel cost for a vehicle based on the route distance
+ * @param {Object} vehicle
+ * @param {number} groupsize
+ */
 function getFuelCost(vehicle, distance) {
-  let litresUsed = (vehicle.fuelEfficiency * (distance / 100));
+  let distanceKMs = (distance / 1000);
+  let litresUsed = (vehicle.fuelEfficiency * (distanceKMs / 100));
   let price = (fuelPrice * litresUsed).toFixed(2);
   return price;
+}
+
+/**
+ * Updates property of vehicle object with current fuel cost for route
+ * @param {Object} vehicle
+ */
+function updateFuelCost(vehicles) {
+  $.each(vehicles, function (i, vehicle) {
+    let price = getFuelCost(vehicle, routeTotalDistance);
+    vehicle.totalFuelCost = parseFloat(price).toFixed(2);
+  });
 }
 
 //maps waypoints from array
@@ -222,13 +244,7 @@ function changeScreen(screen) {
   screen.addClass('active');
 }
 
-function calculateTotalDistance() {
-  let routes = e.routes;
-  routeTotalDistance = routes[0].summary.totalDistance;
-}
+// function updateDistanceCalcs(){
 
-function updateDistanceCalcs(){
-
-}
-
+// }
 init();

@@ -76,11 +76,16 @@
         text-align: center;
         cursor: pointer;
     }
+    .info-text {
+        color: $green;
+        font-size: 10px;
+    }
 }
 
 .gradient-icon {
     font-size: 16px;
     background: -webkit-linear-gradient($light-green, $green);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-right: 10px;

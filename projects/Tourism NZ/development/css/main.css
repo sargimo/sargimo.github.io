@@ -11267,6 +11267,7 @@ label.panel-block:hover {
   padding: 15px 30px;
   border-radius: 15px;
   text-align: center;
+  cursor: pointer;
 }
 
 body {
@@ -11284,7 +11285,7 @@ body {
 
 #mapid {
   position: absolute;
-  top: 0;
+  top: 100;
   left: 0;
   z-index: 7;
   width: 100%;
@@ -11325,6 +11326,13 @@ html {
   box-shadow: 0px 0px 46px 0px rgba(34, 34, 34, 0.5);
 }
 
+.form-screen-form input:focus,
+.form-screen-form select:focus,
+.form-screen-form textarea:focus,
+.form-screen-form button:focus {
+  outline: none;
+}
+
 .form-screen-form form {
   font-size: 14px;
   width: 65%;
@@ -11336,6 +11344,7 @@ html {
   border: none;
   margin-bottom: 20px;
   width: 100%;
+  color: #72a545;
 }
 
 .form-screen-form form .box {
@@ -11487,9 +11496,15 @@ html {
   cursor: pointer;
 }
 
+.vehicle-item .info-text {
+  color: #72a545;
+  font-size: 10px;
+}
+
 .gradient-icon {
   font-size: 16px;
   background: -webkit-linear-gradient(#a5e16f, #72a545);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-right: 10px;
@@ -11499,5 +11514,58 @@ html {
   font-size: 28px;
   color: #2a3539;
   padding-bottom: 15px;
+}
+
+.route-display {
+  position: absolute;
+  z-index: 9;
+  left: 110px;
+  top: 300px;
+  background-color: #fff;
+  width: 400px;
+  height: 600px;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+}
+
+.option-panel {
+  position: absolute;
+  z-index: 10;
+  left: 0px;
+  top: 0px;
+  width: 110px;
+  height: 100vh;
+  background-color: #2a3539;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+}
+
+.option-panel ul {
+  padding-top: 300px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+.option-panel p {
+  padding-top: 5px;
+}
+
+.option-panel li {
+  padding: 10px 0;
+  border-top: 1px solid #586265;
+  cursor: pointer;
+}
+
+.option-panel li:hover {
+  color: #72a545;
+}
+
+.option-panel .last-icon {
+  border-bottom: 1px solid #586265;
+}
+
+.option-panel .option-panel-icon {
+  font-size: 42px;
 }
 /*# sourceMappingURL=main.css.map */

@@ -31,7 +31,7 @@
             </div>
         </div>
     </nav>
-    <div id="formScreen" class="screen active">
+    <div id="formScreen" class="screen">
         <div class="field form-screen">
             <div class="form-screen-message">
                 <h1>PLAN</h1>
@@ -71,11 +71,11 @@
     <div id="carSelectScreen" class="screen">
         <div class="container">
             <div class="filter-categories">
-                <div class="categories columns">
-                    <div class="column is-one-sixth filter-title">
+                <div class="categories columns is-multiline is-mobile">
+                    <div class="column is-one-sixth-desktop is-half-mobile  filter-title">
                         <h1>FILTER BY TYPE</h1>
                     </div>
-                    <div id="allVehicles" class="column is-one-sixth category">
+                    <div id="allVehicles" class="column is-one-sixth-desktop is-half-mobile  category">
                         <div class="car-icon">
                             <img src="images/all.png" alt="fleet of cars">
                         </div>
@@ -84,28 +84,28 @@
                         </div>
                         <h1>ALL</h1>
                     </div>
-                    <div id="compactVehicles" data-categoryId="0" class="column is-one-sixth category">
+                    <div id="compactVehicles" data-categoryId="0" class="column is-one-sixth-desktop is-half-mobile category">
                         <div class="car-icon">
                             <img src="images/compact.png" alt="compact car">
                         </div>
                         <img src="images/left-lines.png" alt="decorative lines">
                         <h1>COMPACT</h1>
                     </div>
-                    <div id="sedanVehicles" data-categoryId="1" class="column is-one-sixth category">
+                    <div id="sedanVehicles" data-categoryId="1" class="column is-one-sixth-desktop is-half-mobile  category">
                         <div class="car-icon">
                             <img src="images/sedan.png" alt="sedan">
                         </div>
                         <img src="images/center-lines.png" alt="decorative lines">
                         <h1>SEDAN</h1>
                     </div>
-                    <div id="suvVehicles" data-categoryId="2" class="column is-one-sixth category">
+                    <div id="suvVehicles" data-categoryId="2" class="column is-one-sixth-desktop is-half-mobile  category">
                         <div class="car-icon">
                             <img src="images/suv4wd.png" alt="SUV car">
                         </div>
                         <img src="images/right-lines.png" alt="decorative lines">
                         <h1>SUV/4WD</h1>
                     </div>
-                    <div id="luxuryVehicles" data-categoryId="3" class="column is-one-sixth category">
+                    <div id="luxuryVehicles" data-categoryId="3" class="column is-one-sixth-desktop is-half-mobile  category">
                         <div class="car-icon">
                             <img src="images/luxury.png" alt="luxury car">
                         </div>
@@ -118,11 +118,29 @@
             </div>
         </div>
     </div>
-    <div id="mapScreen" class="screen">
-        <form>
-            <label for "detour">Travel via...</label>
-            <input required id="detourLocation">
-        </form>
+    <div id="mapScreen" class="screen active">
+        <div class="option-panel">
+            <ul>
+                <li>
+                    <div><i class="fas fa-road option-panel-icon"></i></div>
+                    <p>Route Options</p>
+                </li>
+                <li>
+                    <div><i class="fas fa-car option-panel-icon"></i></div>
+                    <p>Car Choice</p>
+                </li>
+                <li class="last-icon">
+                    <div><i class="fas fa-cog option-panel-icon"></i></div>
+                    <p>Edit</p>
+                </li>
+            </ul>
+        </div>
+        <div class="route-display">
+            <form>
+                <label for "detour">Travel via...</label>
+                <input required id="detourLocation">
+            </form>
+        </div>
         <div id="mapid">
 
         </div>
