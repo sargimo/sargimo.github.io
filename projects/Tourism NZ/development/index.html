@@ -122,24 +122,71 @@
         <div class="option-panel">
             <ul>
                 <li>
-                    <div><i class="fas fa-road option-panel-icon"></i></div>
+                    <div>
+                        <i class="fas fa-road option-panel-icon"></i>
+                    </div>
                     <p>Route Options</p>
                 </li>
                 <li>
-                    <div><i class="fas fa-car option-panel-icon"></i></div>
+                    <div>
+                        <i class="fas fa-car option-panel-icon"></i>
+                    </div>
                     <p>Car Choice</p>
                 </li>
                 <li class="last-icon">
-                    <div><i class="fas fa-cog option-panel-icon"></i></div>
+                    <div>
+                        <i class="fas fa-cog option-panel-icon"></i>
+                    </div>
                     <p>Edit</p>
                 </li>
             </ul>
         </div>
         <div class="route-display">
-            <form>
+            <div class="columns header">
+                <div class="column is-6 is-mobile">
+                    <h1>TOTAL DISTANCE</h1>
+                    <div class="total-distance"></div>
+                </div>
+                <div class="column is-6 is-mobile total-cost">
+                    <h1>TOTAL COST</h1>
+                    <div class="total-cost"></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <div class="columns is-mobile route-item">
+                        <div class="flag column is-2">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="column is-8">
+                            <h2>START</h2>
+                            <div id="roStartLoc" class="location-text">
+                                Christchurch, New Zealand
+                            </div>
+                        </div>
+                        <div id="roStartDate" class="column is-2 ro-date-container">
+                            <div class="remove-route"><i class="fas fa-times-circle"></i></div>
+                            <div class="ro-date">11/12/18</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="add-detour">
+                Add detour
+                <button class="add-detour-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <form id="addDetourInput">
                 <label for "detour">Travel via...</label>
                 <input required id="detourLocation">
             </form>
+            <ul>
+                <li id="endLoc">
+
+                </li>
+            </ul>
+
         </div>
         <div id="mapid">
 
