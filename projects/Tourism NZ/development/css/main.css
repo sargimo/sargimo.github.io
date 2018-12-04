@@ -11293,6 +11293,14 @@ body {
   height: 100%;
 }
 
+.dropdown-menu {
+  position: relative;
+  top: 5px;
+  background-color: #fff;
+  color: #2a3539;
+  border: 1px solid #72a545;
+}
+
 html {
   background: url(../../images/background.jpg) repeat center center fixed;
   background-size: repeat;
@@ -11441,9 +11449,11 @@ html {
 }
 
 .vehicle-item {
+  position: relative;
   background-color: #f0f6f6;
   border: 1px solid #d2d4d5;
   padding: 0;
+  height: 380px;
 }
 
 .vehicle-item:hover {
@@ -11489,17 +11499,36 @@ html {
 }
 
 .vehicle-item .info-panel {
+  position: absolute;
+  bottom: 0;
+  height: 75px;
   background-color: #2a3539;
   color: #fff;
   font-size: 12px;
   padding: 20px;
   text-align: center;
+  width: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
   cursor: pointer;
+}
+
+.vehicle-item .info-panel.active {
+  height: 200px;
 }
 
 .vehicle-item .info-text {
   color: #72a545;
   font-size: 10px;
+}
+
+.vehicle-item .selectCarBtn {
+  position: relative;
+  z-index: 11;
+}
+
+.vehicle-item .selectCarBtn.active {
+  top: 95px;
 }
 
 .gradient-icon {
@@ -11527,6 +11556,11 @@ html {
   height: 600px;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  display: none;
+}
+
+.route-display.active {
+  display: block;
 }
 
 .route-display h1 {
@@ -11548,6 +11582,15 @@ html {
   margin: 0;
   text-align: center;
   margin-bottom: 30px;
+}
+
+.route-display .header-item {
+  border-right: 1px solid #fff;
+}
+
+.route-display .totals-text {
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .route-display .route-item {
@@ -11582,10 +11625,16 @@ html {
 
 .route-display .add-detour {
   text-align: right;
+  margin-top: 10px;
   padding-right: 23px;
   font-size: 12px;
   color: #72a545;
   cursor: pointer;
+  padding-bottom: 0;
+}
+
+.route-display .add-detour .column {
+  padding: 0;
 }
 
 .route-display .flag {
@@ -11614,13 +11663,20 @@ html {
   display: none;
 }
 
+.route-display #addDetourInput.active {
+  text-align: left;
+  padding: 25px 0 0 40px;
+  width: 100%;
+  display: block;
+}
+
 .option-panel {
   position: absolute;
   z-index: 10;
   left: 0px;
   top: 0px;
-  width: 110px;
-  height: 100vh;
+  width: 100px;
+  height: 110vh;
   background-color: #2a3539;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);

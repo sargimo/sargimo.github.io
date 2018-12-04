@@ -31,7 +31,7 @@
             </div>
         </div>
     </nav>
-    <div id="formScreen" class="screen">
+    <div id="formScreen" class="screen active">
         <div class="field form-screen">
             <div class="form-screen-message">
                 <h1>PLAN</h1>
@@ -118,10 +118,10 @@
             </div>
         </div>
     </div>
-    <div id="mapScreen" class="screen active">
+    <div id="mapScreen" class="screen">
         <div class="option-panel">
             <ul>
-                <li>
+                <li id="routeOptionsBtn">
                     <div>
                         <i class="fas fa-road option-panel-icon"></i>
                     </div>
@@ -141,18 +141,18 @@
                 </li>
             </ul>
         </div>
-        <div class="route-display">
+        <div class="route-display active">
             <div class="columns header">
-                <div class="column is-6 is-mobile">
+                <div class="column is-6 is-mobile header-item">
                     <h1>TOTAL DISTANCE</h1>
-                    <div class="total-distance"></div>
+                    <div id="roTotalDistance" class="totals-text"></div>
                 </div>
-                <div class="column is-6 is-mobile total-cost">
+                <div class="column is-6 is-mobile">
                     <h1>TOTAL COST</h1>
-                    <div class="total-cost"></div>
+                    <div id="roTotalCost" class="totals-text"></div>
                 </div>
             </div>
-            <ul>
+            <ul id="routeList">
                 <li>
                     <div class="columns is-mobile route-item">
                         <div class="flag column is-2">
@@ -161,7 +161,6 @@
                         <div class="column is-8">
                             <h2>START</h2>
                             <div id="roStartLoc" class="location-text">
-                                Christchurch, New Zealand
                             </div>
                         </div>
                         <div id="roStartDate" class="column is-2 ro-date-container">
@@ -171,22 +170,38 @@
                     </div>
                 </li>
             </ul>
-            <div class="add-detour">
-                Add detour
-                <button class="add-detour-btn">
-                    <i class="fas fa-plus"></i>
-                </button>
+            <div class="add-detour columns">
+                <div class="column is-7 is-vcentered">
+                    <form id="addDetourInput">
+                        <!-- <label for "detour">Travel via...</label> -->
+                        <input placeholder="Detour through..." required id="detourLocation">
+                    </form>
+                </div>
+                <div class="column is-5 add-detour-container">
+                    Add detour
+                    <button class="add-detour-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
-            <form id="addDetourInput">
-                <label for "detour">Travel via...</label>
-                <input required id="detourLocation">
-            </form>
             <ul>
-                <li id="endLoc">
-
+                <li>
+                    <div class="columns is-mobile route-item">
+                        <div class="flag column is-2">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="column is-8">
+                            <h2>END</h2>
+                            <div id="roEndLoc" class="location-text">
+                            </div>
+                        </div>
+                        <div id="roEndDate" class="column is-2 ro-date-container">
+                            <div class="remove-route"><i class="fas fa-times-circle"></i></div>
+                            <div class="ro-date">11/12/18</div>
+                        </div>
+                    </div>
                 </li>
             </ul>
-
         </div>
         <div id="mapid">
 

@@ -1,31 +1,47 @@
 .route-display {
-    position: absolute; 
+    position: absolute;
     z-index: 9;
     left: 110px;
     top: 300px;
     background-color: $white;
     width: 400px;
     height: 600px;
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    display: none;
+    &.active{
+        display: block;
+    }
     h1 {
         font-size: 12px;
         font-weight: bold;
         letter-spacing: 1px;
     }
+
     h2 {
         font-size: 11px;
         font-weight: bold;
         color: $dark-grey;
     }
+
     .header {
         background: linear-gradient($light-green, $green);
         color: $white;
         margin: 0;
         text-align: center;
-        margin-bottom: 30px; 
+        margin-bottom: 30px;
     }
+
+    .header-item {
+        border-right: 1px solid $white;
+    }
+
+    .totals-text {
+        font-size: 13px;
+        font-weight: bold;
+    }
+
     .route-item {
         background: $light-grey;
         width: 90%;
@@ -33,14 +49,16 @@
         margin-top: 10px;
         padding: 10px;
         border-radius: 15px;
-        -webkit-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-        -moz-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-        box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);    
+        -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+        -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+        box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     }
+
     .location-text {
         padding-top: 5px;
         font-size: 14px;
     }
+
     .add-detour-btn {
         margin: 10px;
         border: none;
@@ -53,32 +71,49 @@
         outline: none;
         cursor: pointer;
     }
+
     .add-detour {
         text-align: right;
+        margin-top: 10px;
         padding-right: 23px;
         font-size: 12px;
         color: $green;
         cursor: pointer;
+        padding-bottom: 0;
+        .column {
+            padding: 0;
+        }
     }
+
     .flag {
         font-size: 28px;
         transform: rotate(-15deg);
     }
+
     .ro-date {
         font-size: 12px;
         color: $green;
         text-align: right;
     }
+
     .ro-date-container {
         padding: 0;
     }
+
     .remove-route {
         text-align: right;
-        color: rgba(34,34,34,0.46);
+        color: rgba(34, 34, 34, 0.46);
         padding-bottom: 10px;
     }
+
     #addDetourInput {
         display: none;
+        &.active {
+            text-align: left;
+            padding: 25px 0 0 40px;
+            width: 100%;
+            display: block;
+        }
     }
 }
 
@@ -87,32 +122,38 @@
     z-index: 10;
     left: 0px;
     top: 0px;
-    width: 110px;
-    height: 100vh;
+    width: 100px;
+    height: 110vh;
     background-color: $dark-grey;
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+
     ul {
         padding-top: 300px;
         color: white;
         font-size: 12px;
         text-align: center;
     }
+
     p {
         padding-top: 5px;
     }
+
     li {
         padding: 10px 0;
         border-top: 1px solid #586265;
         cursor: pointer;
+
         &:hover {
             color: $green;
         }
     }
+
     .last-icon {
         border-bottom: 1px solid #586265;
     }
+
     .option-panel-icon {
         font-size: 42px;
     }

@@ -10,12 +10,14 @@ let formGroupSizeInput = $('#groupSize'),
   endDate,
   startLocation,
   endLocation,
+  currentDetourId,
 
   routeTotalDistance,
 
   vehicleList,
   seatFilteredVehicleList,
   categoryList,
+  chosenVehicle = [],
 
   formScreen = $('#formScreen'),
   carSelectScreen = $('#carSelectScreen'),
@@ -30,6 +32,17 @@ let formGroupSizeInput = $('#groupSize'),
   luxuryVehiclesBtn = $('#luxuryVehicles'),
   vehicleItemsEl = $('#vehicleItems'),
   selectCarBtn,
+
+  routeOptionsBtn = $('#routeOptionsBtn'),
+  routeOptionsEl = $('.route-display'),
+  roTotalDistanceEl = $('#roTotalDistance'),
+  roTotalCostEl = $('#roTotalCost'),
+  roStartLocationEl = $('#roStartLoc'),
+  roEndLocationEl = $('#roEndLoc'),
+  addDetourBtn = $('.add-detour-container'),
+  addDetourInputEl = $('#addDetourInput'),
+  routeListEl = $('#routeList'),
+  removeRouteBtn,
 
   detourLocSearchBox = $('#detourLocation'),
   routeWaypoints = []
@@ -71,7 +84,8 @@ function init() {
   });
   routingControl.on('routesfound', function (e) {
     let routes = e.routes;
-    routeTotalDistance = routes[0].summary.totalDistance;
+    //converts from M to KM
+    routeTotalDistance = ((routes[0].summary.totalDistance) / 1000);
     if (currentScreen == "carSelectScreen") {
       updateFuelCost(seatFilteredVehicleList);
       displayVehicles(seatFilteredVehicleList);
@@ -122,7 +136,9 @@ function init() {
   detourLocationEl.on('results', function (e) {
     detourLocation = (e);
     routeWaypoints.splice((routeWaypoints.length - 1), 0, detourLocation.latlng);
+    currentDetourId = (routeWaypoints.length - 2);
     drawRoute();
+    addDetourToRouteList();
     // Potential reset function
     // let startPoint = L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng));
     // let detourPoint1 = L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng));
@@ -131,6 +147,14 @@ function init() {
     // routeWaypoints = [];
     // routeWaypoints.push(startPoint, detourPoint1, endPoint)
     // drawRoute();
+  });
+  //toggle active state for route options
+  routeOptionsBtn.on('click', function(){
+    routeOptionsEl.toggleClass('active');
+  });
+  //toggle active state for detour input
+  addDetourBtn.on('click', function () {
+    addDetourInputEl.toggleClass('active');
   });
 }
 //Add location button shows input. Input splices routeWaypoints by routeWaypoint.length -1 to add 2nd to last. Add button on Input pushes name to the list, with data-id of routeWaypoints.length (before adding). Clicking X button on list item uses data ID as a way to remove the array at that index, and removes list item. 
@@ -149,8 +173,8 @@ function getVehicleItemHTML(i, vehicle) {
               <img src="../images/cars/${vehicle.image}" alt="${vehicle.name}">
             </div>
             <div class="columns">
-              <div class="column is-half is-offset-one-quarter vehicle-item-button">
-                <button class="btn-green selectCarBtn">SELECT</button>
+              <div data-id="${vehicle.id}" class="column is-half is-offset-one-quarter vehicle-item-button">
+                <button data-id="${vehicle.id}" class="btn-green selectCarBtn">SELECT</button>
               </div>
               <div class="column is-one-quarter more-info">
                 <i class="more-info-btn fas fa-chevron-circle-up"></i>
@@ -168,22 +192,25 @@ function getVehicleItemHTML(i, vehicle) {
 }
 
 /**
- * Display a list of vehicles
+ * Display a list of vehicles, adds select car buttons to each, and adds click function for select car button
  * @param {Array} vehicles
  */
 function displayVehicles(vehicles) {
   let htmlString = '';
   $.each(vehicles, function (i, vehicle) {
-
     htmlString = htmlString + getVehicleItemHTML(i, vehicle);
   });
   vehicleItemsEl.html(htmlString);
+  //init the more info panels for each vehicle
+  initMoreInfoPanels();
+  //init select car button for each vehicle
   selectCarBtn = $('.selectCarBtn');
   selectCarBtn.on('click', function () {
-    changeScreen(mapScreen);
-    map.invalidateSize();
-    map.setView([-43.491053, 172.57902], 6)
-  })
+    let id = $(this).data('id');
+    chosenVehicle = vehicleList.vehicles[id];
+    loadMapScreenData();
+    updateMapScreenData();
+  });
 }
 
 /**
@@ -208,14 +235,38 @@ function filterByGroupSize(vehicles, groupsize) {
   });
 }
 
+//inits more info panels on car select screen after they have been generated
+function initMoreInfoPanels(){
+  let moreInfoBtn = $('.info-panel');
+  moreInfoBtn.on('click', function(){
+    $(this).toggleClass('active');
+    let parent = $(this).parent();
+    parent.find('.selectCarBtn').toggleClass('active');
+  });
+};
+
+//TO DO: NAME THIS SHIT
+function loadMapScreenData() {
+  changeScreen(mapScreen);
+  //refreshes leaflet map to fix tile loading issues when in display: none
+  map.invalidateSize();
+  map.setView([-43.491053, 172.57902], 6);
+};
+
+//call to update infomation dynamically as routes change
+function updateMapScreenData() {
+  roTotalDistanceEl.html(`${routeTotalDistance.toFixed(2)} KMs`);
+  roTotalCostEl.html(`$${chosenVehicle.totalFuelCost}`);
+  roStartLocationEl.html(startLocation.text);
+  roEndLocationEl.html(endLocation.text);
+}
+
 /**
  * Calculates the fuel cost for a vehicle based on the route distance
  * @param {Object} vehicle
- * @param {number} groupsize
  */
-function getFuelCost(vehicle, distance) {
-  let distanceKMs = (distance / 1000);
-  let litresUsed = (vehicle.fuelEfficiency * (distanceKMs / 100));
+function getFuelCost(vehicle) {
+  let litresUsed = (vehicle.fuelEfficiency * (routeTotalDistance / 100));
   let price = (fuelPrice * litresUsed).toFixed(2);
   return price;
 }
@@ -231,6 +282,47 @@ function updateFuelCost(vehicles) {
   });
 }
 
+/**
+ * @param {object} location
+ * Get the HTML string for one destination item.
+ */
+function getDetourListHTML(i, location) {
+  return `<li>
+            <div class="columns is-mobile route-item">
+              <div class="flag column is-2">
+                <i class="fas fa-flag-checkered"></i>
+              </div>
+              <div class="column is-8">
+                <h2>VIA</h2>
+                <div class="location-text">
+                ${detourLocation.text}
+                </div>
+              </div>
+              <div class="column is-2 ro-date-container">
+                <div data-id="${currentDetourId}" class="remove-route"><i class="fas fa-times-circle"></i></div>
+                  <div class="ro-date">11/12/18</div>
+                </div>
+            </div>
+          </li>`
+}
+
+//Generates html list elements for added routes, then inits the remove buttons
+function addDetourToRouteList() {
+  let htmlString = getDetourListHTML;
+  routeListEl.append(htmlString);
+  removeRouteBtn = $('.remove-route');
+  initRemoveRouteBtns();
+}
+
+//inits the remove route button functionality after the list item has been generated
+function initRemoveRouteBtns(){
+  removeRouteBtn.on('click', function(){
+    routeWaypoints.splice(($(this).data('id')), 1);
+    $('#routeList li:last-child').remove();
+    drawRoute();
+  })
+}
+
 //maps waypoints from array
 function drawRoute() {
   routingControl.setWaypoints(
@@ -244,7 +336,4 @@ function changeScreen(screen) {
   screen.addClass('active');
 }
 
-// function updateDistanceCalcs(){
-
-// }
 init();

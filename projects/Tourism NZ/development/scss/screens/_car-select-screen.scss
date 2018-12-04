@@ -3,22 +3,26 @@
     top: 0px;
     margin-top: 100px;
     margin-bottom: 50px;
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
-    box-shadow: 0px 1px 2px 0px rgba(34,34,34,0.46);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+
     .category {
         background-color: $light-grey;
         border: 1px solid #d2d4d5;
         margin: 0 auto;
         text-align: center;
         cursor: pointer;
+
         &:hover {
             background-color: $white;
-        }    
+        }
     }
+
     .car-icon {
         padding-top: 10px;
     }
+
     .filter-title {
         background: $primary-color;
         color: $white;
@@ -31,54 +35,84 @@
 }
 
 .vehicle-item {
+    position: relative;
     background-color: $light-grey;
     border: 1px solid #d2d4d5;
     padding: 0;
+    height: 380px;
+
     &:hover {
         background-color: $white;
     }
+
     li {
         display: inline-block;
         padding: 0px 25px;
     }
+
     h1 {
         color: $primary-color;
         text-transform: uppercase;
         font-size: 18px;
         padding: 25px;
     }
+
     p {
         color: $secondary-color;
     }
+
     .vehicle-image {
         width: 62%;
         margin: 0 auto;
         padding-bottom: 20px
     }
+
     .vehicle-item-button {
         padding: 10px 30px;
     }
+
     .btn-green {
         padding: 5px 30px;
         width: 100%;
         cursor: pointer;
     }
+
     .more-info {
         text-align: center;
         padding: 0;
         cursor: pointer;
     }
+
     .info-panel {
+        position: absolute;
+        bottom: 0;
+        height: 75px;
         background-color: $primary-color;
         color: $white;
         font-size: 12px;
         padding: 20px;
         text-align: center;
+        width: 100%;
+        transition: all 0.3s linear;
         cursor: pointer;
+
+        &.active {
+            height: 200px;
+        }
     }
+
     .info-text {
         color: $green;
         font-size: 10px;
+    }
+
+    .selectCarBtn {
+        position: relative;
+        z-index: 11;
+
+        &.active {
+            top: 95px;
+            }
     }
 }
 
@@ -96,4 +130,3 @@
     color: $primary-color;
     padding-bottom: 15px;
 }
-
