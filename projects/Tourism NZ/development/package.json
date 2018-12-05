@@ -9,6 +9,7 @@
   ],
   "dependencies": {
     "bulma": "^0.7.2",
+    "bulma-calendar": "^5.0.3",
     "esri-leaflet": "^2.0.3",
     "esri-leaflet-geocoder": "2.1.4",
     "leaflet": "1.0.0-rc.3"

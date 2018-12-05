@@ -4,15 +4,22 @@ let formGroupSizeInput = $('#groupSize'),
   formStartDateInput = $('#startDate'),
   formEndDateInput = $('#endDate'),
   formSubmitBtn = $('#submitBtn'),
-
+  clickOut = $('.click-out'),
+  //set up Bulma Calendar
+  calOptions = {},
+  calendars = bulmaCalendar.attach('[type="date"]', calOptions),
+  startDateCal = calendars[0],
+  endDateCal = calendars[1],
+  
   groupSize,
   startDate,
   endDate,
+  tripNoOfDays,
   startLocation,
   endLocation,
-  currentDetourId,
-
+  
   routeTotalDistance,
+  currentDetourId,
 
   vehicleList,
   seatFilteredVehicleList,
@@ -42,6 +49,8 @@ let formGroupSizeInput = $('#groupSize'),
   addDetourBtn = $('.add-detour-container'),
   addDetourInputEl = $('#addDetourInput'),
   routeListEl = $('#routeList'),
+  roStartDateEl = $('#roStartDate'),
+  roEndDateEl = $('#roEndDate'),
   removeRouteBtn,
 
   detourLocSearchBox = $('#detourLocation'),
@@ -78,9 +87,16 @@ function init() {
   formSubmitBtn.on('click', function () {
     currentScreen = "carSelectScreen";
     groupSize = formGroupSizeInput.val();
+    startDate = formStartDateInput.val();
+    endDate = formEndDateInput.val();
+    calcTripNoOfDays();
     seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
     drawRoute();
     changeScreen(carSelectScreen);
+  });
+  calendars.on('datepicker:show', function(){
+    //TO DO: create overlay with z-index below the calendar but above the rest. when clicked, hide() date picker 
+    clickOut.on('click', calendars.hide());
   });
   routingControl.on('routesfound', function (e) {
     let routes = e.routes;
@@ -158,10 +174,27 @@ function init() {
   //toggle active state for detour input
   addDetourBtn.on('click', function () {
     addDetourInputEl.toggleClass('active');
+    $('#detourLocation').focus();
   });
 }
 //Add location button shows input. Input splices routeWaypoints by routeWaypoint.length -1 to add 2nd to last. Add button on Input pushes name to the list, with data-id of routeWaypoints.length (before adding). Clicking X button on list item uses data ID as a way to remove the array at that index, and removes list item. 
 
+//calculates days between start and end for use in future calculations
+function getNoOfDays(startTime, endTime) {
+  var difference = endTime - startTime;
+  return Math.floor(difference / 1000 / 60 / 60 / 24);
+}
+
+function calcTripNoOfDays(){
+  let startTime = new Date(startDateCal.value()).getTime();
+  let endTime = new Date(endDateCal.value()).getTime();
+  if (startTime && endTime) {
+      tripNoOfDays = getNoOfDays(startTime, endTime);
+  } else {
+      alert('Please input both start and end times.')
+  }
+
+}
 
 /**
  * @param {object} vehicle
@@ -259,10 +292,13 @@ function loadMapScreenData() {
 
 //call to update infomation dynamically as routes change
 function updateMapScreenData() {
+  let totalCost = getTotalCost(chosenVehicle);
   roTotalDistanceEl.html(`${routeTotalDistance.toFixed(2)} KMs`);
-  roTotalCostEl.html(`$${chosenVehicle.totalFuelCost}`);
+  roTotalCostEl.html('$' + totalCost);
   roStartLocationEl.html(startLocation.text);
   roEndLocationEl.html(endLocation.text);
+  roStartDateEl.html(startDate);
+  roEndDateEl.html(endDate);
 }
 
 /**
@@ -272,6 +308,22 @@ function updateMapScreenData() {
 function getFuelCost(vehicle) {
   let litresUsed = (vehicle.fuelEfficiency * (routeTotalDistance / 100));
   let price = (fuelPrice * litresUsed).toFixed(2);
+  return price;
+}
+
+/**
+ * Calculates the rental cost for a vehicle based on the number of days
+ * @param {Object} vehicle
+ */
+function getRentalCost(vehicle) {
+  let price = (vehicle.price * tripNoOfDays);
+  return price;
+}
+
+function getTotalCost(vehicle){
+  let fuelPrice = parseFloat(getFuelCost(vehicle));
+  let rentalPrice = getRentalCost(vehicle);
+  let price = (fuelPrice + rentalPrice).toFixed(2);
   return price;
 }
 
@@ -304,7 +356,6 @@ function getDetourListHTML(i, location) {
               </div>
               <div class="column is-2 ro-date-container">
                 <div data-id="${currentDetourId}" class="remove-route"><i class="fas fa-times-circle"></i></div>
-                  <div class="ro-date">11/12/18</div>
                 </div>
             </div>
           </li>`

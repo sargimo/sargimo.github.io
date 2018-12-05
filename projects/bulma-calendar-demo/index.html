@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bulma Calendar Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bulma-calendar/dist/css/bulma-calendar.min.css">
+</head>
+
+<body>
+    <h1>Bulma Calendar</h1>
+    <ul>
+        <li>Read the README.md for installation instructions</li>
+        <li>View the Console to see the output :)</li>
+    </ul>
+    <input class="start-date" type="date">
+    <input class="end-date" type="date">
+    <button class="days-btn" type="button">Get number of days</button>
+    <script src="node_modules/bulma-calendar/dist/js/bulma-calendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        //set up Bulma Calendar
+        let options = {};
+        let calendars = bulmaCalendar.attach('[type="date"]', options);
+        let startDateCal = calendars[0];
+        let endDateCal = calendars[1];
+
+        //assign DOM elements to variables
+        let daysBtn = $('.days-btn');
+
+        daysBtn.on('click', function () {
+            let startTime = new Date(startDateCal.value()).getTime();
+            let endTime = new Date(endDateCal.value()).getTime();
+            if (startTime && endTime) {
+                console.log('No of days: ', getNoOfDays(startTime, endTime));
+            } else {
+                alert('Please input both start and end times.')
+            }
+        });
+
+        function getNoOfDays(startTime, endTime) {
+            var difference = endTime - startTime;
+            return Math.floor(difference / 1000 / 60 / 60 / 24);
+        }
+    </script>
+</body>
+
+</html>

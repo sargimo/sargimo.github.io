@@ -41,6 +41,33 @@
             box-shadow: none;
         }
     }
+    //bulma calendar override
+    .datepicker .calendar .calendar-nav {
+        background: linear-gradient($light-green, $green);
+    }
+    .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
+        border: .1rem dotted $green;
+        color: $green;
+    }
+    .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
+        border: .1rem solid $green;
+        color: $green;
+    }
+    .datepicker .calendar .calendar-footer {
+        background: $dark-grey;
+    }
+    .datepicker .calendar .calendar-header{
+        display: none;
+    }
+    .button.is-text {
+        color: $white;
+        &:hover {
+            color: $dark-grey;
+        }
+    }
+    .has-text-warning {
+        color: $green !important;
+    }
 }
 
 .form-screen-message {
@@ -75,4 +102,14 @@
         font-size: 16px;
         padding-top: 40px;
     }
+}
+
+.click-out {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    background: none;
 }

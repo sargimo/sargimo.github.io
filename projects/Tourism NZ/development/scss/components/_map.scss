@@ -8,7 +8,8 @@
 }
 
 .dropdown-menu {
-    position: relative;
+    position: absolute;
+    left: auto;
     top: 5px;
     background-color: $white;
     color: $dark-grey;

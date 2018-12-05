@@ -11294,7 +11294,8 @@ body {
 }
 
 .dropdown-menu {
-  position: relative;
+  position: absolute;
+  left: auto;
   top: 5px;
   background-color: #fff;
   color: #2a3539;
@@ -11363,6 +11364,41 @@ html {
           box-shadow: none;
 }
 
+.form-screen-form .datepicker .calendar .calendar-nav {
+  background: -webkit-gradient(linear, left top, left bottom, from(#a5e16f), to(#72a545));
+  background: linear-gradient(#a5e16f, #72a545);
+}
+
+.form-screen-form .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
+  border: 0.1rem dotted #72a545;
+  color: #72a545;
+}
+
+.form-screen-form .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
+  border: 0.1rem solid #72a545;
+  color: #72a545;
+}
+
+.form-screen-form .datepicker .calendar .calendar-footer {
+  background: #2a3539;
+}
+
+.form-screen-form .datepicker .calendar .calendar-header {
+  display: none;
+}
+
+.form-screen-form .button.is-text {
+  color: #fff;
+}
+
+.form-screen-form .button.is-text:hover {
+  color: #2a3539;
+}
+
+.form-screen-form .has-text-warning {
+  color: #72a545 !important;
+}
+
 .form-screen-message {
   background-color: #fff;
   z-index: 9;
@@ -11402,6 +11438,16 @@ html {
   text-align: left;
   font-size: 16px;
   padding-top: 40px;
+}
+
+.click-out {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  background: none;
 }
 
 .screen {
