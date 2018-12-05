@@ -89,6 +89,9 @@ function init() {
     if (currentScreen == "carSelectScreen") {
       updateFuelCost(seatFilteredVehicleList);
       displayVehicles(seatFilteredVehicleList);
+    } else if (currentScreen= "mapScreen") {
+      updateFuelCost(seatFilteredVehicleList);
+      updateMapScreenData();
     }
   });
   //click functions for categories
@@ -248,6 +251,7 @@ function initMoreInfoPanels(){
 //TO DO: NAME THIS SHIT
 function loadMapScreenData() {
   changeScreen(mapScreen);
+  currentScreen = "mapScreen";
   //refreshes leaflet map to fix tile loading issues when in display: none
   map.invalidateSize();
   map.setView([-43.491053, 172.57902], 6);
