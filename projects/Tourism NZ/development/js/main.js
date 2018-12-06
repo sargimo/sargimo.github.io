@@ -4,20 +4,19 @@ let formGroupSizeInput = $('#groupSize'),
   formStartDateInput = $('#startDate'),
   formEndDateInput = $('#endDate'),
   formSubmitBtn = $('#submitBtn'),
-  clickOut = $('.click-out'),
-  //set up Bulma Calendar
+
   calOptions = {},
   calendars = bulmaCalendar.attach('[type="date"]', calOptions),
   startDateCal = calendars[0],
   endDateCal = calendars[1],
-  
+
   groupSize,
   startDate,
   endDate,
   tripNoOfDays,
   startLocation,
   endLocation,
-  
+
   routeTotalDistance,
   currentDetourId,
 
@@ -62,9 +61,9 @@ const fuelPrice = 2.25;
 let map = L.map('mapid').setView([-43.491053, 172.57902], 6)
 //Start/Finish inputs geocoding
 let startLocationEl = BootstrapGeocoder.search({
-    inputTag: 'startLocation',
-    placeholder: 'Starting Location'
-  }).addTo(map),
+  inputTag: 'startLocation',
+  placeholder: 'Starting Location'
+}).addTo(map),
   endLocationEl = BootstrapGeocoder.search({
     inputTag: 'endLocation',
     placeholder: 'Finishing Location'
@@ -94,10 +93,13 @@ function init() {
     drawRoute();
     changeScreen(carSelectScreen);
   });
-  calendars.on('datepicker:show', function(){
-    //TO DO: create overlay with z-index below the calendar but above the rest. when clicked, hide() date picker 
-    clickOut.on('click', calendars.hide());
+  // set up Bulma Calendar
+  $('body').on('click', function () {
+    $.each(calendars, function (i, calendar) {
+      calendar.hide();
+    });
   });
+  //routing events to delay loading until routes have been returned for calculations
   routingControl.on('routesfound', function (e) {
     let routes = e.routes;
     //converts from M to KM
@@ -105,12 +107,12 @@ function init() {
     if (currentScreen == "carSelectScreen") {
       updateFuelCost(seatFilteredVehicleList);
       displayVehicles(seatFilteredVehicleList);
-    } else if (currentScreen= "mapScreen") {
+    } else if (currentScreen = "mapScreen") {
       updateFuelCost(seatFilteredVehicleList);
       updateMapScreenData();
     }
   });
-  //click functions for categories
+  //click listeners for categories
   allVehiclesBtn.on('click', function () {
     displayVehicles(seatFilteredVehicleList);
   });
@@ -168,7 +170,7 @@ function init() {
     // drawRoute();
   });
   //toggle active state for route options
-  routeOptionsBtn.on('click', function(){
+  routeOptionsBtn.on('click', function () {
     routeOptionsEl.toggleClass('active');
   });
   //toggle active state for detour input
@@ -181,19 +183,14 @@ function init() {
 
 //calculates days between start and end for use in future calculations
 function getNoOfDays(startTime, endTime) {
-  var difference = endTime - startTime;
+  let difference = endTime - startTime;
   return Math.floor(difference / 1000 / 60 / 60 / 24);
 }
 
-function calcTripNoOfDays(){
+function calcTripNoOfDays() {
   let startTime = new Date(startDateCal.value()).getTime();
   let endTime = new Date(endDateCal.value()).getTime();
-  if (startTime && endTime) {
-      tripNoOfDays = getNoOfDays(startTime, endTime);
-  } else {
-      alert('Please input both start and end times.')
-  }
-
+  tripNoOfDays = getNoOfDays(startTime, endTime);
 }
 
 /**
@@ -272,9 +269,9 @@ function filterByGroupSize(vehicles, groupsize) {
 }
 
 //inits more info panels on car select screen after they have been generated
-function initMoreInfoPanels(){
+function initMoreInfoPanels() {
   let moreInfoBtn = $('.info-panel');
-  moreInfoBtn.on('click', function(){
+  moreInfoBtn.on('click', function () {
     $(this).toggleClass('active');
     let parent = $(this).parent();
     parent.find('.selectCarBtn').toggleClass('active');
@@ -320,7 +317,7 @@ function getRentalCost(vehicle) {
   return price;
 }
 
-function getTotalCost(vehicle){
+function getTotalCost(vehicle) {
   let fuelPrice = parseFloat(getFuelCost(vehicle));
   let rentalPrice = getRentalCost(vehicle);
   let price = (fuelPrice + rentalPrice).toFixed(2);
@@ -370,8 +367,8 @@ function addDetourToRouteList() {
 }
 
 //inits the remove route button functionality after the list item has been generated
-function initRemoveRouteBtns(){
-  removeRouteBtn.on('click', function(){
+function initRemoveRouteBtns() {
+  removeRouteBtn.on('click', function () {
     routeWaypoints.splice(($(this).data('id')), 1);
     $('#routeList li:last-child').remove();
     drawRoute();

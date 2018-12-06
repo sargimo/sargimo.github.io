@@ -25,189 +25,191 @@
 </head>
 
 <body>
-    <div class="click-out">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <div class="navbar-item">
-                    <p>Accelerate</p>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <p>Accelerate</p>
+            </div>
+        </div>
+    </nav>
+    <div id="formScreen" class="screen active">
+        <div class="field form-screen">
+            <div class="form-screen-message">
+                <h1>PLAN</h1>
+                <h1>YOUR</h1>
+                <h1>ROUTE</h1>
+                <p>Don't worry, you can add detours and edit your route further on the next page!</p>
+            </div>
+            <div class="form-screen-form">
+                <form>
+                    <label for "groupSize">Group Size</label>
+                    <div class="control">
+                        <input required id="groupSize" type="number">
+                    </div>
+                    <label for "startDate">Starting Date</label>
+                    <div class="control">
+                        <input required id="startDate" type="date">
+                    </div>
+                    <label for "endDate">Ending Date</label>
+                    <div class="control">
+                        <input required id="endDate" type="date">
+                    </div>
+                    <label for "startLocation">Starting Location</label>
+                    <div class="control">
+                        <input required id="startLocation" type="text">
+                    </div>
+                    <label for "endLocation">Finishing Location</label>
+                    <div class="control">
+                        <input required id="endLocation" type="text">
+                    </div>
+                    <div class="box has-text-centered">
+                        <button class="btn-green" id="submitBtn" type="button">CHOOSE A CAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="carSelectScreen" class="screen">
+        <div class="container">
+            <div class="filter-categories">
+                <div class="categories columns is-multiline is-mobile">
+                    <div class="column is-one-sixth-desktop is-half-mobile  filter-title">
+                        <h1>FILTER BY TYPE</h1>
+                    </div>
+                    <div id="allVehicles" class="column is-one-sixth-desktop is-half-mobile  category">
+                        <div class="car-icon">
+                            <img src="images/all.png" alt="fleet of cars">
+                        </div>
+                        <div>
+                            <img src="images/left-lines.png" alt="decorative lines">
+                        </div>
+                        <h1>ALL</h1>
+                    </div>
+                    <div id="compactVehicles" data-categoryId="0" class="column is-one-sixth-desktop is-half-mobile category">
+                        <div class="car-icon">
+                            <img src="images/compact.png" alt="compact car">
+                        </div>
+                        <img src="images/left-lines.png" alt="decorative lines">
+                        <h1>COMPACT</h1>
+                    </div>
+                    <div id="sedanVehicles" data-categoryId="1" class="column is-one-sixth-desktop is-half-mobile  category">
+                        <div class="car-icon">
+                            <img src="images/sedan.png" alt="sedan">
+                        </div>
+                        <img src="images/center-lines.png" alt="decorative lines">
+                        <h1>SEDAN</h1>
+                    </div>
+                    <div id="suvVehicles" data-categoryId="2" class="column is-one-sixth-desktop is-half-mobile  category">
+                        <div class="car-icon">
+                            <img src="images/suv4wd.png" alt="SUV car">
+                        </div>
+                        <img src="images/right-lines.png" alt="decorative lines">
+                        <h1>SUV/4WD</h1>
+                    </div>
+                    <div id="luxuryVehicles" data-categoryId="3" class="column is-one-sixth-desktop is-half-mobile  category">
+                        <div class="car-icon">
+                            <img src="images/luxury.png" alt="luxury car">
+                        </div>
+                        <img src="images/right-lines.png" alt="decorative lines">
+                        <h1>LUXURY</h1>
+                    </div>
+                </div>
+                <div id="vehicleItems" class="columns is-multiline">
                 </div>
             </div>
-        </nav>
-        <div id="formScreen" class="screen active">
-            <div class="field form-screen">
-                <div class="form-screen-message">
-                    <h1>PLAN</h1>
-                    <h1>YOUR</h1>
-                    <h1>ROUTE</h1>
-                    <p>Don't worry, you can add detours and edit your route further on the next page!</p>
+        </div>
+    </div>
+    <div id="mapScreen" class="screen">
+        <div class="option-panel">
+            <ul>
+                <li id="routeOptionsBtn">
+                    <div>
+                        <i class="fas fa-road option-panel-icon"></i>
+                    </div>
+                    <p>Route Options</p>
+                </li>
+                <li>
+                    <div>
+                        <i class="fas fa-car option-panel-icon"></i>
+                    </div>
+                    <p>Car Choice</p>
+                </li>
+                <li class="last-icon">
+                    <div>
+                        <i class="fas fa-cog option-panel-icon"></i>
+                    </div>
+                    <p>Edit</p>
+                </li>
+            </ul>
+        </div>
+        <div class="route-display active">
+            <div class="columns header">
+                <div class="column is-6 is-mobile header-item">
+                    <h1>TOTAL DISTANCE</h1>
+                    <div id="roTotalDistance" class="totals-text"></div>
                 </div>
-                <div class="form-screen-form">
-                    <form>
-                        <label for "groupSize">Group Size</label>
-                        <div class="control">
-                            <input required id="groupSize" type="number">
+                <div class="column is-6 is-mobile">
+                    <h1>TOTAL COST</h1>
+                    <div id="roTotalCost" class="totals-text"></div>
+                </div>
+            </div>
+            <ul id="routeList">
+                <li>
+                    <div class="columns is-mobile route-item">
+                        <div class="flag column is-2">
+                            <i class="fas fa-flag-checkered"></i>
                         </div>
-                        <label for "startDate">Starting Date</label>
-                        <div class="control">
-                            <input data-date-format="DD/MM/YYYY" required id="startDate" type="date">
+                        <div class="column is-8">
+                            <h2>START</h2>
+                            <div id="roStartLoc" class="location-text">
+                            </div>
                         </div>
-                        <label for "endDate">Ending Date</label>
-                        <div class="control">
-                            <input data-date-format="DD/MM/YYYY" required id="endDate" type="date">
+                        <div class="column is-2 ro-date-container">
+                            <div class="remove-route">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div id="roStartDate" class="ro-date"></div>
                         </div>
-                        <label for "startLocation">Starting Location</label>
-                        <div class="control">
-                            <input required id="startLocation" type="text">
-                        </div>
-                        <label for "endLocation">Finishing Location</label>
-                        <div class="control">
-                            <input required id="endLocation" type="text">
-                        </div>
-                        <div class="box has-text-centered">
-                            <button class="btn-green" id="submitBtn" type="button">CHOOSE A CAR</button>
-                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="add-detour columns">
+                <div class="column is-7 is-vcentered">
+                    <form id="addDetourInput">
+                        <!-- <label for "detour">Travel via...</label> -->
+                        <input placeholder="Detour through..." required id="detourLocation">
                     </form>
                 </div>
+                <div class="column is-5 add-detour-container">
+                    Add detour
+                    <button class="add-detour-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
+            <ul>
+                <li>
+                    <div class="columns is-mobile route-item">
+                        <div class="flag column is-2">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="column is-8">
+                            <h2>END</h2>
+                            <div id="roEndLoc" class="location-text">
+                            </div>
+                        </div>
+                        <div class="column is-2 ro-date-container">
+                            <div class="remove-route">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div id="roEndDate" class="ro-date"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div id="carSelectScreen" class="screen">
-            <div class="container">
-                <div class="filter-categories">
-                    <div class="categories columns is-multiline is-mobile">
-                        <div class="column is-one-sixth-desktop is-half-mobile  filter-title">
-                            <h1>FILTER BY TYPE</h1>
-                        </div>
-                        <div id="allVehicles" class="column is-one-sixth-desktop is-half-mobile  category">
-                            <div class="car-icon">
-                                <img src="images/all.png" alt="fleet of cars">
-                            </div>
-                            <div>
-                                <img src="images/left-lines.png" alt="decorative lines">
-                            </div>
-                            <h1>ALL</h1>
-                        </div>
-                        <div id="compactVehicles" data-categoryId="0" class="column is-one-sixth-desktop is-half-mobile category">
-                            <div class="car-icon">
-                                <img src="images/compact.png" alt="compact car">
-                            </div>
-                            <img src="images/left-lines.png" alt="decorative lines">
-                            <h1>COMPACT</h1>
-                        </div>
-                        <div id="sedanVehicles" data-categoryId="1" class="column is-one-sixth-desktop is-half-mobile  category">
-                            <div class="car-icon">
-                                <img src="images/sedan.png" alt="sedan">
-                            </div>
-                            <img src="images/center-lines.png" alt="decorative lines">
-                            <h1>SEDAN</h1>
-                        </div>
-                        <div id="suvVehicles" data-categoryId="2" class="column is-one-sixth-desktop is-half-mobile  category">
-                            <div class="car-icon">
-                                <img src="images/suv4wd.png" alt="SUV car">
-                            </div>
-                            <img src="images/right-lines.png" alt="decorative lines">
-                            <h1>SUV/4WD</h1>
-                        </div>
-                        <div id="luxuryVehicles" data-categoryId="3" class="column is-one-sixth-desktop is-half-mobile  category">
-                            <div class="car-icon">
-                                <img src="images/luxury.png" alt="luxury car">
-                            </div>
-                            <img src="images/right-lines.png" alt="decorative lines">
-                            <h1>LUXURY</h1>
-                        </div>
-                    </div>
-                    <div id="vehicleItems" class="columns is-multiline">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="mapScreen" class="screen">
-            <div class="option-panel">
-                <ul>
-                    <li id="routeOptionsBtn">
-                        <div>
-                            <i class="fas fa-road option-panel-icon"></i>
-                        </div>
-                        <p>Route Options</p>
-                    </li>
-                    <li>
-                        <div>
-                            <i class="fas fa-car option-panel-icon"></i>
-                        </div>
-                        <p>Car Choice</p>
-                    </li>
-                    <li class="last-icon">
-                        <div>
-                            <i class="fas fa-cog option-panel-icon"></i>
-                        </div>
-                        <p>Edit</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="route-display active">
-                <div class="columns header">
-                    <div class="column is-6 is-mobile header-item">
-                        <h1>TOTAL DISTANCE</h1>
-                        <div id="roTotalDistance" class="totals-text"></div>
-                    </div>
-                    <div class="column is-6 is-mobile">
-                        <h1>TOTAL COST</h1>
-                        <div id="roTotalCost" class="totals-text"></div>
-                    </div>
-                </div>
-                <ul id="routeList">
-                    <li>
-                        <div class="columns is-mobile route-item">
-                            <div class="flag column is-2">
-                                <i class="fas fa-flag-checkered"></i>
-                            </div>
-                            <div class="column is-8">
-                                <h2>START</h2>
-                                <div id="roStartLoc" class="location-text">
-                                </div>
-                            </div>
-                            <div class="column is-2 ro-date-container">
-                                <div class="remove-route"><i class="fas fa-times-circle"></i></div>
-                                <div id="roStartDate" class="ro-date"></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="add-detour columns">
-                    <div class="column is-7 is-vcentered">
-                        <form id="addDetourInput">
-                            <!-- <label for "detour">Travel via...</label> -->
-                            <input placeholder="Detour through..." required id="detourLocation">
-                        </form>
-                    </div>
-                    <div class="column is-5 add-detour-container">
-                        Add detour
-                        <button class="add-detour-btn">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <ul>
-                    <li>
-                        <div class="columns is-mobile route-item">
-                            <div class="flag column is-2">
-                                <i class="fas fa-flag-checkered"></i>
-                            </div>
-                            <div class="column is-8">
-                                <h2>END</h2>
-                                <div id="roEndLoc" class="location-text">
-                                </div>
-                            </div>
-                            <div class="column is-2 ro-date-container">
-                                <div class="remove-route"><i class="fas fa-times-circle"></i></div>
-                                <div id="roEndDate" class="ro-date"></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="mapid">
+        <div id="mapid">
 
-            </div>
         </div>
     </div>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
