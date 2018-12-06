@@ -78,9 +78,19 @@
     }
 
     .more-info {
+        width: 50px;
+        position: absolute;
+        right: 35px;
+        z-index: 1;
+        bottom: 30px;
         text-align: center;
         padding: 0;
         cursor: pointer;
+        transition: all 0.3s linear;
+
+        &.active {
+            transform: translateY(-125px);
+            }
     }
 
     .info-panel {
@@ -109,10 +119,15 @@
     .selectCarBtn {
         position: relative;
         z-index: 11;
+        transition: all 0.3s linear;
 
         &.active {
-            top: 95px;
+            transform: translateY(95px);
             }
+    }
+    .info-list {
+        position: relative;
+        z-index: 5;
     }
 }
 
@@ -126,7 +141,13 @@
 }
 
 .more-info-btn {
-    font-size: 28px;
-    color: $primary-color;
-    padding-bottom: 15px;
+    width: 25px;
+    position: absolute;
+    z-index: 5;
+    bottom: 85px;
+    right: 48px;
+    transition: all 0.3s linear;
+    &.active {
+        transform: translateY(-125px) rotate(180deg);
+    }    
 }

@@ -41,29 +41,29 @@
                 <p>Don't worry, you can add detours and edit your route further on the next page!</p>
             </div>
             <div class="form-screen-form">
-                <form>
+                <form onsubmit="return false">
                     <label for "groupSize">Group Size</label>
                     <div class="control">
-                        <input required id="groupSize" type="number">
+                        <input class="form-input" id="groupSize" type="number">
                     </div>
                     <label for "startDate">Starting Date</label>
                     <div class="control">
-                        <input required id="startDate" type="date">
+                        <input class="form-input" required id="startDate" type="date" readonly>
                     </div>
                     <label for "endDate">Ending Date</label>
                     <div class="control">
-                        <input required id="endDate" type="date">
+                        <input class="form-input" required id="endDate" type="date" readonly>
                     </div>
                     <label for "startLocation">Starting Location</label>
                     <div class="control">
-                        <input required id="startLocation" type="text">
+                        <input class="form-input" required id="startLocation" type="text">
                     </div>
                     <label for "endLocation">Finishing Location</label>
                     <div class="control">
-                        <input required id="endLocation" type="text">
+                        <input class="form-input" required id="endLocation" type="text">
                     </div>
                     <div class="box has-text-centered">
-                        <button class="btn-green" id="submitBtn" type="button">CHOOSE A CAR</button>
+                        <input class="btn-green" id="submitBtn" type="submit" value="CHOOSE A CAR">
                     </div>
                 </form>
             </div>

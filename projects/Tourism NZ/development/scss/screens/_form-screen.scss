@@ -26,48 +26,71 @@
         font-size: 14px;
         width: 65%;
         color: $white;
+    }
 
-        input {
-            background: none;
-            border: none;
-            margin-bottom: 20px;
-            width: 100%;
-            color: $green;
+    .form-input {
+        background: none;
+        border: none;
+        margin-bottom: 20px;
+        width: 100%;
+        color: $green;
+        &.required {
+            border-bottom: 1px red dotted;
         }
+    }
 
-        .box {
-            background: none;
-            border: none;
-            box-shadow: none;
-        }
+    .box {
+        background: none;
+        border: none;
+        box-shadow: none;
     }
-    //bulma calendar override
-    .datepicker .calendar .calendar-nav {
-        background: linear-gradient($light-green, $green);
+}
+
+//bulma calendar override
+.datepicker .calendar .calendar-nav {
+    background: linear-gradient($light-green, $green);
+}
+
+.datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
+    border: .1rem dotted $green;
+    color: $green;
+}
+
+.datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
+    border: .1rem solid $green;
+    color: $green;
+}
+
+.datepicker .calendar .calendar-footer {
+    background: $dark-grey;
+}
+
+.datepicker .calendar .calendar-header {
+    display: none;
+}
+.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
+    background: $green;
+    border-color: $green;
+}
+.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-months .calendar-year:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
+    border-color: $green;
+    color: $dark-grey;
+}
+.datepicker .calendar .calendar-body .calendar-months .calendar-month, .datepicker .calendar .calendar-body .calendar-months .calendar-year, .datepicker .calendar .calendar-body .calendar-years .calendar-month, .datepicker .calendar .calendar-body .calendar-years .calendar-year {
+    border: .1rem solid transparent;
+    color: $dark-grey;
+}
+
+.button.is-text {
+    color: $white;
+
+    &:hover {
+        color: $dark-grey;
     }
-    .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
-        border: .1rem dotted $green;
-        color: $green;
-    }
-    .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
-        border: .1rem solid $green;
-        color: $green;
-    }
-    .datepicker .calendar .calendar-footer {
-        background: $dark-grey;
-    }
-    .datepicker .calendar .calendar-header{
-        display: none;
-    }
-    .button.is-text {
-        color: $white;
-        &:hover {
-            color: $dark-grey;
-        }
-    }
-    .has-text-warning {
-        color: $green !important;
-    }
+}
+
+.has-text-warning {
+    color: $green !important;
 }
 
 .form-screen-message {

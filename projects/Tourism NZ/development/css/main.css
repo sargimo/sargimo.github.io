@@ -11296,7 +11296,7 @@ body {
 .dropdown-menu {
   position: absolute;
   left: auto;
-  top: 5px;
+  top: 25px;
   background-color: #fff;
   color: #2a3539;
   border: 1px solid #72a545;
@@ -11349,7 +11349,7 @@ html {
   color: #fff;
 }
 
-.form-screen-form form input {
+.form-screen-form .form-input {
   background: none;
   border: none;
   margin-bottom: 20px;
@@ -11357,45 +11357,64 @@ html {
   color: #72a545;
 }
 
-.form-screen-form form .box {
+.form-screen-form .form-input.required {
+  border-bottom: 1px red dotted;
+}
+
+.form-screen-form .box {
   background: none;
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.form-screen-form .datepicker .calendar .calendar-nav {
+.datepicker .calendar .calendar-nav {
   background: -webkit-gradient(linear, left top, left bottom, from(#a5e16f), to(#72a545));
   background: linear-gradient(#a5e16f, #72a545);
 }
 
-.form-screen-form .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
+.datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item.is-today {
   border: 0.1rem dotted #72a545;
   color: #72a545;
 }
 
-.form-screen-form .datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
+.datepicker .calendar .calendar-body .calendar-dates .calendar-days .calendar-date .date-item:hover {
   border: 0.1rem solid #72a545;
   color: #72a545;
 }
 
-.form-screen-form .datepicker .calendar .calendar-footer {
+.datepicker .calendar .calendar-footer {
   background: #2a3539;
 }
 
-.form-screen-form .datepicker .calendar .calendar-header {
+.datepicker .calendar .calendar-header {
   display: none;
 }
 
-.form-screen-form .button.is-text {
-  color: #fff;
+.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
+  background: #72a545;
+  border-color: #72a545;
 }
 
-.form-screen-form .button.is-text:hover {
+.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-months .calendar-year:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
+  border-color: #72a545;
   color: #2a3539;
 }
 
-.form-screen-form .has-text-warning {
+.datepicker .calendar .calendar-body .calendar-months .calendar-month, .datepicker .calendar .calendar-body .calendar-months .calendar-year, .datepicker .calendar .calendar-body .calendar-years .calendar-month, .datepicker .calendar .calendar-body .calendar-years .calendar-year {
+  border: .1rem solid transparent;
+  color: #2a3539;
+}
+
+.button.is-text {
+  color: #fff;
+}
+
+.button.is-text:hover {
+  color: #2a3539;
+}
+
+.has-text-warning {
   color: #72a545 !important;
 }
 
@@ -11529,9 +11548,21 @@ html {
 }
 
 .vehicle-item .more-info {
+  width: 50px;
+  position: absolute;
+  right: 35px;
+  z-index: 1;
+  bottom: 30px;
   text-align: center;
   padding: 0;
   cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.vehicle-item .more-info.active {
+  -webkit-transform: translateY(-125px);
+          transform: translateY(-125px);
 }
 
 .vehicle-item .info-panel {
@@ -11561,10 +11592,18 @@ html {
 .vehicle-item .selectCarBtn {
   position: relative;
   z-index: 11;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
 .vehicle-item .selectCarBtn.active {
-  top: 95px;
+  -webkit-transform: translateY(95px);
+          transform: translateY(95px);
+}
+
+.vehicle-item .info-list {
+  position: relative;
+  z-index: 5;
 }
 
 .gradient-icon {
@@ -11577,9 +11616,18 @@ html {
 }
 
 .more-info-btn {
-  font-size: 28px;
-  color: #2a3539;
-  padding-bottom: 15px;
+  width: 25px;
+  position: absolute;
+  z-index: 5;
+  bottom: 85px;
+  right: 48px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.more-info-btn.active {
+  -webkit-transform: translateY(-125px) rotate(180deg);
+          transform: translateY(-125px) rotate(180deg);
 }
 
 .route-display {

@@ -61,9 +61,9 @@ const fuelPrice = 2.25;
 let map = L.map('mapid').setView([-43.491053, 172.57902], 6)
 //Start/Finish inputs geocoding
 let startLocationEl = BootstrapGeocoder.search({
-  inputTag: 'startLocation',
-  placeholder: 'Starting Location'
-}).addTo(map),
+    inputTag: 'startLocation',
+    placeholder: 'Starting Location'
+  }).addTo(map),
   endLocationEl = BootstrapGeocoder.search({
     inputTag: 'endLocation',
     placeholder: 'Finishing Location'
@@ -84,16 +84,19 @@ function init() {
   });
   //init submit button to collect input data and calculate map routes
   formSubmitBtn.on('click', function () {
-    currentScreen = "carSelectScreen";
     groupSize = formGroupSizeInput.val();
     startDate = formStartDateInput.val();
     endDate = formEndDateInput.val();
-    calcTripNoOfDays();
-    seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
-    drawRoute();
-    changeScreen(carSelectScreen);
+    // if (validateFormScreen()) {
+      calcTripNoOfDays();
+      currentScreen = "carSelectScreen";
+      seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
+      drawRoute();
+      changeScreen(carSelectScreen);
+    // };
+    // if (groupSize && startDate && endDate && startLocation && endLocation) {
   });
-  // set up Bulma Calendar
+  //Adds click out functionality to bulma calendar
   $('body').on('click', function () {
     $.each(calendars, function (i, calendar) {
       calendar.hide();
@@ -193,6 +196,22 @@ function calcTripNoOfDays() {
   tripNoOfDays = getNoOfDays(startTime, endTime);
 }
 
+function validateFormScreen() {
+  if (formStartDateInput.val() == "") {
+    formStartDateInput.addClass('required');
+    return false;
+  } else if (formEndDateInput.val() == "") {
+    formEndDateInput.addClass('required');
+    return false;
+  } else if (!startLocation) {
+    formStartLocInput.addClass('required');
+    return false;
+  } else if (!endLocation) {
+    formEndLocInput.addClass('required');
+    return false;
+  }
+  return true;
+}
 /**
  * @param {object} vehicle
  * Get the HTML string for one vehicle item.
@@ -209,13 +228,15 @@ function getVehicleItemHTML(i, vehicle) {
               <div data-id="${vehicle.id}" class="column is-half is-offset-one-quarter vehicle-item-button">
                 <button data-id="${vehicle.id}" class="btn-green selectCarBtn">SELECT</button>
               </div>
-              <div class="column is-one-quarter more-info">
-                <i class="more-info-btn fas fa-chevron-circle-up"></i>
-                <p>more info</p>
-              </div>
             </div>
             <div class="info-panel">
-              <ul>
+              <div class="more-info-btn">
+                <img src="../images/chevron.png" alt="tab">
+              </div>
+              <div class="more-info">
+                  <img src="../images/chevron-container.png" alt="tab">
+              </div>
+              <ul class="info-list">
                 <li><i class="gradient-icon fas fa-user"></i>${vehicle.seats}<div class="info-text">passengers</div></li>
                 <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags}<div class="info-text">large bags</div></li>
                 <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">trip fuel cost</div></li>
@@ -275,6 +296,8 @@ function initMoreInfoPanels() {
     $(this).toggleClass('active');
     let parent = $(this).parent();
     parent.find('.selectCarBtn').toggleClass('active');
+    $(this).find('.more-info').toggleClass('active');
+    $(this).find('.more-info-btn').toggleClass('active');
   });
 };
 
