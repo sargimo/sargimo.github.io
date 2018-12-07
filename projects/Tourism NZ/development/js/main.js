@@ -1,11 +1,4 @@
-let formGroupSizeInput = $('#groupSize'),
-  formStartLocInput = $('#startLocation'),
-  formEndLocInput = $('#endLocation'),
-  formStartDateInput = $('#startDate'),
-  formEndDateInput = $('#endDate'),
-  formSubmitBtn = $('#submitBtn'),
-
-  calOptions = {},
+let calOptions = {},
   calendars = bulmaCalendar.attach('[type="date"]', calOptions),
   startDateCal = calendars[0],
   endDateCal = calendars[1],
@@ -24,13 +17,21 @@ let formGroupSizeInput = $('#groupSize'),
   seatFilteredVehicleList,
   categoryList,
   chosenVehicle = [],
+  currentScreen = "formScreen",
 
+  //screen 1
+  formGroupSizeInput = $('#groupSize'),
+  formStartLocInput = $('#startLocation'),
+  formEndLocInput = $('#endLocation'),
+  formStartDateInput = $('#startDate'),
+  formEndDateInput = $('#endDate'),
+  formSubmitBtn = $('#submitBtn'),
   formScreen = $('#formScreen'),
   carSelectScreen = $('#carSelectScreen'),
   mapScreen = $('#mapScreen'),
   screens = $('.screen'),
-  currentScreen = "formScreen",
-
+  
+  //screen 2
   allVehiclesBtn = $('#allVehicles'),
   compactVehiclesBtn = $('#compactVehicles'),
   sedanVehiclesBtn = $('#sedanVehicles'),
@@ -39,7 +40,10 @@ let formGroupSizeInput = $('#groupSize'),
   vehicleItemsEl = $('#vehicleItems'),
   selectCarBtn,
 
+  //screen 3
   routeOptionsBtn = $('#routeOptionsBtn'),
+  carInfoBtn = $('#carInfoBtn'),
+  
   routeOptionsEl = $('.route-display'),
   roTotalDistanceEl = $('#roTotalDistance'),
   roTotalCostEl = $('#roTotalCost'),
@@ -51,6 +55,8 @@ let formGroupSizeInput = $('#groupSize'),
   roStartDateEl = $('#roStartDate'),
   roEndDateEl = $('#roEndDate'),
   removeRouteBtn,
+
+  carInfoEl = $('.car-info'),
 
   detourLocSearchBox = $('#detourLocation'),
   routeWaypoints = []
@@ -172,9 +178,14 @@ function init() {
     // routeWaypoints.push(startPoint, detourPoint1, endPoint)
     // drawRoute();
   });
-  //toggle active state for route options
+  //toggle active state for options panel screen 3
   routeOptionsBtn.on('click', function () {
     routeOptionsEl.toggleClass('active');
+    routeOptionsBtn.toggleClass('active');
+  });
+  carInfoBtn.on('click', function () {
+    carInfoEl.toggleClass('active');
+    carInfoBtn.toggleClass('active');
   });
   //toggle active state for detour input
   addDetourBtn.on('click', function () {
@@ -242,7 +253,7 @@ function getVehicleItemHTML(i, vehicle) {
                 <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.price}<div class="info-text">price per day</div></li>
               </ul>
               <ul class="more-info-list">
-                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">route fuel cost</div></li>
+                <li><i class="gradient-icon fas fa-gas-pump"></i>$${vehicle.totalFuelCost}<div class="info-text">route fuel cost</div></li>
                 <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags} lrg, ${vehicle.smlBags} sml<div class="info-text">boot bag space</div></li>
                 <li><i class="gradient-icon fas fa-map-marked-alt"></i>${vehicle.gps}<div class="info-text">GPS</div></li>
             </div>
@@ -318,12 +329,15 @@ function loadMapScreenData() {
 //call to update infomation dynamically as routes change
 function updateMapScreenData() {
   let totalCost = getTotalCost(chosenVehicle);
+  chosenVehicle.totalCost = totalCost;
+  let carInfo = getFullVehicleInfoHTML(chosenVehicle);
   roTotalDistanceEl.html(`${routeTotalDistance.toFixed(2)} KMs`);
   roTotalCostEl.html('$' + totalCost);
   roStartLocationEl.html(startLocation.text);
   roEndLocationEl.html(endLocation.text);
   roStartDateEl.html(startDate);
   roEndDateEl.html(endDate);
+  carInfoEl.html(carInfo);
 }
 
 /**
@@ -402,6 +416,38 @@ function initRemoveRouteBtns() {
     drawRoute();
   })
 }
+
+function getFullVehicleInfoHTML(vehicle) {
+  return `<div data-id="${vehicle.id}" class="ci-car-info">
+            <div>
+              <h1>${vehicle.name}</h1>
+            </div>
+            <div class="vehicle-image level">
+              <img src="../images/cars/${vehicle.image}" alt="${vehicle.name}">
+            </div>
+            <div class="car-description">
+              ${vehicle.description}
+            </div>
+            <div class="box has-text-centered">
+              <button id="chooseNewCar" class="btn-transparent">choose new car</button>
+            </div>
+            <div class="info-panel">
+              <ul class="info-list">
+                <li><i class="gradient-icon fas fa-user"></i>${vehicle.seats}<div class="info-text">passengers</div></li>
+                <li><i class="gradient-icon fas fa-door-open"></i>${vehicle.doors}<div class="info-text">doors</div></li>
+                <li><i class="gradient-icon fas fa-car-battery"></i>${vehicle.engine}<div class="info-text">engine size</div></li>
+                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags}<div class="info-text">large bags</div></li>
+                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.smlBags}<div class="info-text">small bags</div></li>
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.price}<div class="info-text">price per day</div></li>
+                <li><i class="gradient-icon fas fa-gas-pump"></i>${vehicle.fuelEfficiency}L/100k<div class="info-text">fuel efficiency</div></li>
+                <li><i class="gradient-icon fas fa-map-marked-alt"></i>${vehicle.gps}<div class="info-text">GPS</div></li>
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">route fuel cost</div></li>
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalCost}<div class="info-text">total cost</div></li>
+              </ul>
+            </div>
+          </div>`
+}
+
 
 //maps waypoints from array
 function drawRoute() {

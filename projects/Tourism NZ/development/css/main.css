@@ -11271,6 +11271,31 @@ label.panel-block:hover {
   outline: none;
 }
 
+.btn-green:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#8bd845), to(#598136));
+  background: linear-gradient(#8bd845, #598136);
+}
+
+.btn-transparent {
+  color: #72a545;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #72a545;
+  padding: 10px 15px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-transparent:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#a5e16f), to(#72a545));
+  background: linear-gradient(#a5e16f, #72a545);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   color: #2a3539;
@@ -11642,18 +11667,19 @@ html {
 .route-display {
   position: absolute;
   z-index: 9;
-  left: 110px;
+  left: -500px;
   top: 300px;
   background-color: #fff;
   width: 400px;
   height: 600px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
-  display: none;
 }
 
 .route-display.active {
-  display: block;
+  left: 100px;
 }
 
 .route-display h1 {
@@ -11763,6 +11789,90 @@ html {
   display: block;
 }
 
+.car-info {
+  position: absolute;
+  z-index: 9;
+  left: -500px;
+  top: 300px;
+  background-color: #fff;
+  width: 400px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+}
+
+.car-info.active {
+  left: 100px;
+}
+
+.ci-car-info {
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #d2d4d5;
+  padding: 0;
+}
+
+.ci-car-info li {
+  display: inline-block;
+  padding: 10px 25px;
+}
+
+.ci-car-info h1 {
+  color: #2a3539;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 25px;
+}
+
+.ci-car-info p {
+  color: #72a545;
+}
+
+.ci-car-info .car-description {
+  color: #2a3539;
+  padding: 20px;
+}
+
+.ci-car-info .vehicle-image {
+  width: 62%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.ci-car-info .btn-transparent {
+  margin-bottom: 260px;
+}
+
+.ci-car-info .info-panel {
+  position: absolute;
+  bottom: 0;
+  background-color: #2a3539;
+  color: #fff;
+  font-size: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.ci-car-info .info-text {
+  color: #72a545;
+  font-size: 10px;
+}
+
+.ci-car-info .info-list {
+  position: relative;
+  z-index: 5;
+}
+
+.ci-car-info .box {
+  background: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .option-panel {
   position: absolute;
   z-index: 10;
@@ -11793,6 +11903,10 @@ html {
 }
 
 .option-panel li:hover {
+  color: #72a545;
+}
+
+.option-panel li.active {
   color: #72a545;
 }
 

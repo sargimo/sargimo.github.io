@@ -27,7 +27,7 @@
             "engine": "1300cc",
             "price": 85,
             "gps": "No",
-            "description": "The little car that’s big on the inside with easy access and a high seating position that are extremely popular especially with our older clients that require vehicles that are easy to get in and out of. The high seating position also offers great vision of your surroundings. Mazda’s Demio is also known as a Mazda 2 in many markets around the world.These are a fun car to get around the city in or to venture further exploring our beautiful country. They will seat 5 passengers and the generous luggage area can take 3 large cases. Although 4 passengers + Luggage is a good mix.",
+            "description": "Also known as a Mazda 2, its easy access and a high seating position make a car that is extremely popular especially with our older clients that require vehicles easy to get in and out of. They will seat 5 passengers and the generous luggage area can take 3 large cases.",
             "id": 1,
             "categoryId": 0,
             "image": "mazda-demio.png" 
@@ -43,7 +43,7 @@
             "engine": "1800cc",
             "price": 92,
             "gps": "Yes",
-            "description": "The Toyota Corolla Hatch isn’t just sporty, economical and great on the road but it's also New Zealand top selling car and for a good reason.The 5 star ANCAP rated Corolla Hatch  gives you peace of mind wherever your travels take you. Standard safety features such as Vehicle Stability Control (VSC) and Traction Control (TRC) come as standard with many other safety features.",
+            "description": "The Toyota Corolla Hatch isn’t just sporty, economical and great on the road but it's also New Zealand top selling car and for a good reason.The 5 star ANCAP rated Corolla Hatch gives you peace of mind wherever your travels take you.",
             "id": 2,
             "categoryId": 0,
             "image": "toyota-corolla-hatch.png" 
@@ -59,7 +59,7 @@
             "engine": "2000cc",
             "price": 102,
             "gps": "No",
-            "description": "With a sleek new exterior design, new alloy wheels, and a modern interior with intuitive controls – the new Ford Focus refuses to blend into the crowd. Feel at ease knowing the new Ford Focus makes safety a top priority. That's why it includes six airbags, standard Anti-Lock Braking System (ABS), Electronic Stability Program and an ultra-high-strength safety cage.",
+            "description": "Sporting a sleek new exterior design, new alloy wheels, and a modern interior with intuitive controls. Feel at ease knowing the new Ford Focus makes safety a top priority. That's why it includes six airbags, standard Anti-Lock Braking System (ABS), Electronic Stability Program and an ultra-high-strength safety cage.",
             "id": 3,
             "categoryId": 0,
             "image": "ford-focus.png" 
@@ -75,7 +75,7 @@
             "engine": "1800cc",
             "price": 98,
             "gps": "No",
-            "description": "Rent a compact car that's a perennial favorite. When you rent a Toyota Corolla, you're not only getting seating for five and plenty of room for all your gear – you're getting technology, innovation, comfort and safety features that really are among some of the best. In short, you're getting a Toyota – and all the features that make Corollas so great to drive.",
+            "description": "Rent a compact car that's a perennial favorite. When you rent a Toyota Corolla, you're not only getting seating for five and plenty of room for all your gear – you're getting technology, innovation, comfort and safety features that really are among some of the best.",
             "id": 4,
             "categoryId": 1,
             "image": "toyota-corolla.png" 
@@ -91,7 +91,7 @@
             "engine": "2500cc",
             "price": 108,
             "gps": "Yes",
-            "description": "A Toyota Camry rental car is a staple in the industry and a popular choice for those who want a little extra passenger space without sacrificing too much in terms of fuel  Toyota Camry Rentaleconomy. The Camry seats up to 5 adults comfortably, making road trips across country a breeze. Families and small groups are especially well suited to rent the Camry.",
+            "description": "A Toyota Camry rental car is a staple in the industry and a popular choice for those who want a little extra passenger space without sacrificing too much in terms of fuel economy. The Camry seats up to 5 adults comfortably, making road trips across country a breeze.",
             "id": 5,
             "categoryId": 1,
             "image": "toyota-camry.png" 
@@ -107,14 +107,14 @@
             "engine": "3000cc",
             "price": 130,
             "gps": "Yes",
-            "description": "The Holden Commodore reimagines luxury without compromising on performance. The Commodore is one of the most advanced vehicles to wear the Holden badge, thanks to the wide array of cutting-edge technology features integrated throughout the vehicle. Without compromising any of its renowned performance prowess, the Commodore is lighter, smarter, more streamlined and delivers the most fuel efficient drive in its history.",
+            "description": "The Holden Commodore reimagines luxury without compromising on performance. The Commodore is one of the most advanced vehicles to wear the Holden badge, thanks to the wide array of cutting-edge technology features integrated throughout the vehicle.",
             "id": 6,
             "categoryId": 1,
             "image": "holden-commodore.png" 
         },
         {
             "name": "Toyota Highlander",
-            "seats": 5,
+            "seats": 7,
             "doors": "4",
             "smlBags": "3",
             "lrgBags": "4",
@@ -123,7 +123,7 @@
             "engine": "3500cc",
             "price": 130,
             "gps": "Yes",
-            "description": "The Holden Commodore reimagines luxury without compromising on performance. The Commodore is one of the most advanced vehicles to wear the Holden badge, thanks to the wide array of cutting-edge technology features integrated throughout the vehicle. Without compromising any of its renowned performance prowess, the Commodore is lighter, smarter, more streamlined and delivers the most fuel efficient drive in its history.",
+            "description": "Seize your adventure and take the family with you. With 7-seats, 2 tonne towing capacity and Toyota Safety Sense, this all-round recreational SUV has the functional features you need.",
             "id": 7,
             "categoryId": 2,
             "image": "toyota-highlander.png" 
@@ -139,7 +139,7 @@
             "engine": "2000cc",
             "price": 120,
             "gps": "No",
-            "description": "With a Toyota RAV4 you are getting a vehicle that offers a winning combination of safety, economy, comfort and performance. The Toyota Rav4 is a top safety pick from the Insurance Institute For Highway Safety. The Rav4 includes stability control, anti-lock brakes, brake assist, traction control, and ten  airbags.",
+            "description": "With a Toyota RAV4 you are getting a vehicle that offers a winning combination of safety, economy, comfort and performance. The Rav4 includes stability control, anti-lock brakes, brake assist, traction control, and ten  airbags.",
             "id": 8,
             "categoryId": 2,
             "image": "toyota-rav4.png" 
@@ -155,7 +155,7 @@
             "engine": "2400cc",
             "price": 135,
             "gps": "Yes",
-            "description": "Big, strong, and reliable, the iMax is hugely practical and extremely cost efficient. It's not afraid of hard work either. But it doesn’t stop there. As well as being built to tackle the rigours and demands of your business, it's packed full of useful features. Dual front and side airbags, ABS brakes and Electronic Stability Control (ESC) come as standard. The iMax can comfortably carry up to 8 passengers making it perfect for larger groups.",
+            "description": "Big, strong, and reliable, the iMax is hugely practical and extremely cost efficient. Dual front and side airbags, ABS brakes and Electronic Stability Control (ESC) come as standard. The iMax can comfortably carry up to 8 passengers making it perfect for larger groups.",
             "id": 9,
             "categoryId": 2,
             "image": "hyundai-imax.png" 
@@ -171,7 +171,7 @@
             "engine": "2900cc",
             "price": 425,
             "gps": "Yes",
-            "description": "The stunning Audi RS5 cabriolet is a four-seater convertible blending premium exterior and interior looks with incredible performance and all-wheel-drive versatility. The drop-top RS5 is powered by a glorious hand-built 4.2-litre V8 and produces 444bhp and 317lb ft. There are very few convertibles in NZ available of this quality and the Audi RS5 is sure to impress car lovers with the style, power and practicality compared with many other luxury sports cars.",
+            "description": "The stunning Audi RS5 cabriolet is a four-seater convertible blending premium exterior and interior looks with incredible performance and all-wheel-drive versatility. The drop-top RS5 is powered by a glorious hand-built 4.2-litre V8 and produces 444bhp and 317lb ft. The Audi RS5 is sure to impress car lovers with the style, power and practicality compared with many other luxury sports cars.",
             "id": 10,
             "categoryId": 3,
             "image": "audi-rs5.png" 

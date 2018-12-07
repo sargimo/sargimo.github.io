@@ -9,4 +9,25 @@
     text-align: center;
     cursor: pointer;
     outline: none;
+    &:hover {
+        background: linear-gradient(darken($light-green, 10%), darken($green, 10%))
+    }
+}
+
+.btn-transparent {
+    color: $green;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid $green;
+    padding: 10px 15px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        background: linear-gradient($light-green, $green);
+        color: $white;
+        border: 1px solid transparent;
+    }
 }
