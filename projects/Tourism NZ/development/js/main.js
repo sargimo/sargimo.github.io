@@ -238,9 +238,13 @@ function getVehicleItemHTML(i, vehicle) {
               </div>
               <ul class="info-list">
                 <li><i class="gradient-icon fas fa-user"></i>${vehicle.seats}<div class="info-text">passengers</div></li>
-                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags}<div class="info-text">large bags</div></li>
-                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">trip fuel cost</div></li>
+                <li><i class="gradient-icon fas fa-car-battery"></i>${vehicle.engine}<div class="info-text">engine size</div></li>
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.price}<div class="info-text">price per day</div></li>
               </ul>
+              <ul class="more-info-list">
+                <li><i class="gradient-icon fas fa-dollar-sign"></i>${vehicle.totalFuelCost}<div class="info-text">route fuel cost</div></li>
+                <li><i class="gradient-icon fas fa-suitcase"></i>${vehicle.lrgBags} lrg, ${vehicle.smlBags} sml<div class="info-text">boot bag space</div></li>
+                <li><i class="gradient-icon fas fa-map-marked-alt"></i>${vehicle.gps}<div class="info-text">GPS</div></li>
             </div>
           </div>`
 }
@@ -298,6 +302,7 @@ function initMoreInfoPanels() {
     parent.find('.selectCarBtn').toggleClass('active');
     $(this).find('.more-info').toggleClass('active');
     $(this).find('.more-info-btn').toggleClass('active');
+    $(this).find('.more-info-list').toggleClass('active');
   });
 };
 

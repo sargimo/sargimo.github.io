@@ -11606,6 +11606,15 @@ html {
   z-index: 5;
 }
 
+.vehicle-item .more-info-list {
+  display: none;
+  padding: 30px 0;
+}
+
+.vehicle-item .more-info-list.active {
+  display: block;
+}
+
 .gradient-icon {
   font-size: 16px;
   background: -webkit-linear-gradient(#a5e16f, #72a545);
