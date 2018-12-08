@@ -8,6 +8,7 @@
     "John Gravois <jgravois@esri.com> (http://johngravois.com)"
   ],
   "dependencies": {
+    "animate.css": "^3.7.0",
     "bulma": "^0.7.2",
     "bulma-calendar": "^5.0.3",
     "esri-leaflet": "^2.0.3",

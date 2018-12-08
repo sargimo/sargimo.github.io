@@ -11688,6 +11688,66 @@ html {
           transform: translateY(-125px) rotate(180deg);
 }
 
+.delay-1 {
+  -webkit-animation-delay: .25s;
+          animation-delay: .25s;
+}
+
+.delay-2 {
+  -webkit-animation-delay: .50s;
+          animation-delay: .50s;
+}
+
+.delay-3 {
+  -webkit-animation-delay: .75s;
+          animation-delay: .75s;
+}
+
+.delay-4 {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.delay-5 {
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+
+.delay-6 {
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.delay-7 {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+
+.delay-8 {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.delay-9 {
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+
+.delay-10 {
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+.delay-11 {
+  -webkit-animation-delay: 2.75s;
+          animation-delay: 2.75s;
+}
+
+.delay-12 {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
 .route-display {
   position: absolute;
   z-index: 9;

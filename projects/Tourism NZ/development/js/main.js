@@ -233,10 +233,12 @@ function validateFormScreen() {
 }
 /**
  * @param {object} vehicle
- * Get the HTML string for one vehicle item.
+ * @param {number} delay
+ * Get the HTML string for one vehicle item. Give delay for animation css cascading delay effect. 
+ * 
  */
-function getVehicleItemHTML(i, vehicle) {
-  return `<div data-id="${vehicle.id}" class="column is-4-desktop is-6-tablet vehicle-item">
+function getVehicleItemHTML(i, vehicle, delay) {
+  return `<div data-id="${vehicle.id}" class="column is-4-desktop is-6-tablet vehicle-item animated fadeInUp delay-${delay}">
             <div>
               <h1>${vehicle.name}</h1>
             </div>
@@ -274,8 +276,10 @@ function getVehicleItemHTML(i, vehicle) {
  */
 function displayVehicles(vehicles) {
   let htmlString = '';
+  delay = 0;
   $.each(vehicles, function (i, vehicle) {
-    htmlString = htmlString + getVehicleItemHTML(i, vehicle);
+    htmlString = htmlString + getVehicleItemHTML(i, vehicle, delay);
+    delay += 1;
   });
   vehicleItemsEl.html(htmlString);
   //init the more info panels for each vehicle
