@@ -30,7 +30,7 @@ let calOptions = {},
   carSelectScreen = $('#carSelectScreen'),
   mapScreen = $('#mapScreen'),
   screens = $('.screen'),
-  
+
   //screen 2
   allVehiclesBtn = $('#allVehicles'),
   compactVehiclesBtn = $('#compactVehicles'),
@@ -43,7 +43,7 @@ let calOptions = {},
   //screen 3
   routeOptionsBtn = $('#routeOptionsBtn'),
   carInfoBtn = $('#carInfoBtn'),
-  
+
   routeOptionsEl = $('.route-display'),
   roTotalDistanceEl = $('#roTotalDistance'),
   roTotalCostEl = $('#roTotalCost'),
@@ -67,9 +67,9 @@ const fuelPrice = 2.25;
 let map = L.map('mapid').setView([-43.491053, 172.57902], 6)
 //Start/Finish inputs geocoding
 let startLocationEl = BootstrapGeocoder.search({
-    inputTag: 'startLocation',
-    placeholder: 'Starting Location'
-  }).addTo(map),
+  inputTag: 'startLocation',
+  placeholder: 'Starting Location'
+}).addTo(map),
   endLocationEl = BootstrapGeocoder.search({
     inputTag: 'endLocation',
     placeholder: 'Finishing Location'
@@ -88,26 +88,29 @@ function init() {
   $.getJSON('json/vehicles.json', function (vehicles) {
     vehicleList = vehicles;
   });
+  
   //init submit button to collect input data and calculate map routes
   formSubmitBtn.on('click', function () {
     groupSize = formGroupSizeInput.val();
     startDate = formStartDateInput.val();
     endDate = formEndDateInput.val();
     // if (validateFormScreen()) {
-      calcTripNoOfDays();
-      currentScreen = "carSelectScreen";
-      seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
-      drawRoute();
-      changeScreen(carSelectScreen);
+    calcTripNoOfDays();
+    currentScreen = "carSelectScreen";
+    seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
+    drawRoute();
+    changeScreen(carSelectScreen);
     // };
     // if (groupSize && startDate && endDate && startLocation && endLocation) {
   });
+
   //Adds click out functionality to bulma calendar
   $('body').on('click', function () {
     $.each(calendars, function (i, calendar) {
       calendar.hide();
     });
   });
+
   //routing events to delay loading until routes have been returned for calculations
   routingControl.on('routesfound', function (e) {
     let routes = e.routes;
@@ -121,6 +124,7 @@ function init() {
       updateMapScreenData();
     }
   });
+
   //click listeners for categories
   allVehiclesBtn.on('click', function () {
     displayVehicles(seatFilteredVehicleList);
@@ -145,6 +149,7 @@ function init() {
     let filteredVehicles = filterByCategory(seatFilteredVehicleList, categoryid)
     displayVehicles(filteredVehicles);
   });
+
   //leaflet map init
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -152,6 +157,7 @@ function init() {
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoic2FyZ2ltbyIsImEiOiJjanA3c2ppYmExc285M3BwNzM1ZTN3cHRmIn0.kFrH0CWunKl-1DIvPN_vZQ',
   }).addTo(map);
+
   //leaflet geosearch listeners
   startLocationEl.on('results', function (e) {
     startLocation = (e);
@@ -178,6 +184,7 @@ function init() {
     // routeWaypoints.push(startPoint, detourPoint1, endPoint)
     // drawRoute();
   });
+
   //toggle active state for options panel screen 3
   routeOptionsBtn.on('click', function () {
     routeOptionsEl.toggleClass('active');
@@ -187,6 +194,7 @@ function init() {
     carInfoEl.toggleClass('active');
     carInfoBtn.toggleClass('active');
   });
+
   //toggle active state for detour input
   addDetourBtn.on('click', function () {
     addDetourInputEl.toggleClass('active');

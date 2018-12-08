@@ -27,16 +27,34 @@
         width: 65%;
         color: $white;
     }
-
+    label {
+        color: #d2d4d5;
+    }
     .form-input {
         background: none;
         border: none;
         margin-bottom: 20px;
         width: 100%;
-        color: $green;
+        color: $white;
+        transition: all 0.4s;
         &.required {
             border-bottom: 1px red dotted;
         }
+    }
+    .focus-transition{
+        position: absolute; 
+        bottom: 5px; 
+        left: 50%; 
+        width: 0; 
+        height: 1px; 
+        background-color: $light-green; 
+        transition: 0.4s;
+        &.active {
+            width: 100%; 
+            transition: 0.4s; 
+            left: 0;
+        }
+    
     }
 
     .box {
