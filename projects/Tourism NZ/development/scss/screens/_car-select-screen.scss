@@ -4,21 +4,32 @@
     top: 0px;
     margin-top: 100px;
     margin-bottom: 50px;
+    text-align: center;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+    transition: all 0.3s ease;
+
     @include mq ('tablet-wide') {
         margin-top: 0px;
     }
+
     .category {
         background-color: $light-grey;
         border: 1px solid #d2d4d5;
         margin: 0 auto;
         text-align: center;
         cursor: pointer;
+        display: none;
+        transition: all 0.3s ease;
+
+        &.active {
+            transition: all 0.3s ease;
+            display: block;
+        }
 
         &:hover {
-            background-color: $white;
+            background-color: #d2d4d5;
         }
     }
 
@@ -30,6 +41,27 @@
         background: $primary-color;
         color: $white;
         font-size: 24px;
+        transition: all 0.3s ease;
+
+        h1 {
+            padding: 10px;
+        }
+
+        .chevron {
+            transition: all 0.3s ease; 
+            &.active {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .filter-menu-btn {
+        font-size: 42px;
+        display: none;
+
+        &.active {
+            display: block;
+        }
     }
 }
 
@@ -51,9 +83,11 @@
     li {
         display: inline-block;
         padding: 0px 25px;
+
         @include mq('desktop-wide') {
             padding: 0px 10px;
         }
+
         @include mq('tablet-wide') {
             padding: 0px 25px;
         }
@@ -108,7 +142,7 @@
 
         &.active {
             transform: translateY(-125px);
-            }
+        }
     }
 
     .info-panel {
@@ -141,15 +175,18 @@
 
         &.active {
             transform: translateY(95px);
-            }
+        }
     }
+
     .info-list {
         position: relative;
         z-index: 5;
     }
+
     .more-info-list {
         display: none;
         padding: 30px 0;
+
         &.active {
             display: block;
         }
@@ -172,44 +209,56 @@
     bottom: 85px;
     right: 48px;
     transition: all 0.3s linear;
+
     &.active {
         transform: translateY(-125px) rotate(180deg);
-    }    
+    }
 }
 
 .delay-1 {
     animation-delay: .2s
 }
+
 .delay-2 {
     animation-delay: .4s
 }
+
 .delay-3 {
     animation-delay: .6s
 }
+
 .delay-4 {
     animation-delay: 0.8s
 }
+
 .delay-5 {
     animation-delay: 1s
 }
+
 .delay-6 {
     animation-delay: 1.2s
 }
+
 .delay-7 {
     animation-delay: 1.4s
 }
+
 .delay-8 {
     animation-delay: 1.6s
 }
+
 .delay-9 {
     animation-delay: 1.8s
 }
+
 .delay-10 {
     animation-delay: 2s
 }
+
 .delay-11 {
     animation-delay: 2.2s
 }
+
 .delay-12 {
     animation-delay: 2.4s
 }

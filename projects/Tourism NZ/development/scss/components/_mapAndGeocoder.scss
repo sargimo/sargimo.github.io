@@ -1,0 +1,30 @@
+#mapid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: auto;
+    top: 25px;
+    background-color: $white;
+    color: $dark-grey;
+    li {
+        font-family: $main-font;
+        padding: 5px 15px;
+        border-bottom: 1px solid $dark-grey;
+        cursor: pointer;
+        &:hover{
+            background-color: $green;
+            color: $white;
+        }
+    }
+}
+
+.leaflet-top {
+    top: 100px;
+}

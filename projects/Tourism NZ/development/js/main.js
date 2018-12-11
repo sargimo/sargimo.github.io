@@ -35,6 +35,7 @@ let calOptions = {},
   formSubmitBtn = $('#submitBtn'),
 
   //screen 2
+  filterTitle = $('.filter-title'),
   allVehiclesBtn = $('#allVehicles'),
   compactVehiclesBtn = $('#compactVehicles'),
   sedanVehiclesBtn = $('#sedanVehicles'),
@@ -58,6 +59,7 @@ let calOptions = {},
   roStartDateEl = $('#roStartDate'),
   roEndDateEl = $('#roEndDate'),
   removeRouteBtn,
+  selectNewCarBtn,
 
   carInfoEl = $('.car-info'),
 
@@ -83,7 +85,13 @@ let startLocationEl = BootstrapGeocoder.search({
   }).addTo(map);
 routingControl = L.Routing.control({
   waypoints: routeWaypoints,
-  autoRoute: true
+  autoRoute: true,
+  lineOptions: {
+    styles: [
+    {color: '#72a545', opacity: 0.35, weight: 9},
+    {color: 'white', opacity: 0.8, weight: 6},
+    {color: '#2a3539', opacity: 1, weight: 2}
+  ]}
 }).addTo(map);
 
 function init() {
@@ -141,6 +149,10 @@ function init() {
   });
 
   //click listeners for categories
+  filterTitle.on('click', function(){
+    $(this).toggleClass('is-half-mobile');
+    toggleFilterOptions();
+  });
   allVehiclesBtn.on('click', function () {
     displayVehicles(seatFilteredVehicleList);
   });
@@ -202,10 +214,14 @@ function init() {
 
   //toggle active state for options panel screen 3
   routeOptionsBtn.on('click', function () {
+    carInfoBtn.removeClass('active');
+    carInfoEl.removeClass('active');
     routeOptionsEl.toggleClass('active');
     routeOptionsBtn.toggleClass('active');
   });
   carInfoBtn.on('click', function () {
+    routeOptionsBtn.removeClass('active');
+    routeOptionsEl.removeClass('active');
     carInfoEl.toggleClass('active');
     carInfoBtn.toggleClass('active');
   });
@@ -285,6 +301,12 @@ function getVehicleItemHTML(i, vehicle, delay) {
           </div>`
 }
 
+function toggleFilterOptions(){
+  let categoryItems = $('.category');
+  categoryItems.toggleClass('active');
+  $('.chevron').toggleClass('active');
+}
+
 /**
  * Display a list of vehicles, adds select car buttons to each, and adds click function for select car button
  * @param {Array} vehicles
@@ -308,7 +330,7 @@ function displayVehicles(vehicles) {
     setTimeout(function (){
       loadMapScreenData();
       updateMapScreenData();
-    }, 400);
+    }, 600);
   });
 }
 
@@ -368,6 +390,10 @@ function updateMapScreenData() {
   roStartDateEl.html(startDate);
   roEndDateEl.html(endDate);
   carInfoEl.html(carInfo);
+  selectNewCarBtn = $('#chooseNewCar');
+  selectNewCarBtn.on('click', function(){
+    changeScreen(carSelectScreen);
+  });
 }
 
 /**

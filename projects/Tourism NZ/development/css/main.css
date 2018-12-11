@@ -11311,11 +11311,11 @@ body {
 
 #mapid {
   position: absolute;
-  top: 100;
+  top: 0;
   left: 0;
   z-index: 7;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .dropdown-menu {
@@ -11324,7 +11324,22 @@ body {
   top: 25px;
   background-color: #fff;
   color: #2a3539;
-  border: 1px solid #72a545;
+}
+
+.dropdown-menu li {
+  font-family: "Montserrat", sans-serif;
+  padding: 5px 15px;
+  border-bottom: 1px solid #2a3539;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #72a545;
+  color: #fff;
+}
+
+.leaflet-top {
+  top: 100px;
 }
 
 html {
@@ -11595,8 +11610,11 @@ html {
   top: 0px;
   margin-top: 100px;
   margin-bottom: 50px;
+  text-align: center;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 @media only screen and (max-width: 1079px) {
@@ -11611,10 +11629,19 @@ html {
   margin: 0 auto;
   text-align: center;
   cursor: pointer;
+  display: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.categories .category.active {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: block;
 }
 
 .categories .category:hover {
-  background-color: #fff;
+  background-color: #d2d4d5;
 }
 
 .categories .car-icon {
@@ -11625,6 +11652,31 @@ html {
   background: #2a3539;
   color: #fff;
   font-size: 24px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.categories .filter-title h1 {
+  padding: 10px;
+}
+
+.categories .filter-title .chevron {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.categories .filter-title .chevron.active {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.categories .filter-menu-btn {
+  font-size: 42px;
+  display: none;
+}
+
+.categories .filter-menu-btn.active {
+  display: block;
 }
 
 #vehicleItems {
@@ -11866,7 +11918,7 @@ html {
   position: absolute;
   z-index: 9;
   left: -500px;
-  top: 300px;
+  top: 19%;
   background-color: #fff;
   width: 400px;
   height: 600px;
@@ -12000,6 +12052,27 @@ html {
   padding: 25px 0 0 40px;
   width: 100%;
   display: block;
+  outline: none;
+}
+
+.route-display #addDetourInput .dropdown-menu {
+  top: 37%;
+}
+
+@media only screen and (max-width: 767px) {
+  .route-display #addDetourInput .dropdown-menu {
+    top: 30%;
+  }
+}
+
+.route-display #detourLocation {
+  text-align: left;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 }
 
 .car-info {
@@ -12155,11 +12228,11 @@ html {
 }
 
 .option-panel li:hover {
-  color: #72a545;
+  color: #a5e16f;
 }
 
 .option-panel li.active {
-  color: #72a545;
+  color: #a5e16f;
 }
 
 @media only screen and (max-width: 767px) {
