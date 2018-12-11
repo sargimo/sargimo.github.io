@@ -1,12 +1,15 @@
 .categories {
     position: sticky;
+    z-index: 10;
     top: 0px;
     margin-top: 100px;
     margin-bottom: 50px;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
-
+    @include mq ('tablet-wide') {
+        margin-top: 0px;
+    }
     .category {
         background-color: $light-grey;
         border: 1px solid #d2d4d5;
@@ -48,6 +51,12 @@
     li {
         display: inline-block;
         padding: 0px 25px;
+        @include mq('desktop-wide') {
+            padding: 0px 10px;
+        }
+        @include mq('tablet-wide') {
+            padding: 0px 25px;
+        }
     }
 
     h1 {
@@ -64,11 +73,20 @@
     .vehicle-image {
         width: 62%;
         margin: 0 auto;
-        padding-bottom: 20px
+        padding-bottom: 20px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
     }
 
     .vehicle-item-button {
-        padding: 10px 30px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: 0 auto;
     }
 
     .btn-green {
@@ -99,8 +117,8 @@
         height: 75px;
         background-color: $primary-color;
         color: $white;
-        font-size: 12px;
-        padding: 20px;
+        font-size: 11px;
+        padding: 20px 0;
         text-align: center;
         width: 100%;
         transition: all 0.3s linear;
@@ -160,38 +178,38 @@
 }
 
 .delay-1 {
-    animation-delay: .25s
+    animation-delay: .2s
 }
 .delay-2 {
-    animation-delay: .50s
+    animation-delay: .4s
 }
 .delay-3 {
-    animation-delay: .75s
+    animation-delay: .6s
 }
 .delay-4 {
-    animation-delay: 1s
+    animation-delay: 0.8s
 }
 .delay-5 {
-    animation-delay: 1.25s
+    animation-delay: 1s
 }
 .delay-6 {
-    animation-delay: 1.5s
+    animation-delay: 1.2s
 }
 .delay-7 {
-    animation-delay: 1.75s
+    animation-delay: 1.4s
 }
 .delay-8 {
-    animation-delay: 2s
+    animation-delay: 1.6s
 }
 .delay-9 {
-    animation-delay: 2.25s
+    animation-delay: 1.8s
 }
 .delay-10 {
-    animation-delay: 2.5s
+    animation-delay: 2s
 }
 .delay-11 {
-    animation-delay: 2.75s
+    animation-delay: 2.2s
 }
 .delay-12 {
-    animation-delay: 3s
+    animation-delay: 2.4s
 }

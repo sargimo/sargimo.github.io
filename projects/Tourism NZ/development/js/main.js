@@ -18,6 +18,13 @@ let calOptions = {},
   categoryList,
   chosenVehicle = [],
   currentScreen = "formScreen",
+  backBtn = $('.back-button'),
+
+  //screens
+  formScreen = $('#formScreen'),
+  carSelectScreen = $('#carSelectScreen'),
+  mapScreen = $('#mapScreen'),
+  screens = $('.screen'),
 
   //screen 1
   formGroupSizeInput = $('#groupSize'),
@@ -26,10 +33,6 @@ let calOptions = {},
   formStartDateInput = $('#startDate'),
   formEndDateInput = $('#endDate'),
   formSubmitBtn = $('#submitBtn'),
-  formScreen = $('#formScreen'),
-  carSelectScreen = $('#carSelectScreen'),
-  mapScreen = $('#mapScreen'),
-  screens = $('.screen'),
 
   //screen 2
   allVehiclesBtn = $('#allVehicles'),
@@ -88,9 +91,19 @@ function init() {
   $.getJSON('json/vehicles.json', function (vehicles) {
     vehicleList = vehicles;
   });
-  
+  //init back button
+  backBtn.on('click', function(){
+    if (currentScreen == "carSelectScreen") {
+      changeScreen(formScreen);
+      currentScreen = "formScreen";
+    } else if (currentScreen == "mapScreen") {
+      changeScreen(carSelectScreen);
+      currentScreen = "carSelectScreen";
+    } return false;
+  });
   //init submit button to collect input data and calculate map routes
   formSubmitBtn.on('click', function () {
+    formScreen.addClass('animated fadeOutLeft');
     groupSize = formGroupSizeInput.val();
     startDate = formStartDateInput.val();
     endDate = formEndDateInput.val();
@@ -99,7 +112,9 @@ function init() {
     currentScreen = "carSelectScreen";
     seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
     drawRoute();
-    changeScreen(carSelectScreen);
+    setTimeout(function (){
+      changeScreen(carSelectScreen)
+    }, 400);
     // };
     // if (groupSize && startDate && endDate && startLocation && endLocation) {
   });
@@ -288,9 +303,12 @@ function displayVehicles(vehicles) {
   selectCarBtn = $('.selectCarBtn');
   selectCarBtn.on('click', function () {
     let id = $(this).data('id');
+    carSelectScreen.addClass('animated fadeOutLeft')
     chosenVehicle = vehicleList.vehicles[id];
-    loadMapScreenData();
-    updateMapScreenData();
+    setTimeout(function (){
+      loadMapScreenData();
+      updateMapScreenData();
+    }, 400);
   });
 }
 
@@ -470,7 +488,7 @@ function drawRoute() {
 
 //Swaps active screen 
 function changeScreen(screen) {
-  screens.removeClass('active');
+  screens.removeClass('fadeOutLeft active');
   screen.addClass('active');
 }
 

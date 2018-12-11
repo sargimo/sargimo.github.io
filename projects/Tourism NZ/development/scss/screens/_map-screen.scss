@@ -11,8 +11,18 @@
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 
+    @include mq('tablet') {
+        width: 100vw;
+        height: 80vh;
+        top: 10%;
+        left: -100vw;
+    }
+
     &.active {
         left: 100px;
+        @include mq('tablet') {
+            left: 0px;
+        }
     }
 
     h1 {
@@ -134,8 +144,19 @@
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 
+    @include mq('tablet') {
+        width: 100vw;
+        height: 80vh;
+        top: 10%;
+        left: -100vw;
+    }
+
+
     &.active {
         left: 100px;
+        @include mq('tablet') {
+            left: 0px;
+        }
     }
 }
 
@@ -211,19 +232,29 @@
     position: absolute;
     z-index: 10;
     left: 0px;
-    top: 0px;
+    bottom: 0px;
     width: 100px;
     height: 110vh;
     background-color: $dark-grey;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
-
+    @include mq('tablet') {
+        height: 100px;
+        width: 100vw;
+    }
     ul {
         padding-top: 300px;
         color: white;
         font-size: 12px;
         text-align: center;
+        @include mq('tablet') {
+                padding-top: 0px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+            }
     }
 
     p {
@@ -242,10 +273,18 @@
         &.active {
             color: $green;
         }
+        @include mq('tablet') {
+            padding: 10px 40px;
+            border: none;
+            margin: 0 auto;
+        }
     }
 
     .last-icon {
         border-bottom: 1px solid #586265;
+        @include mq('tablet') {
+            border: none;
+        }
     }
 
     .option-panel-icon {

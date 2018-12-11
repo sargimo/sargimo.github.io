@@ -11338,6 +11338,23 @@ html {
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 }
 
+.logo {
+  font-family: "Ranga", cursive;
+  font-size: 34px;
+  color: #2a3539;
+  margin-left: 100px;
+}
+
+.back-button {
+  margin-left: 40px;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #72a545;
+}
+
 .form-screen-form {
   z-index: 10;
   background-color: #2a3539;
@@ -11415,6 +11432,22 @@ html {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+@media only screen and (max-width: 1079px) {
+  .form-screen-form {
+    position: static;
+    margin: 0 auto;
+    padding: 40px;
+    -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .form-screen-form {
+    width: 90vw;
+  }
 }
 
 .datepicker .calendar .calendar-nav {
@@ -11508,6 +11541,45 @@ html {
   padding-top: 40px;
 }
 
+@media only screen and (max-width: 1699px) {
+  .form-screen-message {
+    left: 15%;
+  }
+}
+
+@media only screen and (max-width: 1499px) {
+  .form-screen-message {
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 1247px) {
+  .form-screen-message {
+    left: 5%;
+  }
+}
+
+@media only screen and (max-width: 1079px) {
+  .form-screen-message {
+    position: static;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+  }
+  .form-screen-message h1 {
+    text-align: center !important;
+  }
+  .form-screen-message p {
+    text-align: center !important;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .form-screen-message {
+    width: 90vw;
+  }
+}
+
 .screen {
   display: none;
 }
@@ -11519,11 +11591,18 @@ html {
 .categories {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 10;
   top: 0px;
   margin-top: 100px;
   margin-bottom: 50px;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+}
+
+@media only screen and (max-width: 1079px) {
+  .categories {
+    margin-top: 0px;
+  }
 }
 
 .categories .category {
@@ -11569,6 +11648,18 @@ html {
   padding: 0px 25px;
 }
 
+@media only screen and (max-width: 1439px) {
+  .vehicle-item li {
+    padding: 0px 10px;
+  }
+}
+
+@media only screen and (max-width: 1079px) {
+  .vehicle-item li {
+    padding: 0px 25px;
+  }
+}
+
 .vehicle-item h1 {
   color: #2a3539;
   text-transform: uppercase;
@@ -11584,10 +11675,33 @@ html {
   width: 62%;
   margin: 0 auto;
   padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .vehicle-item .vehicle-item-button {
-  padding: 10px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .vehicle-item .btn-green {
@@ -11620,8 +11734,8 @@ html {
   height: 75px;
   background-color: #2a3539;
   color: #fff;
-  font-size: 12px;
-  padding: 20px;
+  font-size: 11px;
+  padding: 20px 0;
   text-align: center;
   width: 100%;
   -webkit-transition: all 0.3s linear;
@@ -11689,63 +11803,63 @@ html {
 }
 
 .delay-1 {
-  -webkit-animation-delay: .25s;
-          animation-delay: .25s;
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
 }
 
 .delay-2 {
-  -webkit-animation-delay: .50s;
-          animation-delay: .50s;
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
 }
 
 .delay-3 {
-  -webkit-animation-delay: .75s;
-          animation-delay: .75s;
+  -webkit-animation-delay: .6s;
+          animation-delay: .6s;
 }
 
 .delay-4 {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+.delay-5 {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 
-.delay-5 {
-  -webkit-animation-delay: 1.25s;
-          animation-delay: 1.25s;
-}
-
 .delay-6 {
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
 }
 
 .delay-7 {
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
 }
 
 .delay-8 {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+.delay-9 {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+.delay-10 {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
 
-.delay-9 {
-  -webkit-animation-delay: 2.25s;
-          animation-delay: 2.25s;
-}
-
-.delay-10 {
-  -webkit-animation-delay: 2.5s;
-          animation-delay: 2.5s;
-}
-
 .delay-11 {
-  -webkit-animation-delay: 2.75s;
-          animation-delay: 2.75s;
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
 }
 
 .delay-12 {
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
 }
 
 .route-display {
@@ -11762,8 +11876,23 @@ html {
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 }
 
+@media only screen and (max-width: 767px) {
+  .route-display {
+    width: 100vw;
+    height: 80vh;
+    top: 10%;
+    left: -100vw;
+  }
+}
+
 .route-display.active {
   left: 100px;
+}
+
+@media only screen and (max-width: 767px) {
+  .route-display.active {
+    left: 0px;
+  }
 }
 
 .route-display h1 {
@@ -11886,8 +12015,23 @@ html {
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 }
 
+@media only screen and (max-width: 767px) {
+  .car-info {
+    width: 100vw;
+    height: 80vh;
+    top: 10%;
+    left: -100vw;
+  }
+}
+
 .car-info.active {
   left: 100px;
+}
+
+@media only screen and (max-width: 767px) {
+  .car-info.active {
+    left: 0px;
+  }
 }
 
 .ci-car-info {
@@ -11961,7 +12105,7 @@ html {
   position: absolute;
   z-index: 10;
   left: 0px;
-  top: 0px;
+  bottom: 0px;
   width: 100px;
   height: 110vh;
   background-color: #2a3539;
@@ -11969,11 +12113,35 @@ html {
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
 }
 
+@media only screen and (max-width: 767px) {
+  .option-panel {
+    height: 100px;
+    width: 100vw;
+  }
+}
+
 .option-panel ul {
   padding-top: 300px;
   color: white;
   font-size: 12px;
   text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .option-panel ul {
+    padding-top: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .option-panel p {
@@ -11994,8 +12162,22 @@ html {
   color: #72a545;
 }
 
+@media only screen and (max-width: 767px) {
+  .option-panel li {
+    padding: 10px 40px;
+    border: none;
+    margin: 0 auto;
+  }
+}
+
 .option-panel .last-icon {
   border-bottom: 1px solid #586265;
+}
+
+@media only screen and (max-width: 767px) {
+  .option-panel .last-icon {
+    border: none;
+  }
 }
 
 .option-panel .option-panel-icon {

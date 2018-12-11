@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Accelerate</title>
+    <title>DRIVR</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -28,8 +28,11 @@
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <div class="navbar-item">
-                <p>Accelerate</p>
+            <div class="navbar-item back-button">
+                <p><i class="fas fa-chevron-left"></i></p>
+            </div>
+            <div class="navbar-item logo">
+                <p>DRIVR</p>
             </div>
         </div>
     </nav>
@@ -70,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div id="carSelectScreen" class="screen">
+    <div id="carSelectScreen" class="screen animated fadeInLeft">
         <div class="container">
             <div class="filter-categories">
                 <div class="categories columns is-multiline is-mobile">
@@ -121,7 +124,7 @@
         </div>
     </div>
     <div id="mapScreen" class="screen">
-        <div class="option-panel">
+        <div class="option-panel animated fadeInUp">
             <ul>
                 <li id="routeOptionsBtn" class="active">
                     <div>
@@ -143,7 +146,7 @@
                 </li>
             </ul>
         </div>
-        <div class="route-display active">
+        <div class="route-display active animated fadeInUp">
             <div class="columns header">
                 <div class="column is-6 is-mobile header-item">
                     <h1>TOTAL DISTANCE</h1>
