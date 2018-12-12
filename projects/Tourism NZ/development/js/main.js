@@ -15,7 +15,6 @@ let calOptions = {},
 
   vehicleList,
   seatFilteredVehicleList,
-  categoryList,
   chosenVehicle = [],
   currentScreen = "formScreen",
   backBtn = $('.back-button'),
@@ -60,10 +59,10 @@ let calOptions = {},
   roEndDateEl = $('#roEndDate'),
   removeRouteBtn,
   selectNewCarBtn,
+  detourLocation,
 
   carInfoEl = $('.car-info'),
 
-  detourLocSearchBox = $('#detourLocation'),
   routeWaypoints = []
 
 const fuelPrice = 2.25;
@@ -82,7 +81,7 @@ let startLocationEl = BootstrapGeocoder.search({
   detourLocationEl = BootstrapGeocoder.search({
     inputTag: 'detourLocation',
     placeholder: 'Travel via...'
-  }).addTo(map);
+  }).addTo(map),
 routingControl = L.Routing.control({
   waypoints: routeWaypoints,
   autoRoute: true,
@@ -142,7 +141,7 @@ function init() {
     if (currentScreen == "carSelectScreen") {
       updateFuelCost(seatFilteredVehicleList);
       displayVehicles(seatFilteredVehicleList);
-    } else if (currentScreen = "mapScreen") {
+    } else if (currentScreen == "mapScreen") {
       updateFuelCost(seatFilteredVehicleList);
       updateMapScreenData();
     }
@@ -313,7 +312,7 @@ function toggleFilterOptions(){
  */
 function displayVehicles(vehicles) {
   let htmlString = '';
-  delay = 0;
+  let delay = 0;
   $.each(vehicles, function (i, vehicle) {
     htmlString = htmlString + getVehicleItemHTML(i, vehicle, delay);
     delay += 1;
@@ -367,7 +366,7 @@ function initMoreInfoPanels() {
     $(this).find('.more-info-btn').toggleClass('active');
     $(this).find('.more-info-list').toggleClass('active');
   });
-};
+}
 
 //TO DO: NAME THIS SHIT
 function loadMapScreenData() {
@@ -376,7 +375,7 @@ function loadMapScreenData() {
   //refreshes leaflet map to fix tile loading issues when in display: none
   map.invalidateSize();
   map.setView([-43.491053, 172.57902], 6);
-};
+}
 
 //call to update infomation dynamically as routes change
 function updateMapScreenData() {
@@ -434,10 +433,9 @@ function updateFuelCost(vehicles) {
 }
 
 /**
- * @param {object} location
  * Get the HTML string for one destination item.
  */
-function getDetourListHTML(i, location) {
+function getDetourListHTML() {
   return `<li>
             <div class="columns is-mobile route-item">
               <div class="flag column is-2">
