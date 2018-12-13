@@ -1,0 +1,45 @@
+#landingScreen {
+    width: 100vw;
+    height: 100%;
+    background: url(../../images/landing.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.landing {
+    h1 {
+        text-align: center;
+        font-size: 90px;
+        padding: 30px;
+        color: $white;
+        font-family: $secondary-font;
+        letter-spacing: 8px;
+        @include mq('tablet') {
+            font-size: 60px;
+        }
+    }
+
+
+    p {
+        margin: 0 auto;
+        color: $white;
+        padding: 60px 0px;
+        width: 40%;
+        text-align: center;
+        border-top: 3px dotted $light-green;
+
+        @include mq('tablet') {
+            width: 90%;
+            padding: 60px 0px;
+        }
+    }
+
+    .get-started-btn {
+        background: transparent;
+        border: none;
+        margin: 0 auto;
+        text-align: center;
+        outline: none;
+        box-shadow: none;
+    }
+}

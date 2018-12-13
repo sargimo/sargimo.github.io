@@ -27,9 +27,11 @@
         width: 65%;
         color: $white;
     }
+
     label {
         color: #d2d4d5;
     }
+
     .form-input {
         background: none;
         border: none;
@@ -37,22 +39,9 @@
         width: 100%;
         color: $white;
         transition: all 0.4s;
+
         &.required {
             border-bottom: 1px red dotted;
-        }
-    }
-    .focus-transition{
-        position: absolute; 
-        bottom: 5px; 
-        left: 50%; 
-        width: 0; 
-        height: 1px; 
-        background-color: $light-green; 
-        transition: 0.4s;
-        &.active {
-            width: 100%; 
-            transition: 0.4s; 
-            left: 0;
         }
     }
 
@@ -66,10 +55,11 @@
         position: static;
         margin: 0 auto;
         padding: 40px;
-        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.4);
-        -moz-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.4);
-        box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.4);
+        -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
     }
+
     @include mq('tablet-small') {
         width: 90vw;
     }
@@ -98,15 +88,27 @@
 .datepicker .calendar .calendar-header {
     display: none;
 }
-.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
+
+.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
     background: $green;
     border-color: $green;
 }
-.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-months .calendar-year:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
+
+.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year:hover,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month:hover,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
     border-color: $green;
     color: $dark-grey;
 }
-.datepicker .calendar .calendar-body .calendar-months .calendar-month, .datepicker .calendar .calendar-body .calendar-months .calendar-year, .datepicker .calendar .calendar-body .calendar-years .calendar-month, .datepicker .calendar .calendar-body .calendar-years .calendar-year {
+
+.datepicker .calendar .calendar-body .calendar-months .calendar-month,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year {
     border: .1rem solid transparent;
     color: $dark-grey;
 }
@@ -142,7 +144,7 @@
 
     h1 {
         font-family: $secondary-font;
-        font-size: 48px;
+        font-size: 36px;
         font-weight: bold;
         color: $secondary-color;
         text-align: right;
@@ -159,24 +161,30 @@
     @include mq('1700') {
         left: 15%;
     }
+
     @include mq('1500') {
         left: 10%;
     }
+
     @include mq('desktop') {
         left: 5%;
     }
+
     @include mq('tablet-wide') {
         position: static;
         margin: 0 auto;
         text-align: center;
         padding: 40px;
+
         h1 {
             text-align: center !important;
         }
+
         p {
             text-align: center !important;
         }
     }
+
     @include mq('tablet-small') {
         width: 90vw;
     }

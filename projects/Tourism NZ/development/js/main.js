@@ -16,16 +16,20 @@ let calOptions = {},
   vehicleList,
   seatFilteredVehicleList,
   chosenVehicle = [],
-  currentScreen = "formScreen",
+  currentScreen = "landingScreen",
   backBtn = $('.back-button'),
 
   //screens
+  landingScreen = $('#landingScreen'),
   formScreen = $('#formScreen'),
   carSelectScreen = $('#carSelectScreen'),
   mapScreen = $('#mapScreen'),
   screens = $('.screen'),
 
   //screen 1
+  landingScreenBtn = $('.get-started-btn'),
+
+  //screen 2
   formGroupSizeInput = $('#groupSize'),
   formStartLocInput = $('#startLocation'),
   formEndLocInput = $('#endLocation'),
@@ -33,7 +37,7 @@ let calOptions = {},
   formEndDateInput = $('#endDate'),
   formSubmitBtn = $('#submitBtn'),
 
-  //screen 2
+  //screen 3
   filterTitle = $('.filter-title'),
   allVehiclesBtn = $('#allVehicles'),
   compactVehiclesBtn = $('#compactVehicles'),
@@ -43,7 +47,7 @@ let calOptions = {},
   vehicleItemsEl = $('#vehicleItems'),
   selectCarBtn,
 
-  //screen 3
+  //screen 4
   routeOptionsBtn = $('#routeOptionsBtn'),
   carInfoBtn = $('#carInfoBtn'),
 
@@ -63,17 +67,17 @@ let calOptions = {},
 
   carInfoEl = $('.car-info'),
 
-  routeWaypoints = []
+  routeWaypoints = [],
 
-const fuelPrice = 2.25;
+  fuelPrice = 2.25;
 
 //leaflet maps
 let map = L.map('mapid').setView([-43.491053, 172.57902], 6)
 //Start/Finish inputs geocoding
 let startLocationEl = BootstrapGeocoder.search({
-  inputTag: 'startLocation',
-  placeholder: 'Starting Location'
-}).addTo(map),
+    inputTag: 'startLocation',
+    placeholder: 'Starting Location'
+  }).addTo(map),
   endLocationEl = BootstrapGeocoder.search({
     inputTag: 'endLocation',
     placeholder: 'Finishing Location'
@@ -82,48 +86,74 @@ let startLocationEl = BootstrapGeocoder.search({
     inputTag: 'detourLocation',
     placeholder: 'Travel via...'
   }).addTo(map),
-routingControl = L.Routing.control({
-  waypoints: routeWaypoints,
-  autoRoute: true,
-  lineOptions: {
-    styles: [
-    {color: '#72a545', opacity: 0.35, weight: 9},
-    {color: 'white', opacity: 0.8, weight: 6},
-    {color: '#2a3539', opacity: 1, weight: 2}
-  ]}
-}).addTo(map);
+  //init routing controller
+  routingControl = L.Routing.control({
+    waypoints: routeWaypoints,
+    autoRoute: true,
+    lineOptions: {
+      styles: [{
+          color: '#72a545',
+          opacity: 0.35,
+          weight: 9
+        },
+        {
+          color: 'white',
+          opacity: 0.8,
+          weight: 6
+        },
+        {
+          color: '#2a3539',
+          opacity: 1,
+          weight: 2
+        }
+      ]
+    }
+  }).addTo(map);
 
 function init() {
   //get vehicles
   $.getJSON('json/vehicles.json', function (vehicles) {
     vehicleList = vehicles;
   });
+  landingScreenBtn.on('click', function () {
+    landingScreen.addClass('fadeOut');
+    setTimeout(function () {
+      changeScreen(formScreen);
+      currentScreen = "formScreen";
+      $('.navbar').addClass('active');
+    }, 400);
+  });
   //init back button
-  backBtn.on('click', function(){
-    if (currentScreen == "carSelectScreen") {
+  backBtn.on('click', function () {
+    if (currentScreen == "formScreen") {
+      $('.navbar').removeClass('active');
+      landingScreen.removeClass('fadeOut');
+      changeScreen(landingScreen);
+      currentScreen = "landingScreen";
+    } else if (currentScreen == "carSelectScreen") {
       changeScreen(formScreen);
       currentScreen = "formScreen";
     } else if (currentScreen == "mapScreen") {
       changeScreen(carSelectScreen);
       currentScreen = "carSelectScreen";
-    } return false;
+    }
+    return false;
   });
   //init submit button to collect input data and calculate map routes
   formSubmitBtn.on('click', function () {
-    formScreen.addClass('animated fadeOutLeft');
     groupSize = formGroupSizeInput.val();
     startDate = formStartDateInput.val();
     endDate = formEndDateInput.val();
-    // if (validateFormScreen()) {
-    calcTripNoOfDays();
-    currentScreen = "carSelectScreen";
-    seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
-    drawRoute();
-    setTimeout(function (){
-      changeScreen(carSelectScreen)
-    }, 400);
-    // };
-    // if (groupSize && startDate && endDate && startLocation && endLocation) {
+    if (validateFormScreen()) {
+      formScreen.addClass('animated fadeOutLeft');
+      calcTripNoOfDays();
+      currentScreen = "carSelectScreen";
+      seatFilteredVehicleList = filterByGroupSize(vehicleList.vehicles, groupSize);
+      drawRoute();
+      setTimeout(function () {
+        changeScreen(carSelectScreen)
+      }, 400);
+    } else return false;
   });
 
   //Adds click out functionality to bulma calendar
@@ -148,7 +178,7 @@ function init() {
   });
 
   //click listeners for categories
-  filterTitle.on('click', function(){
+  filterTitle.on('click', function () {
     $(this).toggleClass('is-half-mobile');
     toggleFilterOptions();
   });
@@ -201,14 +231,6 @@ function init() {
     currentDetourId = (routeWaypoints.length - 2);
     drawRoute();
     addDetourToRouteList();
-    // Potential reset function
-    // let startPoint = L.latLng(parseFloat(startLocation.latlng.lat), parseFloat(startLocation.latlng.lng));
-    // let detourPoint1 = L.latLng(parseFloat(detourLocation.latlng.lat), parseFloat(detourLocation.latlng.lng));
-    // let endPoint = L.latLng(parseFloat(endLocation.latlng.lat), parseFloat(endLocation.latlng.lng));
-    // detourLocSearchBox.val(detourLocation.text);
-    // routeWaypoints = [];
-    // routeWaypoints.push(startPoint, detourPoint1, endPoint)
-    // drawRoute();
   });
 
   //toggle active state for options panel screen 3
@@ -231,20 +253,24 @@ function init() {
     $('#detourLocation').focus();
   });
 }
-//Add location button shows input. Input splices routeWaypoints by routeWaypoint.length -1 to add 2nd to last. Add button on Input pushes name to the list, with data-id of routeWaypoints.length (before adding). Clicking X button on list item uses data ID as a way to remove the array at that index, and removes list item. 
 
-//calculates days between start and end for use in future calculations
+/**
+ * @param {date} date
+ * calculates days between start and end for use in future calculations
+ */
 function getNoOfDays(startTime, endTime) {
   let difference = endTime - startTime;
   return Math.floor(difference / 1000 / 60 / 60 / 24);
 }
 
+//calculates total days of trip and stores it, able to be called to update days
 function calcTripNoOfDays() {
   let startTime = new Date(startDateCal.value()).getTime();
   let endTime = new Date(endDateCal.value()).getTime();
   tripNoOfDays = getNoOfDays(startTime, endTime);
 }
 
+//validates form first page
 function validateFormScreen() {
   if (formStartDateInput.val() == "") {
     formStartDateInput.addClass('required');
@@ -261,6 +287,7 @@ function validateFormScreen() {
   }
   return true;
 }
+
 /**
  * @param {object} vehicle
  * @param {number} delay
@@ -300,7 +327,8 @@ function getVehicleItemHTML(i, vehicle, delay) {
           </div>`
 }
 
-function toggleFilterOptions(){
+//toggles view of category filters on car select screen and animates the chevron
+function toggleFilterOptions() {
   let categoryItems = $('.category');
   categoryItems.toggleClass('active');
   $('.chevron').toggleClass('active');
@@ -326,7 +354,8 @@ function displayVehicles(vehicles) {
     let id = $(this).data('id');
     carSelectScreen.addClass('animated fadeOutLeft')
     chosenVehicle = vehicleList.vehicles[id];
-    setTimeout(function (){
+    //small delay for animations to play out
+    setTimeout(function () {
       loadMapScreenData();
       updateMapScreenData();
     }, 600);
@@ -368,7 +397,7 @@ function initMoreInfoPanels() {
   });
 }
 
-//TO DO: NAME THIS SHIT
+//changes map screen and refreshes the map to fix tile load issue
 function loadMapScreenData() {
   changeScreen(mapScreen);
   currentScreen = "mapScreen";
@@ -390,7 +419,7 @@ function updateMapScreenData() {
   roEndDateEl.html(endDate);
   carInfoEl.html(carInfo);
   selectNewCarBtn = $('#chooseNewCar');
-  selectNewCarBtn.on('click', function(){
+  selectNewCarBtn.on('click', function () {
     changeScreen(carSelectScreen);
   });
 }
@@ -414,6 +443,10 @@ function getRentalCost(vehicle) {
   return price;
 }
 
+/**
+ * Calculates the total cost of rental. Fuel price + rental price
+ * @param {Object} vehicle
+ */
 function getTotalCost(vehicle) {
   let fuelPrice = parseFloat(getFuelCost(vehicle));
   let rentalPrice = getRentalCost(vehicle);
@@ -464,13 +497,30 @@ function addDetourToRouteList() {
 
 //inits the remove route button functionality after the list item has been generated
 function initRemoveRouteBtns() {
+  removeRouteBtn.off('click');
   removeRouteBtn.on('click', function () {
-    routeWaypoints.splice(($(this).data('id')), 1);
-    $('#routeList li:last-child').remove();
+    let id = $(this).data('id');
+    routeWaypoints.splice(id, 1);
+    routeListEl.find('li').eq(id).remove();
     drawRoute();
-  })
+    updateDataId();
+  });
 }
 
+function updateDataId() {
+  let routeListItems = routeListEl.find('li');
+  $.each(routeListItems, function(i, item) {
+    jqItem = $(item);
+    jqItem.find('.remove-route').attr('data-id', i);
+  });
+  drawRoute();
+}
+
+
+/**
+ * Generates HTML for map screen full vehicle information
+ * @param {Object} vehicle
+ */
 function getFullVehicleInfoHTML(vehicle) {
   return `<div data-id="${vehicle.id}" class="ci-car-info">
             <div>

@@ -11342,6 +11342,10 @@ body {
   top: 100px;
 }
 
+.leaflet-right {
+  right: 50px;
+}
+
 html {
   background: url(../../images/background.jpg) repeat center center fixed;
   background-size: repeat;
@@ -11351,10 +11355,17 @@ html {
   height: 75px;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
   box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
+  display: none;
+}
+
+.navbar.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .logo {
-  font-family: "Ranga", cursive;
+  font-family: "Libre Baskerville", serif;
   font-size: 34px;
   color: #2a3539;
   margin-left: 100px;
@@ -11368,6 +11379,55 @@ html {
 
 .back-button:hover {
   color: #72a545;
+}
+
+#landingScreen {
+  width: 100vw;
+  height: 100%;
+  background: url(../../images/landing.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.landing h1 {
+  text-align: center;
+  font-size: 90px;
+  padding: 30px;
+  color: #fff;
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+  .landing h1 {
+    font-size: 60px;
+  }
+}
+
+.landing p {
+  margin: 0 auto;
+  color: #fff;
+  padding: 60px 0px;
+  width: 40%;
+  text-align: center;
+  border-top: 3px dotted #a5e16f;
+}
+
+@media only screen and (max-width: 767px) {
+  .landing p {
+    width: 90%;
+    padding: 60px 0px;
+  }
+}
+
+.landing .get-started-btn {
+  background: transparent;
+  border: none;
+  margin: 0 auto;
+  text-align: center;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .form-screen-form {
@@ -11424,24 +11484,6 @@ html {
   border-bottom: 1px red dotted;
 }
 
-.form-screen-form .focus-transition {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background-color: #a5e16f;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.form-screen-form .focus-transition.active {
-  width: 100%;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  left: 0;
-}
-
 .form-screen-form .box {
   background: none;
   border: none;
@@ -11488,17 +11530,26 @@ html {
   display: none;
 }
 
-.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active, .datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
+.datepicker .calendar .calendar-body .calendar-months .calendar-month.is-active,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year.is-active,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month.is-active,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year.is-active {
   background: #72a545;
   border-color: #72a545;
 }
 
-.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-months .calendar-year:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-month:hover, .datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
+.datepicker .calendar .calendar-body .calendar-months .calendar-month:hover,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year:hover,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month:hover,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year:hover {
   border-color: #72a545;
   color: #2a3539;
 }
 
-.datepicker .calendar .calendar-body .calendar-months .calendar-month, .datepicker .calendar .calendar-body .calendar-months .calendar-year, .datepicker .calendar .calendar-body .calendar-years .calendar-month, .datepicker .calendar .calendar-body .calendar-years .calendar-year {
+.datepicker .calendar .calendar-body .calendar-months .calendar-month,
+.datepicker .calendar .calendar-body .calendar-months .calendar-year,
+.datepicker .calendar .calendar-body .calendar-years .calendar-month,
+.datepicker .calendar .calendar-body .calendar-years .calendar-year {
   border: .1rem solid transparent;
   color: #2a3539;
 }
@@ -11541,8 +11592,8 @@ html {
 }
 
 .form-screen-message h1 {
-  font-family: "Ranga", cursive;
-  font-size: 48px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 36px;
   font-weight: bold;
   color: #72a545;
   text-align: right;
@@ -11918,10 +11969,10 @@ html {
   position: absolute;
   z-index: 9;
   left: -500px;
-  top: 19%;
+  top: 80px;
   background-color: #fff;
   width: 400px;
-  height: 600px;
+  padding-bottom: 30px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
@@ -12007,6 +12058,12 @@ html {
   cursor: pointer;
 }
 
+.route-display .dropdown-menu {
+  position: absolute;
+  left: auto;
+  top: 25px;
+}
+
 .route-display .add-detour {
   text-align: right;
   margin-top: 10px;
@@ -12055,16 +12112,6 @@ html {
   outline: none;
 }
 
-.route-display #addDetourInput .dropdown-menu {
-  top: 37%;
-}
-
-@media only screen and (max-width: 767px) {
-  .route-display #addDetourInput .dropdown-menu {
-    top: 30%;
-  }
-}
-
 .route-display #detourLocation {
   text-align: left;
   padding: 10px;
@@ -12079,7 +12126,7 @@ html {
   position: absolute;
   z-index: 9;
   left: -500px;
-  top: 300px;
+  top: 162px;
   background-color: #fff;
   width: 400px;
   -webkit-transition: all 0.3s linear;
@@ -12194,7 +12241,7 @@ html {
 }
 
 .option-panel ul {
-  padding-top: 300px;
+  padding-top: 185px;
   color: white;
   font-size: 12px;
   text-align: center;

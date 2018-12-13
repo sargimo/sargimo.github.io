@@ -2,10 +2,10 @@
     position: absolute;
     z-index: 9;
     left: -500px;
-    top: 19%;
+    top: 80px;
     background-color: $white;
     width: 400px;
-    height: 600px;
+    padding-bottom: 30px;
     transition: all 0.3s linear;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
@@ -83,7 +83,11 @@
         outline: none;
         cursor: pointer;
     }
-
+    .dropdown-menu {
+        position: absolute;
+        left: auto;
+        top: 25px;
+    }
     .add-detour {
         text-align: right;
         margin-top: 10px;
@@ -129,12 +133,6 @@
             display: block;
             outline: none;
         }
-        .dropdown-menu {
-            top: 37%;
-            @include mq('tablet') {
-            top: 30%;
-            }
-        }
     }
     #detourLocation {
         text-align: left;
@@ -152,10 +150,9 @@
     position: absolute;
     z-index: 9;
     left: -500px;
-    top: 300px;
+    top: 162px;
     background-color: $white;
     width: 400px;
-    // height: 800px;
     transition: all 0.3s linear;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
     -moz-box-shadow: 0px 1px 2px 0px rgba(34, 34, 34, 0.46);
@@ -261,7 +258,7 @@
         width: 100vw;
     }
     ul {
-        padding-top: 300px;
+        padding-top: 185px;
         color: white;
         font-size: 12px;
         text-align: center;
